@@ -1,4 +1,5 @@
 from enum import Enum, auto
+# The constants within this file are used to filter and extract data using the query search dataset.
 
 class MemoryUsageConstants(Enum):
     live_requested_memory = 'live_requested_memory'

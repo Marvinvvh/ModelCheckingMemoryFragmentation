@@ -21,6 +21,10 @@ The tooling has been used with Python 3.10.12, ipykernel 6.30.1, IPython 8.37.0,
 
 All notebooks and scripts use relative paths. In general, these are used to get to ${ROOT}/dataset, i.e., where this file lives, to get access to a dataset. We’ll discuss which datasets are required for which function later on.
 
+## Data storage overview
+Most of the source files within this project are used to either parse the raw dataset, filter pandas dataframes, or plotting data.
+The raw data is a tree of trace groups, traces, models, query collections, and queries. As the queries have a lot of data points, a dataset encompassing all this data is slow to search and filter. As such, we create a hash for each unique combination of trace groups, traces, models, query collection, and query identifiers (e.g., the model name, the query name, the size multiple). We then have several datasets: one for query searching, one for storing query results (data), and a trace dataset. To get the contents of a specific trace, we filter the query search results to get the traced we want the data for, and join its hashes with the trace dataset. To get the data for a specific query, we do that same but with more identifiers and the query dataset, as a query has more keys. The query dataset is stored as a hive (https://arrow.apache.org/docs/python/generated/pyarrow.dataset.HivePartitioning.html), which reduces dataset load times.
+
 ## Preparing datasets
 
 To prepare a dataset, such as the benchmark or fragverif, place the *_raw dataset into ${ROOT}/dataset.
@@ -35,6 +39,7 @@ If using vscode, you can use the two different launch options in ${ROOT}/.vscode
 
 1. Debug Prep Dataset Benchmark creates the parsed version of the benchmark.
 2. Debug Prep Dataset Comparison creates the parsed version of fragverif.
+
 
 ## Policy Comparison
 
