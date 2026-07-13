@@ -54,7 +54,6 @@ class TraceQueryCollection:
         entries = []
         for trace_query in self.queries:
             entries.append(trace_query.flatten_to_dict(query_hierarchy))
-        # TODO: Test
         for trace_collection in self.collections:
             entries.extend(trace_collection.flatten_to_dict(hierarchy, collection_path))
         return entries

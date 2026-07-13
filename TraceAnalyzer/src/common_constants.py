@@ -269,7 +269,6 @@ class ExtFragConstants(Enum):
     WJ_alloc_reserved_upper = "frag_ext_WJ_alloc_reserved_upper"
     WJ_alloc_reserved_lower = "frag_ext_WJ_alloc_reserved_lower"
     WJ_alloc_max = "frag_ext_WJ_alloc_max"
-    # TODO: Change this to frag_ext_LFB instead of frag_LFB
     LFB_BV = "frag_ext_LFB_BV"
     LFB_PV = "frag_ext_LFB_PV"
     LFB_HV = "frag_ext_LFB_HV"
