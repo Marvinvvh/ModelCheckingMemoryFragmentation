@@ -1,0 +1,31 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Prep Dataset Benchmark",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/prep_dataset.py",
+            "console": "integratedTerminal",
+            "args": [
+                    "${workspaceFolder}/dataset/benchmark_raw",
+                    "${workspaceFolder}/dataset/benchmark_parsed"
+            ]
+        },
+        {
+            "name": "Debug Prep Dataset Comparison",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/prep_dataset.py",
+            "console": "integratedTerminal",
+            "args": [
+                    "${workspaceFolder}/dataset/fragverif_raw",
+                    "${workspaceFolder}/dataset/fragverif_parsed",
+                    "--comparison"
+            ]
+        }
+    ]
+}
