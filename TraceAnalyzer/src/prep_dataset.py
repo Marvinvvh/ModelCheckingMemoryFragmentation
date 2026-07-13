@@ -7,6 +7,8 @@ import filters.filters as fl
 import pandas as pd
 from datetime import datetime
 
+# Setup the query collection parsers for both tracking and validation queries
+# There's really only two types of queries, but initially we had different queries for validation, comments, etc.
 def setup_query_collection_parsers(register: qp.QueryCollectionParserRegister, tracking_register: qp.QueryParserRegister, validation_register: qp. QueryParserRegister):
     register.addParser('tracking-queries', qp.TraceQueryCollectionParser, tracking_register)
     register.addParser('verification-queries', qp.TraceQueryCollectionParser, validation_register)
@@ -175,7 +177,7 @@ if __name__ == '__main__':
 
     parser.add_argument('results_input', type=str, help="The input results from TraceVerifier.")
     parser.add_argument('parsed_results_output', type=str, help="The output parsed results usable for analysis.")
-    parser.add_argument('--comparison', action='store_true', help="Whether it is a comparison run or not.")
+    parser.add_argument('--comparison', action='store_true', help="Whether it is a comparison run or not. A comparison run is when we want to compare whether fragverif traces match the expected values.")
 
     args=parser.parse_args()
 
