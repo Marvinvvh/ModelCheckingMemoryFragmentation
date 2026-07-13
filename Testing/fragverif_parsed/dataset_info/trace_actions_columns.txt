@@ -1,0 +1,6 @@
+Overview of columns
+-----------
+trace_action_type
+trace_action_pointer
+trace_action_size
+hash_trace

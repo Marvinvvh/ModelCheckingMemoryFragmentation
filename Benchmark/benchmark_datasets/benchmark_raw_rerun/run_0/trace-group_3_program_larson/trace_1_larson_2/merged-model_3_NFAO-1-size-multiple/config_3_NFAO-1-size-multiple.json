@@ -1,0 +1,1 @@
+{"identifier":"NFAO-1-size-multiple","pageSize":4096,"amountOfPages":64,"addressAlignmentAllocator":1,"sizeMultipleAllocator":1,"allocatorCount":1,"freeListReductionFactor":1}

@@ -1,0 +1,19 @@
+{
+    "defaultDirNameRun": "run",
+    "defaultDirNameTraceGroup": "trace-group",
+    "defaultDirNameTrace": "trace",
+    "defaultDirNameMergedModel": "merged-model",
+    "defaultDirNameQuery": "query",
+    "defaultNameTraceGroup": "trace-group",
+    "defaultNameTrace": "trace",
+    "defaultNameMergedModel": "merged-model",
+    "defaultNameModelConfig": "config",
+    "defaultNameModelVariables": "variables",
+    "defaultNameQuery": "query",
+    "defaultNameSeparator": "_",
+    "runAmount": 1,
+    "basePath": "ABSOLUTE_OUTPUT_DATA_PATH_HERE",
+    "serverPath": "ABSOLUTE_UPPAAL_SERVER_PATH_HERE",
+    "backupRunsBeforeSimulation": false,
+    "deleteRunsBeforeSimulation": true
+}

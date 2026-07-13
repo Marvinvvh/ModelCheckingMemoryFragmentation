@@ -1,0 +1,1 @@
+{"tolerance":1,"identifier":"BFAO-64-size-multiple","pageSize":1024,"amountOfPages":384,"addressAlignmentAllocator":1,"sizeMultipleAllocator":64,"allocatorCount":1,"freeListReductionFactor":1}

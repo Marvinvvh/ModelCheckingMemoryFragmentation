@@ -1,0 +1,499 @@
+Jul 13, 2026 5:09:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_0_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 1024 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 1024 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_0_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_1_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 2048 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 2048 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_1_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_2_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 3072 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 3072 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_2_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_3_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 4 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 4096 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 4096 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_3_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_4_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 5 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 3072 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 3072 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_4_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_5_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 6 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 2048 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 2048 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_5_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_6_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 1024 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 1024 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_6_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_7_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 5:09:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 5:09:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 8 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 0 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 0 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0)
+Jul 13, 2026 5:09:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_7_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 5:09:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_8_ExpectedMemory ---
+Jul 13, 2026 5:09:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/ExpectedMemory/query_8_ExpectedMemory
+
+Jul 13, 2026 5:09:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_0_CheckFreeListEntry ---
+Jul 13, 2026 5:09:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:09:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 1024 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 3072)
+Jul 13, 2026 5:09:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_0_CheckFreeListEntry
+
+Jul 13, 2026 5:09:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_1_CheckFreeListSize ---
+Jul 13, 2026 5:09:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:09:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 1
+Jul 13, 2026 5:09:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_1_CheckFreeListSize
+
+Jul 13, 2026 5:09:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_2_CheckPageState ---
+Jul 13, 2026 5:09:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:09:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.page_state == 2
+Jul 13, 2026 5:09:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_2_CheckPageState
+
+Jul 13, 2026 5:09:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_3_CheckFreeListEntry ---
+Jul 13, 2026 5:09:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:09:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 2048 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 2048)
+Jul 13, 2026 5:09:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_3_CheckFreeListEntry
+
+Jul 13, 2026 5:09:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_4_CheckFreeListSize ---
+Jul 13, 2026 5:09:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:09:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 1
+Jul 13, 2026 5:09:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_4_CheckFreeListSize
+
+Jul 13, 2026 5:09:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_5_CheckPageState ---
+Jul 13, 2026 5:09:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:09:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.page_state == 2
+Jul 13, 2026 5:09:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_5_CheckPageState
+
+Jul 13, 2026 5:09:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_6_CheckFreeListEntry ---
+Jul 13, 2026 5:09:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:09:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 3072 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 1024)
+Jul 13, 2026 5:09:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:46 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_6_CheckFreeListEntry
+
+Jul 13, 2026 5:09:46 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_7_CheckFreeListSize ---
+Jul 13, 2026 5:09:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:09:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 1
+Jul 13, 2026 5:09:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_7_CheckFreeListSize
+
+Jul 13, 2026 5:09:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_8_CheckPageState ---
+Jul 13, 2026 5:09:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:09:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.page_state == 2
+Jul 13, 2026 5:09:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_8_CheckPageState
+
+Jul 13, 2026 5:09:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_9_CheckFreeListSize ---
+Jul 13, 2026 5:09:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:09:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 4 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 0
+Jul 13, 2026 5:09:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_9_CheckFreeListSize
+
+Jul 13, 2026 5:09:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_10_CheckPageState ---
+Jul 13, 2026 5:09:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:09:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 4 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).allocate imply memory_page(allocator_heap_link[0], 0).page_info.page_state == 1
+Jul 13, 2026 5:09:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:09:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_10_CheckPageState
+
+Jul 13, 2026 5:09:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_11_CheckFreeListSize ---
+Jul 13, 2026 5:10:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:10:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 5 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.free_list_size == 1
+Jul 13, 2026 5:10:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_11_CheckFreeListSize
+
+Jul 13, 2026 5:10:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_12_CheckFreeListEntry ---
+Jul 13, 2026 5:10:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:10:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 5 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply (memory_page(allocator_heap_link[0], 1).page_info.free_list[0].address == 5120 && memory_page(allocator_heap_link[0], 1).page_info.free_list[0].length == 1024)
+Jul 13, 2026 5:10:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_12_CheckFreeListEntry
+
+Jul 13, 2026 5:10:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_13_CheckPageState ---
+Jul 13, 2026 5:10:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:10:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 5 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.page_state == 2
+Jul 13, 2026 5:10:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_13_CheckPageState
+
+Jul 13, 2026 5:10:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_14_CheckFreeListSize ---
+Jul 13, 2026 5:10:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:10:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 6 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.free_list_size == 1
+Jul 13, 2026 5:10:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_14_CheckFreeListSize
+
+Jul 13, 2026 5:10:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_15_CheckFreeListEntry ---
+Jul 13, 2026 5:10:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:10:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 6 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply (memory_page(allocator_heap_link[0], 1).page_info.free_list[0].address == 6144 && memory_page(allocator_heap_link[0], 1).page_info.free_list[0].length == 2048)
+Jul 13, 2026 5:10:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_15_CheckFreeListEntry
+
+Jul 13, 2026 5:10:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_16_CheckPageState ---
+Jul 13, 2026 5:10:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:10:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 6 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.page_state == 2
+Jul 13, 2026 5:10:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_16_CheckPageState
+
+Jul 13, 2026 5:10:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_17_CheckFreeListSize ---
+Jul 13, 2026 5:10:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:10:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.free_list_size == 1
+Jul 13, 2026 5:10:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_17_CheckFreeListSize
+
+Jul 13, 2026 5:10:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_18_CheckFreeListEntry ---
+Jul 13, 2026 5:10:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:10:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply (memory_page(allocator_heap_link[0], 1).page_info.free_list[0].address == 7168 && memory_page(allocator_heap_link[0], 1).page_info.free_list[0].length == 3072)
+Jul 13, 2026 5:10:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_18_CheckFreeListEntry
+
+Jul 13, 2026 5:10:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_19_CheckPageState ---
+Jul 13, 2026 5:10:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:10:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.page_state == 2
+Jul 13, 2026 5:10:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_19_CheckPageState
+
+Jul 13, 2026 5:10:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_20_CheckFreeListSize ---
+Jul 13, 2026 5:10:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:10:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 8 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.free_list_size == 1
+Jul 13, 2026 5:10:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_20_CheckFreeListSize
+
+Jul 13, 2026 5:10:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_21_CheckFreeListEntry ---
+Jul 13, 2026 5:10:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:10:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 8 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply (memory_page(allocator_heap_link[0], 1).page_info.free_list[0].address == 8192 && memory_page(allocator_heap_link[0], 1).page_info.free_list[0].length == 4096)
+Jul 13, 2026 5:10:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_21_CheckFreeListEntry
+
+Jul 13, 2026 5:10:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_22_CheckPageState ---
+Jul 13, 2026 5:10:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:10:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 8 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1 && memory_page(allocator_heap_link[0], 1).allocate imply memory_page(allocator_heap_link[0], 1).page_info.page_state == 0
+Jul 13, 2026 5:10:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_22_CheckPageState
+
+Jul 13, 2026 5:10:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_23_AllocationAddressRangeLinear ---
+Jul 13, 2026 5:10:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_23_AllocationAddressRangeLinear
+
+Jul 13, 2026 5:10:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_0_CheckFreeListSize ---
+Jul 13, 2026 5:10:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:10:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 321 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 1
+Jul 13, 2026 5:10:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_0_CheckFreeListSize
+
+Jul 13, 2026 5:10:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_1_CheckFreeListEntry ---
+Jul 13, 2026 5:10:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:10:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 321 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 4095 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 1)
+Jul 13, 2026 5:10:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:10:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_1_CheckFreeListEntry
+
+Jul 13, 2026 5:10:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_2_CheckFreeListSize ---
+Jul 13, 2026 5:11:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:11:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 322 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 1
+Jul 13, 2026 5:11:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:11:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_2_CheckFreeListSize
+
+Jul 13, 2026 5:11:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_3_CheckFreeListEntry ---
+Jul 13, 2026 5:11:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:11:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 322 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 4094 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 2)
+Jul 13, 2026 5:11:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:11:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_3_CheckFreeListEntry
+
+Jul 13, 2026 5:11:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_4_CheckFreeListSize ---
+Jul 13, 2026 5:11:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:11:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 323 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 2
+Jul 13, 2026 5:11:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:11:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_4_CheckFreeListSize
+
+Jul 13, 2026 5:11:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_5_CheckFreeListEntry ---
+Jul 13, 2026 5:11:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:11:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 323 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 0 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 1)
+Jul 13, 2026 5:11:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:11:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_5_CheckFreeListEntry
+
+Jul 13, 2026 5:11:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_6_CheckFreeListEntry ---
+Jul 13, 2026 5:11:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:11:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 323 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[1].address == 4094 && memory_page(allocator_heap_link[0], 0).page_info.free_list[1].length == 2)
+Jul 13, 2026 5:12:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:12:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_6_CheckFreeListEntry
+
+Jul 13, 2026 5:12:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_7_CheckFreeListSize ---
+Jul 13, 2026 5:12:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:12:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 324 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 2
+Jul 13, 2026 5:12:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:12:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_7_CheckFreeListSize
+
+Jul 13, 2026 5:12:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_8_CheckFreeListEntry ---
+Jul 13, 2026 5:12:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:12:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 324 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 0 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 2)
+Jul 13, 2026 5:12:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:12:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_8_CheckFreeListEntry
+
+Jul 13, 2026 5:12:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_9_CheckFreeListEntry ---
+Jul 13, 2026 5:12:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:12:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 324 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[1].address == 4094 && memory_page(allocator_heap_link[0], 0).page_info.free_list[1].length == 2)
+Jul 13, 2026 5:12:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:12:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_9_CheckFreeListEntry
+
+Jul 13, 2026 5:12:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_10_CheckFreeListSize ---
+Jul 13, 2026 5:12:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListSize
+Jul 13, 2026 5:12:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 325 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply memory_page(allocator_heap_link[0], 0).page_info.free_list_size == 1
+Jul 13, 2026 5:12:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:12:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_10_CheckFreeListSize
+
+Jul 13, 2026 5:12:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_11_CheckFreeListEntry ---
+Jul 13, 2026 5:12:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFreeListEntry
+Jul 13, 2026 5:12:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 325 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply (memory_page(allocator_heap_link[0], 0).page_info.free_list[0].address == 0 && memory_page(allocator_heap_link[0], 0).page_info.free_list[0].length == 4096)
+Jul 13, 2026 5:13:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:13:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_11_CheckFreeListEntry
+
+Jul 13, 2026 5:13:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_12_CheckPageState ---
+Jul 13, 2026 5:13:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckPageState
+Jul 13, 2026 5:13:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 325 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0 && memory_page(allocator_heap_link[0], 0).free imply memory_page(allocator_heap_link[0], 0).page_info.page_state == 0
+Jul 13, 2026 5:13:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:13:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_12_CheckPageState
+
+Jul 13, 2026 5:13:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-1-size-multiple | query_collection_13_AllocationAddressRangeLinear ---
+Jul 13, 2026 5:13:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-1-size-multiple/MemoryPage/AllocationAddressRangeLinear/query_13_AllocationAddressRangeLinear
+

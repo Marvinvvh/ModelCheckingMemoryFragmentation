@@ -1,0 +1,643 @@
+Jul 13, 2026 5:38:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_CheckWJFragmentation ---
+Jul 13, 2026 5:38:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_avg_any == 200)
+Jul 13, 2026 5:38:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_0_CheckWJFragmentation
+
+Jul 13, 2026 5:38:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_1_CheckWJFragmentation ---
+Jul 13, 2026 5:38:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_avg_alloc == 200)
+Jul 13, 2026 5:38:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_1_CheckWJFragmentation
+
+Jul 13, 2026 5:38:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_2_CheckWJFragmentation ---
+Jul 13, 2026 5:38:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_required_avg == 200)
+Jul 13, 2026 5:38:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_2_CheckWJFragmentation
+
+Jul 13, 2026 5:38:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_3_CheckWJFragmentation ---
+Jul 13, 2026 5:38:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_required_upper == 200)
+Jul 13, 2026 5:38:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:34 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_3_CheckWJFragmentation
+
+Jul 13, 2026 5:38:34 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_4_CheckWJFragmentation ---
+Jul 13, 2026 5:38:37 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:37 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_required_lower == 200)
+Jul 13, 2026 5:38:37 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:37 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_4_CheckWJFragmentation
+
+Jul 13, 2026 5:38:37 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_5_CheckWJFragmentation ---
+Jul 13, 2026 5:38:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_reserved_avg == 200)
+Jul 13, 2026 5:38:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:40 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_5_CheckWJFragmentation
+
+Jul 13, 2026 5:38:40 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_6_CheckWJFragmentation ---
+Jul 13, 2026 5:38:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_reserved_upper == 200)
+Jul 13, 2026 5:38:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_6_CheckWJFragmentation
+
+Jul 13, 2026 5:38:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_7_CheckWJFragmentation ---
+Jul 13, 2026 5:38:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_reserved_lower == 200)
+Jul 13, 2026 5:38:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:46 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_7_CheckWJFragmentation
+
+Jul 13, 2026 5:38:46 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_8_CheckWJFragmentation ---
+Jul 13, 2026 5:38:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_WJ[allocator_heap_link[0]].frag_method_max == 200)
+Jul 13, 2026 5:38:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_8_CheckWJFragmentation
+
+Jul 13, 2026 5:38:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_9_CheckWJFragmentation ---
+Jul 13, 2026 5:38:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_avg_any == 2750)
+Jul 13, 2026 5:38:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_9_CheckWJFragmentation
+
+Jul 13, 2026 5:38:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_10_CheckWJFragmentation ---
+Jul 13, 2026 5:38:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_avg_alloc == 2697)
+Jul 13, 2026 5:38:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_10_CheckWJFragmentation
+
+Jul 13, 2026 5:38:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_11_CheckWJFragmentation ---
+Jul 13, 2026 5:38:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:38:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_required_avg == 800)
+Jul 13, 2026 5:38:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:38:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_11_CheckWJFragmentation
+
+Jul 13, 2026 5:38:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_12_CheckWJFragmentation ---
+Jul 13, 2026 5:39:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_required_upper == 800)
+Jul 13, 2026 5:39:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_12_CheckWJFragmentation
+
+Jul 13, 2026 5:39:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_13_CheckWJFragmentation ---
+Jul 13, 2026 5:39:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_required_lower == 800)
+Jul 13, 2026 5:39:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_13_CheckWJFragmentation
+
+Jul 13, 2026 5:39:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_14_CheckWJFragmentation ---
+Jul 13, 2026 5:39:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_reserved_avg == 2750)
+Jul 13, 2026 5:39:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:07 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_14_CheckWJFragmentation
+
+Jul 13, 2026 5:39:07 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_15_CheckWJFragmentation ---
+Jul 13, 2026 5:39:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_reserved_upper == 800)
+Jul 13, 2026 5:39:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_15_CheckWJFragmentation
+
+Jul 13, 2026 5:39:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_16_CheckWJFragmentation ---
+Jul 13, 2026 5:39:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_reserved_lower == 12800)
+Jul 13, 2026 5:39:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_16_CheckWJFragmentation
+
+Jul 13, 2026 5:39:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_17_CheckWJFragmentation ---
+Jul 13, 2026 5:39:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_req[allocator_heap_link[0]].frag_method_max == 800)
+Jul 13, 2026 5:39:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_17_CheckWJFragmentation
+
+Jul 13, 2026 5:39:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_18_CheckWJFragmentation ---
+Jul 13, 2026 5:39:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_avg_any == 1367)
+Jul 13, 2026 5:39:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_18_CheckWJFragmentation
+
+Jul 13, 2026 5:39:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_19_CheckWJFragmentation ---
+Jul 13, 2026 5:39:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_avg_alloc == 1346)
+Jul 13, 2026 5:39:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_19_CheckWJFragmentation
+
+Jul 13, 2026 5:39:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_20_CheckWJFragmentation ---
+Jul 13, 2026 5:39:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_required_avg == 400)
+Jul 13, 2026 5:39:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_20_CheckWJFragmentation
+
+Jul 13, 2026 5:39:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_21_CheckWJFragmentation ---
+Jul 13, 2026 5:39:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_required_upper == 400)
+Jul 13, 2026 5:39:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_21_CheckWJFragmentation
+
+Jul 13, 2026 5:39:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_22_CheckWJFragmentation ---
+Jul 13, 2026 5:39:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_required_lower == 400)
+Jul 13, 2026 5:39:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_22_CheckWJFragmentation
+
+Jul 13, 2026 5:39:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_23_CheckWJFragmentation ---
+Jul 13, 2026 5:39:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_reserved_avg == 1367)
+Jul 13, 2026 5:39:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_23_CheckWJFragmentation
+
+Jul 13, 2026 5:39:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_24_CheckWJFragmentation ---
+Jul 13, 2026 5:39:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_reserved_upper == 400)
+Jul 13, 2026 5:39:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_24_CheckWJFragmentation
+
+Jul 13, 2026 5:39:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_25_CheckWJFragmentation ---
+Jul 13, 2026 5:39:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_reserved_lower == 6400)
+Jul 13, 2026 5:39:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_25_CheckWJFragmentation
+
+Jul 13, 2026 5:39:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_26_CheckWJFragmentation ---
+Jul 13, 2026 5:39:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 13, 2026 5:39:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_max == 400)
+Jul 13, 2026 5:39:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:42 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_26_CheckWJFragmentation
+
+Jul 13, 2026 5:39:42 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_27_CheckRelativeInternalFragmentation ---
+Jul 13, 2026 5:39:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeInternalFragmentation
+Jul 13, 2026 5:39:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_relative[allocator_heap_link[0]] == 50)
+Jul 13, 2026 5:39:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_27_CheckRelativeInternalFragmentation
+
+Jul 13, 2026 5:39:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_28_CheckRelativeInternalFragmentation ---
+Jul 13, 2026 5:39:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeInternalFragmentation
+Jul 13, 2026 5:39:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 96 && heap_interface(allocator_heap_link[0]).processed imply(frag_int_relative[allocator_heap_link[0]] == 50)
+Jul 13, 2026 5:39:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_28_CheckRelativeInternalFragmentation
+
+Jul 13, 2026 5:39:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_29_CheckRelativeExternalFragmentation ---
+Jul 13, 2026 5:39:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 13, 2026 5:39:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_relative_BV[allocator_heap_link[0]] == 0)
+Jul 13, 2026 5:39:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_29_CheckRelativeExternalFragmentation
+
+Jul 13, 2026 5:39:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_30_CheckRelativeExternalFragmentation ---
+Jul 13, 2026 5:39:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 13, 2026 5:39:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_relative_PV[allocator_heap_link[0]] == 75)
+Jul 13, 2026 5:39:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_30_CheckRelativeExternalFragmentation
+
+Jul 13, 2026 5:39:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_31_CheckRelativeExternalFragmentation ---
+Jul 13, 2026 5:39:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 13, 2026 5:39:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_relative_HV[allocator_heap_link[0]] == 100)
+Jul 13, 2026 5:39:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:39:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_31_CheckRelativeExternalFragmentation
+
+Jul 13, 2026 5:39:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_32_CheckRelativeExternalFragmentation ---
+Jul 13, 2026 5:40:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 13, 2026 5:40:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_relative_BV[allocator_heap_link[0]] == 50)
+Jul 13, 2026 5:40:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_32_CheckRelativeExternalFragmentation
+
+Jul 13, 2026 5:40:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_33_CheckRelativeExternalFragmentation ---
+Jul 13, 2026 5:40:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 13, 2026 5:40:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_relative_PV[allocator_heap_link[0]] == 88)
+Jul 13, 2026 5:40:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_33_CheckRelativeExternalFragmentation
+
+Jul 13, 2026 5:40:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_34_CheckRelativeExternalFragmentation ---
+Jul 13, 2026 5:40:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 13, 2026 5:40:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed imply(frag_ext_relative_HV[allocator_heap_link[0]] == 100)
+Jul 13, 2026 5:40:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_34_CheckRelativeExternalFragmentation
+
+Jul 13, 2026 5:40:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_35_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_BV[allocator_heap_link[0]] == 0)
+Jul 13, 2026 5:40:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_35_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_36_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_PV[allocator_heap_link[0]] == 0)
+Jul 13, 2026 5:40:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:12 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_36_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:12 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_37_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_HV[allocator_heap_link[0]] == 0)
+Jul 13, 2026 5:40:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_37_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_38_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_BV[allocator_heap_link[0]] == 0)
+Jul 13, 2026 5:40:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_38_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_39_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_PV[allocator_heap_link[0]] == 0)
+Jul 13, 2026 5:40:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_39_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_40_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_HV[allocator_heap_link[0]] == 0)
+Jul 13, 2026 5:40:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_40_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_41_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_BV[allocator_heap_link[0]] == 88)
+Jul 13, 2026 5:40:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_41_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_42_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_PV[allocator_heap_link[0]] == 15)
+Jul 13, 2026 5:40:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_42_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_43_CheckLFBFragmentation ---
+Jul 13, 2026 5:40:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 13, 2026 5:40:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed imply(frag_LFB_HV[allocator_heap_link[0]] == 1)
+Jul 13, 2026 5:40:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_43_CheckLFBFragmentation
+
+Jul 13, 2026 5:40:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_44_CheckIntFragPresence ---
+Jul 13, 2026 5:40:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckIntFragPresence
+Jul 13, 2026 5:40:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply(frag_presence_int[allocator_heap_link[0]] == true)
+Jul 13, 2026 5:40:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_44_CheckIntFragPresence
+
+Jul 13, 2026 5:40:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_45_CheckIntFragPresence ---
+Jul 13, 2026 5:40:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckIntFragPresence
+Jul 13, 2026 5:40:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply(frag_presence_int[allocator_heap_link[0]] == false)
+Jul 13, 2026 5:40:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_45_CheckIntFragPresence
+
+Jul 13, 2026 5:40:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_46_CheckExtFragPresence ---
+Jul 13, 2026 5:40:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 13, 2026 5:40:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_ext_BV[allocator_heap_link[0]] == true)
+Jul 13, 2026 5:40:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_46_CheckExtFragPresence
+
+Jul 13, 2026 5:40:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_47_CheckExtFragPresence ---
+Jul 13, 2026 5:40:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 13, 2026 5:40:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_ext_PV[allocator_heap_link[0]] == true)
+Jul 13, 2026 5:40:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_47_CheckExtFragPresence
+
+Jul 13, 2026 5:40:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_48_CheckExtFragPresence ---
+Jul 13, 2026 5:40:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 13, 2026 5:40:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_ext_HV[allocator_heap_link[0]] == true)
+Jul 13, 2026 5:40:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_48_CheckExtFragPresence
+
+Jul 13, 2026 5:40:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_49_CheckExtFragPresence ---
+Jul 13, 2026 5:40:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 13, 2026 5:40:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_ext_BV[allocator_heap_link[0]] == false)
+Jul 13, 2026 5:40:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_49_CheckExtFragPresence
+
+Jul 13, 2026 5:40:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_50_CheckExtFragPresence ---
+Jul 13, 2026 5:40:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 13, 2026 5:40:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_ext_PV[allocator_heap_link[0]] == false)
+Jul 13, 2026 5:40:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:53 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_50_CheckExtFragPresence
+
+Jul 13, 2026 5:40:53 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_51_CheckExtFragPresence ---
+Jul 13, 2026 5:40:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 13, 2026 5:40:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_ext_HV[allocator_heap_link[0]] == false)
+Jul 13, 2026 5:40:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:56 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_51_CheckExtFragPresence
+
+Jul 13, 2026 5:40:56 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_52_CheckFragPresence ---
+Jul 13, 2026 5:40:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 13, 2026 5:40:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_BV[allocator_heap_link[0]] == true)
+Jul 13, 2026 5:40:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:40:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_52_CheckFragPresence
+
+Jul 13, 2026 5:40:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_53_CheckFragPresence ---
+Jul 13, 2026 5:41:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 13, 2026 5:41:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_PV[allocator_heap_link[0]] == true)
+Jul 13, 2026 5:41:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:41:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_53_CheckFragPresence
+
+Jul 13, 2026 5:41:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_54_CheckFragPresence ---
+Jul 13, 2026 5:41:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 13, 2026 5:41:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_HV[allocator_heap_link[0]] == true)
+Jul 13, 2026 5:41:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:41:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_54_CheckFragPresence
+
+Jul 13, 2026 5:41:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_55_CheckFragPresence ---
+Jul 13, 2026 5:41:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 13, 2026 5:41:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_BV[allocator_heap_link[0]] == false)
+Jul 13, 2026 5:41:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:41:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_55_CheckFragPresence
+
+Jul 13, 2026 5:41:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_56_CheckFragPresence ---
+Jul 13, 2026 5:41:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 13, 2026 5:41:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_PV[allocator_heap_link[0]] == false)
+Jul 13, 2026 5:41:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:41:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_56_CheckFragPresence
+
+Jul 13, 2026 5:41:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_57_CheckFragPresence ---
+Jul 13, 2026 5:41:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 13, 2026 5:41:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed imply(frag_presence_HV[allocator_heap_link[0]] == false)
+Jul 13, 2026 5:41:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 5:41:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_57_CheckFragPresence
+
+Jul 13, 2026 5:41:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_58_CheckMemoryFragmentation ---
+Jul 13, 2026 5:41:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_58_CheckMemoryFragmentation
+

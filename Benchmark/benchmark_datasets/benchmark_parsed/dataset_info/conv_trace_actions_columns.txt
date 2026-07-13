@@ -1,0 +1,6 @@
+Overview of columns
+-----------
+hash_trace
+time
+type
+size

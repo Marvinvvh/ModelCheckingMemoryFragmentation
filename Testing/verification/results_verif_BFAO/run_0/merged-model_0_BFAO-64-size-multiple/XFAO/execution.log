@@ -1,0 +1,711 @@
+Jul 13, 2026 7:20:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CorrectActionFree ---
+Jul 13, 2026 7:20:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectActionFree
+Jul 13, 2026 7:20:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (bfao_allocator(0).allocate || bfao_allocator(0).processing_alloc || bfao_allocator(0).retrieved_page_info) imply allocator_action_req[0].type == eAllocatorActionAlloc
+Jul 13, 2026 7:20:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:20:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/CorrectActionAlloc/query_0_CorrectActionFree
+
+Jul 13, 2026 7:20:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CorrectActionFree ---
+Jul 13, 2026 7:21:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectActionFree
+Jul 13, 2026 7:21:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).free imply allocator_action_req[0].type == eAllocatorActionFree
+Jul 13, 2026 7:21:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/CorrectActionFree/query_0_CorrectActionFree
+
+Jul 13, 2026 7:21:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && bfao_allocator(0).allocate) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestAlloc && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 1 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 63 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 64)
+Jul 13, 2026 7:21:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_0_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && bfao_allocator(0).free) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestFree && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 1 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 63 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 64)
+Jul 13, 2026 7:21:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_1_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && bfao_allocator(0).allocate) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestAlloc && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 8160 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 8192)
+Jul 13, 2026 7:21:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_2_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 4 && bfao_allocator(0).allocate) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestAlloc && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 16352 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 16384)
+Jul 13, 2026 7:21:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_3_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 5 && bfao_allocator(0).allocate) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestAlloc && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 16352 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 16384)
+Jul 13, 2026 7:21:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_4_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_5_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 6 && bfao_allocator(0).allocate) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestAlloc && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 8160 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 8192)
+Jul 13, 2026 7:21:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_5_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_6_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && bfao_allocator(0).free) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestFree && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 8160 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 8192)
+Jul 13, 2026 7:21:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_6_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_7_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 8 && bfao_allocator(0).free) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestFree && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 16352 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 16384)
+Jul 13, 2026 7:21:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_7_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_8_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 9 && bfao_allocator(0).free) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestFree && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 16352 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 16384)
+Jul 13, 2026 7:21:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_8_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_9_CorrectMemoryAtTimeFree ---
+Jul 13, 2026 7:21:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 13, 2026 7:21:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 10 && bfao_allocator(0).free) imply (heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].type == eHeapRequestFree && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.requested_memory == 8160 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.padded_memory == 32 && heap_mem_req[allocator_heap_link[bfao_allocator(0).allocator_id]].info.allocated_memory == 8192)
+Jul 13, 2026 7:21:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_9_CorrectMemoryAtTimeFree
+
+Jul 13, 2026 7:21:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_10_MatchingAllocAndHeapRequested ---
+Jul 13, 2026 7:21:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: MatchingAllocAndHeapRequested
+Jul 13, 2026 7:21:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).allocate imply heap_mem_req[allocator_heap_link[0]].info.requested_memory == allocator_action_req[0].allocation.size
+Jul 13, 2026 7:21:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_10_MatchingAllocAndHeapRequested
+
+Jul 13, 2026 7:21:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_11_MatchingHeapAndOrderedRequestAlloc ---
+Jul 13, 2026 7:21:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: MatchingHeapAndOrderedRequestAlloc
+Jul 13, 2026 7:21:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).allocate imply heap_mem_req[allocator_heap_link[0]] == bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].allocation.pointer].req
+Jul 13, 2026 7:21:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_11_MatchingHeapAndOrderedRequestAlloc
+
+Jul 13, 2026 7:21:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_12_MatchingHeapAndOrderedRequestFree ---
+Jul 13, 2026 7:21:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: MatchingHeapAndOrderedRequestFree
+Jul 13, 2026 7:21:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).free imply heap_mem_req[allocator_heap_link[0]].type == eHeapRequestFree && heap_mem_req[allocator_heap_link[0]].info == bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].free.pointer].req.info && heap_mem_req[allocator_heap_link[0]].range == bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].free.pointer].req.range
+Jul 13, 2026 7:21:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_12_MatchingHeapAndOrderedRequestFree
+
+Jul 13, 2026 7:21:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_13_ExpectedHeapRequestCreated ---
+Jul 13, 2026 7:21:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedHeapRequestCreated/query_13_ExpectedHeapRequestCreated
+
+Jul 13, 2026 7:21:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_NoAllocatorErrors ---
+Jul 13, 2026 7:21:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NoAllocatorErrors
+Jul 13, 2026 7:21:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] not bfao_allocator(0).alloc_error && not bfao_allocator(0).free_error
+Jul 13, 2026 7:21:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/UnallocedFree/query_0_NoAllocatorErrors
+
+Jul 13, 2026 7:21:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_StandardNoErrors ---
+Jul 13, 2026 7:21:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/UnallocedFree/query_1_StandardNoErrors
+
+Jul 13, 2026 7:21:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExactDuplicatePointer ---
+Jul 13, 2026 7:21:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactDuplicatePointer
+Jul 13, 2026 7:21:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 2 && bfao_allocator(0).fault_duplicate_pointers && bfao_allocator(0).error
+Jul 13, 2026 7:21:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/DuplicatePointer/query_0_ExactDuplicatePointer
+
+Jul 13, 2026 7:21:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_DuplicatePointerCondition ---
+Jul 13, 2026 7:21:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: DuplicatePointerCondition
+Jul 13, 2026 7:21:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).fault_duplicate_pointers imply allocator_action_req[0].type == eAllocatorActionAlloc && bfao_allocator(0).ordered_heap_requests[+allocator_action_req[0].free.pointer].alloced
+Jul 13, 2026 7:21:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/DuplicatePointer/query_1_DuplicatePointerCondition
+
+Jul 13, 2026 7:21:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_DuplicatePointer ---
+Jul 13, 2026 7:21:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/DuplicatePointer/query_2_DuplicatePointer
+
+Jul 13, 2026 7:21:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExactUnallocatedFree ---
+Jul 13, 2026 7:21:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactUnallocatedFree
+Jul 13, 2026 7:21:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 3 && bfao_allocator(0).error && bfao_allocator(0).fault_unalloc_free
+Jul 13, 2026 7:21:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/UnallocedFree/query_0_ExactUnallocatedFree
+
+Jul 13, 2026 7:21:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_UnallocatedFreeCondition ---
+Jul 13, 2026 7:21:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: UnallocatedFreeCondition
+Jul 13, 2026 7:21:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).fault_unalloc_free imply allocator_action_req[0].type == eAllocatorActionFree && not bfao_allocator(0).ordered_heap_requests[+allocator_action_req[0].free.pointer].alloced
+Jul 13, 2026 7:21:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:21:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/UnallocedFree/query_1_UnallocatedFreeCondition
+
+Jul 13, 2026 7:21:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_UnallocedFree ---
+Jul 13, 2026 7:22:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/UnallocedFree/query_2_UnallocedFree
+
+Jul 13, 2026 7:22:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_DoubleFreeCondition ---
+Jul 13, 2026 7:22:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: DoubleFreeCondition
+Jul 13, 2026 7:22:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).fault_double_free imply allocator_action_req[0].type == eAllocatorActionFree && bfao_allocator(0).ordered_heap_requests[+allocator_action_req[0].free.pointer].freed
+Jul 13, 2026 7:22:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/DoubleFree/query_0_DoubleFreeCondition
+
+Jul 13, 2026 7:22:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ExactDoubleFree ---
+Jul 13, 2026 7:22:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactDoubleFree
+Jul 13, 2026 7:22:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 3 && bfao_allocator(0).error && bfao_allocator(0).fault_double_free
+Jul 13, 2026 7:22:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/DoubleFree/query_1_ExactDoubleFree
+
+Jul 13, 2026 7:22:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_DoubleFree ---
+Jul 13, 2026 7:22:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/DoubleFree/query_2_DoubleFree
+
+Jul 13, 2026 7:22:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_MemoryExhaustionByFragmentationCondition ---
+Jul 13, 2026 7:22:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: MemoryExhaustionByFragmentationCondition
+Jul 13, 2026 7:22:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (bfao_allocator(0).fault_memory_fragmentation && bfao_allocator(0).fault_memory_exhaustion) imply (heap_pages[allocator_heap_link[0]].largest_free_block_HV.size < allocator_action_req[0].allocation.size&& heap_free_memory_HV[allocator_heap_link[0]] == allocator_action_req[0].allocation.size)
+Jul 13, 2026 7:22:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/MemoryExhaustionByFragmentation/query_0_MemoryExhaustionByFragmentationCondition
+
+Jul 13, 2026 7:22:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ExactMemoryExhaustionByFragmentation ---
+Jul 13, 2026 7:22:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactMemoryExhaustionByFragmentation
+Jul 13, 2026 7:22:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 4 && bfao_allocator(0).fault_memory_exhaustion && bfao_allocator(0).fault_memory_fragmentation && bfao_allocator(0).error
+Jul 13, 2026 7:22:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/MemoryExhaustionByFragmentation/query_1_ExactMemoryExhaustionByFragmentation
+
+Jul 13, 2026 7:22:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_MemoryExhaustionByFragmentation ---
+Jul 13, 2026 7:22:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/MemoryExhaustionByFragmentation/query_2_MemoryExhaustionByFragmentation
+
+Jul 13, 2026 7:22:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_SingleAllocatorProcessing ---
+Jul 13, 2026 7:22:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: SingleAllocatorProcessing
+Jul 13, 2026 7:22:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] ALLOCATOR_COUNT == 1
+Jul 13, 2026 7:22:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorProcessing/query_0_SingleAllocatorProcessing
+
+Jul 13, 2026 7:22:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_SingleAllocatorProcessing ---
+Jul 13, 2026 7:22:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorProcessing/query_1_SingleAllocatorProcessing
+
+Jul 13, 2026 7:22:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_AllocatorInError ---
+Jul 13, 2026 7:22:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: AllocatorInError
+Jul 13, 2026 7:22:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> bfao_allocator(0).error && trace.timer == 3
+Jul 13, 2026 7:22:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ControllerStopsAfterError/query_0_AllocatorInError
+
+Jul 13, 2026 7:22:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ControllerStopsAfterError ---
+Jul 13, 2026 7:22:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ControllerStopsAfterError
+Jul 13, 2026 7:22:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: bfao_allocator(0).error && trace.timer == 3 --> trace.timer == 3 && (allocator_controller.has_error_signal || allocator_controller.error_detected || allocator_controller.no_available_allocators)
+Jul 13, 2026 7:22:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ControllerStopsAfterError/query_1_ControllerStopsAfterError
+
+Jul 13, 2026 7:22:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_ControllerStopsAfterError ---
+Jul 13, 2026 7:22:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ControllerStopsAfterError/query_2_ControllerStopsAfterError
+
+Jul 13, 2026 7:22:30 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExpectedSizeMultipleAllocated ---
+Jul 13, 2026 7:22:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExpectedSizeMultipleAllocated
+Jul 13, 2026 7:22:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] heap_mem_req[allocator_heap_link[0]].info.allocated_memory % SIZE_MULTIPLE == 0
+Jul 13, 2026 7:22:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedSizeMultipleAllocated/query_0_ExpectedSizeMultipleAllocated
+
+Jul 13, 2026 7:22:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ExpectedSizeMultipleAllocated ---
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ExpectedSizeMultipleAllocated/query_1_ExpectedSizeMultipleAllocated
+
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_NegativeSizedRequest ---
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NegativeSizedRequest
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: allocator_action_req[0].allocation.size < 0 && trace.timer == 1 --> trace.timer == 1 && bfao_allocator(0).error && bfao_allocator(0).fault_out_of_bounds && bfao_allocator(0).fault_memory_exhaustion
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/InvalidSizes/query_0_NegativeSizedRequest
+
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_InvalidSizes ---
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/InvalidSizes/query_1_InvalidSizes
+
+Jul 13, 2026 7:22:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_OOBRequest ---
+Jul 13, 2026 7:22:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: OOBRequest
+Jul 13, 2026 7:22:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: allocator_action_req[0].allocation.size > HEAP_SIZE && trace.timer == 1 --> trace.timer == 1 && bfao_allocator(0).error && bfao_allocator(0).fault_out_of_bounds && bfao_allocator(0).fault_memory_exhaustion
+Jul 13, 2026 7:22:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/OOBSizes/query_0_OOBRequest
+
+Jul 13, 2026 7:22:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_OOBSizes ---
+Jul 13, 2026 7:22:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/OOBSizes/query_1_OOBSizes
+
+Jul 13, 2026 7:22:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_NoAllocatorErrors ---
+Jul 13, 2026 7:22:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NoAllocatorErrors
+Jul 13, 2026 7:22:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] not bfao_allocator(0).alloc_error && not bfao_allocator(0).free_error
+Jul 13, 2026 7:22:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorStandard/query_0_NoAllocatorErrors
+
+Jul 13, 2026 7:22:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ObserversNotInUnerroredState ---
+Jul 13, 2026 7:22:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserversNotInUnerroredState
+Jul 13, 2026 7:22:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] !bfao_allocator(0).error imply !allocator_state(0).error && !global_allocator_state.error
+Jul 13, 2026 7:22:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorStandard/query_1_ObserversNotInUnerroredState
+
+Jul 13, 2026 7:22:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_ObserverErrorStandardNoErrors ---
+Jul 13, 2026 7:22:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorStandard/query_2_ObserverErrorStandardNoErrors
+
+Jul 13, 2026 7:22:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExactDuplicatePointer ---
+Jul 13, 2026 7:22:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactDuplicatePointer
+Jul 13, 2026 7:22:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 2 && bfao_allocator(0).fault_duplicate_pointers && bfao_allocator(0).error
+Jul 13, 2026 7:22:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDuplicatePointer/query_0_ExactDuplicatePointer
+
+Jul 13, 2026 7:22:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ObserversNotInUnerroredState ---
+Jul 13, 2026 7:22:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserversNotInUnerroredState
+Jul 13, 2026 7:22:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] !bfao_allocator(0).error imply !allocator_state(0).error && !global_allocator_state.error
+Jul 13, 2026 7:22:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDuplicatePointer/query_1_ObserversNotInUnerroredState
+
+Jul 13, 2026 7:22:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_ObserverErrorAtTime ---
+Jul 13, 2026 7:22:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserverErrorAtTime
+Jul 13, 2026 7:22:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: bfao_allocator(0).error && trace.timer == 2 --> trace.timer == 2 && allocator_state(0).error && global_allocator_state.error
+Jul 13, 2026 7:22:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:22:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDuplicatePointer/query_2_ObserverErrorAtTime
+
+Jul 13, 2026 7:22:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_ObserverErrorDuplicatePointer ---
+Jul 13, 2026 7:23:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDuplicatePointer/query_3_ObserverErrorDuplicatePointer
+
+Jul 13, 2026 7:23:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExactUnallocatedFree ---
+Jul 13, 2026 7:23:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactUnallocatedFree
+Jul 13, 2026 7:23:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 3 && bfao_allocator(0).error && bfao_allocator(0).fault_unalloc_free
+Jul 13, 2026 7:23:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorUnallocedFree/query_0_ExactUnallocatedFree
+
+Jul 13, 2026 7:23:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ObserversNotInUnerroredState ---
+Jul 13, 2026 7:23:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserversNotInUnerroredState
+Jul 13, 2026 7:23:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] !bfao_allocator(0).error imply !allocator_state(0).error && !global_allocator_state.error
+Jul 13, 2026 7:23:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorUnallocedFree/query_1_ObserversNotInUnerroredState
+
+Jul 13, 2026 7:23:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_ObserverErrorAtTime ---
+Jul 13, 2026 7:23:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserverErrorAtTime
+Jul 13, 2026 7:23:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: bfao_allocator(0).error && trace.timer == 3 --> trace.timer == 3 && allocator_state(0).error && global_allocator_state.error
+Jul 13, 2026 7:23:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorUnallocedFree/query_2_ObserverErrorAtTime
+
+Jul 13, 2026 7:23:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_ObserverErrorUnallocedFree ---
+Jul 13, 2026 7:23:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorUnallocedFree/query_3_ObserverErrorUnallocedFree
+
+Jul 13, 2026 7:23:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExactDoubleFree ---
+Jul 13, 2026 7:23:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactDoubleFree
+Jul 13, 2026 7:23:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 3 && bfao_allocator(0).error && bfao_allocator(0).fault_double_free
+Jul 13, 2026 7:23:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDoubleFree/query_0_ExactDoubleFree
+
+Jul 13, 2026 7:23:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ObserversNotInUnerroredState ---
+Jul 13, 2026 7:23:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserversNotInUnerroredState
+Jul 13, 2026 7:23:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] !bfao_allocator(0).error imply !allocator_state(0).error && !global_allocator_state.error
+Jul 13, 2026 7:23:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDoubleFree/query_1_ObserversNotInUnerroredState
+
+Jul 13, 2026 7:23:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_ObserverErrorAtTime ---
+Jul 13, 2026 7:23:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserverErrorAtTime
+Jul 13, 2026 7:23:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: bfao_allocator(0).error && trace.timer == 3 --> trace.timer == 3 && allocator_state(0).error && global_allocator_state.error
+Jul 13, 2026 7:23:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDoubleFree/query_2_ObserverErrorAtTime
+
+Jul 13, 2026 7:23:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_ObserverErrorDoubleFree ---
+Jul 13, 2026 7:23:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorDoubleFree/query_3_ObserverErrorDoubleFree
+
+Jul 13, 2026 7:23:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExactMemoryExhaustionByFragmentation ---
+Jul 13, 2026 7:23:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactMemoryExhaustionByFragmentation
+Jul 13, 2026 7:23:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: E<> trace.timer == 4 && bfao_allocator(0).fault_memory_exhaustion && bfao_allocator(0).fault_memory_fragmentation && bfao_allocator(0).error
+Jul 13, 2026 7:23:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorMemoryExhaustionByFragmentation/query_0_ExactMemoryExhaustionByFragmentation
+
+Jul 13, 2026 7:23:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_ObserversNotInUnerroredState ---
+Jul 13, 2026 7:23:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserversNotInUnerroredState
+Jul 13, 2026 7:23:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] !bfao_allocator(0).error imply !allocator_state(0).error && !global_allocator_state.error
+Jul 13, 2026 7:23:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorMemoryExhaustionByFragmentation/query_1_ObserversNotInUnerroredState
+
+Jul 13, 2026 7:23:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_ObserverErrorAtTime ---
+Jul 13, 2026 7:23:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ObserverErrorAtTime
+Jul 13, 2026 7:23:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: bfao_allocator(0).error && trace.timer == 0 --> trace.timer == 0 && allocator_state(0).error && global_allocator_state.error
+Jul 13, 2026 7:23:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:23:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorMemoryExhaustionByFragmentation/query_2_ObserverErrorAtTime
+
+Jul 13, 2026 7:23:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_ObserverErrorMemoryExhaustionByFragmentation ---
+Jul 13, 2026 7:23:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/ObserverErrorMemoryExhaustionByFragmentation/query_3_ObserverErrorMemoryExhaustionByFragmentation
+
+Jul 13, 2026 7:23:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 1 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 1 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_0_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 2 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 2 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_1_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 3 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 3 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:42 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_2_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:42 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 4 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 4 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_3_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 5 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 5 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_4_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_5_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 6 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 6 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_5_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_6_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 7 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 7 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_6_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_7_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 8 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 8 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:23:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:23:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_7_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:23:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_8_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:23:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:23:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 9 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 9 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:24:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:24:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_8_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:24:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_9_NeverReachProcessAfterActionAtTime ---
+Jul 13, 2026 7:24:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: NeverReachProcessAfterActionAtTime
+Jul 13, 2026 7:24:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 10 && (bfao_allocator(0).free || bfao_allocator(0).allocate) --> trace.timer == 10 && bfao_allocator(0).action_signaled
+Jul 13, 2026 7:24:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 13, 2026 7:24:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_9_NeverReachProcessAfterActionAtTime
+
+Jul 13, 2026 7:24:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_10_SingleAllocatorActionPerTick ---
+Jul 13, 2026 7:24:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/SingleAllocatorActionPerTick/query_10_SingleAllocatorActionPerTick
+
+Jul 13, 2026 7:24:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 7:24:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 7:24:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).allocate imply  bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].allocation.pointer].req == heap_mem_req[allocator_heap_link[0]] && bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].allocation.pointer].alloced && bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].allocation.pointer].order ==  allocator_action_req[0].order
+Jul 13, 2026 7:24:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:24:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/HeapTrackerAlloc/query_0_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 7:24:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_HeapTrackerAlloc ---
+Jul 13, 2026 7:24:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/HeapTrackerAlloc/query_1_HeapTrackerAlloc
+
+Jul 13, 2026 7:24:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CorrectHeapTrackerArrayAlloc ---
+Jul 13, 2026 7:24:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectHeapTrackerArrayAlloc
+Jul 13, 2026 7:24:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] bfao_allocator(0).free imply  bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].free.pointer].req.info == heap_mem_req[allocator_heap_link[0]].info && bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].free.pointer].req.range == heap_mem_req[allocator_heap_link[0]].range && bfao_allocator(0).ordered_heap_requests[allocator_action_req[0].free.pointer].freed
+Jul 13, 2026 7:24:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 13, 2026 7:24:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/HeapTrackerFree/query_0_CorrectHeapTrackerArrayAlloc
+
+Jul 13, 2026 7:24:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_HeapTrackerFree ---
+Jul 13, 2026 7:24:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/XFAO/HeapTrackerFree/query_1_HeapTrackerFree
+

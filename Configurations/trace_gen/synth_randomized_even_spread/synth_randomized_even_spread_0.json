@@ -1,0 +1,1 @@
+{"type":"Randomized","numAllocations":2000,"weightAlloc":1,"weightFree":1,"freePolicy":"FIFO","weightedAllocationSizes":{"weightedElementsMap":{"1":{"weight":1,"minValue":1,"maxBound":4096,"factor":1}},"totalWeight":1},"seed":1949870943162229938,"version":"1.0"}
