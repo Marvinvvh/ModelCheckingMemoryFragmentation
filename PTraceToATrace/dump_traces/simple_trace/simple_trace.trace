@@ -1,0 +1,4 @@
+{"type": "Alloc", "id": 0, "pointer": 0, "size": 4000}
+{"type": "Alloc", "id": 1, "pointer": 1, "size": 4000}
+{"type": "Free", "id": 2, "pointer": 0}
+{"type": "Free", "id": 3, "pointer": 1}
