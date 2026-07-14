@@ -1,4 +1,4 @@
-# Dataset and Source Code MODEL CHECKING MEMORY FRAGMENTATION CAUSED BY ALLOCATOR POLICIES USING TIMED AUTOMATA
+# Dataset and Source Code Model Checking Memory Fragmentation Caused by Allocator Policies Using Timed Automata
 This repository contains the dataset and source code of the thesis as mentioned above. Both are created by Marvin van Heese for this thesis.
 The following items are in this directory, which we will discuss separately, if applicable:
 1. Benchmark: Contains the data related to the evaluation benchmark. This includes traces, and the datasets used in the analysis. Note that the configurations of TraceVerifier are placed under 'Configurations'.
