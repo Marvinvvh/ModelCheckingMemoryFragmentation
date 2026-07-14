@@ -1,0 +1,99 @@
+Jul 14, 2026 1:29:12 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_SingleActionPerTick ---
+Jul 14, 2026 1:29:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: SingleActionPerTick
+Jul 14, 2026 1:29:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.verify_action imply trace.clock_resets == action_count) and (trace.verify_state imply (trace.clock_resets - 1) == action_count)
+Jul 14, 2026 1:29:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/trace/query_0_SingleActionPerTick
+
+Jul 14, 2026 1:29:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_ExpectedAllocationAction ---
+Jul 14, 2026 1:29:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExpectedAllocationAction
+Jul 14, 2026 1:29:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.verify_action imply forall(i : int[0, ALLOCATOR_COUNT - 1])(trace.actions[action_count - 1] == allocator_action_req[i])
+Jul 14, 2026 1:29:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/trace/query_0_ExpectedAllocationAction
+
+Jul 14, 2026 1:29:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_ActionsProcessedBeforeNewAction ---
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ActionsProcessedBeforeNewAction
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.wait_for_action && trace.tick == 1) imply (not allocators_processing && not trace.fault_allocators_processing)
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/ActionsProcessedBeforeNewAction/query_0_ActionsProcessedBeforeNewAction
+
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_CheckBoundsInvalidAllocationActionsError ---
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckBoundsInvalidAllocationActionsError
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.wait_for_action && trace.clock_resets < ALLOC_ACTION_COUNT) imply (!trace.fault_invalid_trace && (trace.actions[action_count].type == eAllocatorActionAlloc || trace.actions[action_count].type == eAllocatorActionFree))
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/CheckBoundedInvalidAllocationActionsError/query_0_CheckBoundsInvalidAllocationActionsError
+
+Jul 14, 2026 1:29:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_CheckBoundedInvalidAllocationActionsOK ---
+Jul 14, 2026 1:29:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckBoundedInvalidAllocationActionsOK
+Jul 14, 2026 1:29:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.wait_for_action && trace.clock_resets < ALLOC_ACTION_COUNT) imply (!trace.fault_invalid_trace && (trace.actions[action_count].type == eAllocatorActionAlloc || trace.actions[action_count].type == eAllocatorActionFree))
+Jul 14, 2026 1:29:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/CheckBoundedInvalidAllocationActionsDoneProcessing/query_0_CheckBoundedInvalidAllocationActionsOK
+
+Jul 14, 2026 1:29:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_ExpectedActionCountInDone ---
+Jul 14, 2026 1:29:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExpectedActionCountInDone
+Jul 14, 2026 1:29:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.done imply trace.clock_resets - 1 == action_count
+Jul 14, 2026 1:29:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/ExpectedActionCountInDoneProcessing/query_0_ExpectedActionCountInDone
+
+Jul 14, 2026 1:29:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_ExpectedActionCountInDone ---
+Jul 14, 2026 1:29:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExpectedActionCountInDone
+Jul 14, 2026 1:29:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] trace.done imply trace.clock_resets - 1 == action_count
+Jul 14, 2026 1:29:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/ExpectedActionCountInError/query_0_ExpectedActionCountInDone
+
+Jul 14, 2026 1:29:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_ProcessingStopsAfterNoAllocatorsLeft ---
+Jul 14, 2026 1:29:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ProcessingStopsAfterNoAllocatorsLeft
+Jul 14, 2026 1:29:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property:  A[] (not trace.wait_for_action && (trace.clock_resets == ALLOC_ACTION_COUNT || errorless_allocator_count == 0)) imply not allocators_processing
+Jul 14, 2026 1:29:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/ProcessingStopsAfterNoAllocatorsLeftDoneProcessing/query_0_ProcessingStopsAfterNoAllocatorsLeft
+
+Jul 14, 2026 1:29:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_FFAO-64-size-multiple | query_collection_0_ProcessingStopsAfterNoAllocatorsLeft ---
+Jul 14, 2026 1:29:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ProcessingStopsAfterNoAllocatorsLeft
+Jul 14, 2026 1:29:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property:  A[] (not trace.wait_for_action && (trace.clock_resets == ALLOC_ACTION_COUNT || errorless_allocator_count == 0)) imply not allocators_processing
+Jul 14, 2026 1:29:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 1:29:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_FFAO-64-size-multiple/Trace/ProcessingStopsAfterNoAllocatorsLeftError/query_0_ProcessingStopsAfterNoAllocatorsLeft
+

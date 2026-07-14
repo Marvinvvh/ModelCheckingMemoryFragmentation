@@ -1,0 +1,3468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// --- SETTING UP THE BASE MODEL ---
+// To activate an allocator:
+// - Set the &lt;ALLOCATOR_TYPE&gt;_ALLOCATOR_COUNT below to 1, the others should be 0 (unless multi-templating). E.g., FFAO_ALLOCATOR_COUNT = 1;
+// - If multi-templating also set the MAX_&lt;ALLOCATOR_TYPE&gt;_ALLOCATOR_COUNT to however many you're going to test, number should always be higher than 0 (!!!).
+// - Uncomment the allocator template you're using under system declarations. ONLY THE ONE YOU NEED. For example, ffao_allocator.
+
+// When creating a template:
+// - Revert all &lt;ALLOCATOR_TYPE&gt;_ALLOCATOR_COUNT to 0.
+// - Set all MAX_&lt;ALLOCATOR_TYPE&gt;_ALLOCATOR_COUNT to 1.
+
+
+// --- NOTES ON VIEWS ---
+// Views are used to represent address ranges within the heap to determine where the allocation "stops".
+// - Byte view (BV): the address range starts at 0x0 and ends at the last allocated byte.
+// - Page view (PV): the address range starts at 0x0 and ends at the last byte of the Last (partially) allocated page.
+// - Heap view (HV): the address range starts at 0x0 and ends at the last byte of the heap (HEAP_SIZE - 1).
+// Using these views calculations for the largest free block, for example, can be more defined more granularly, instead of picking only one of these views.
+
+// Each integer within uppaal is (so far as I can tell) a bounded int32_t, so a uint32_t isn't defined by default as it doesn't match the typical C uint32_t.
+typedef int[0, INT32_MAX] uint_t;
+
+// --- CONSTANTS ---
+// &lt;GLOBAL_CONFIG_CONSTANTS&gt;
+
+const int32_t PAGE_SIZE = 4096;
+const int32_t AMT_OF_PAGES_HEAP = 64;
+const int32_t SIZE_MULTIPLE = 64;
+const int32_t ADDRESS_ALIGNMENT = 1;
+const int32_t FREE_LIST_REDUCTION_FACTOR = 1;
+// &lt;END_GLOBAL_CONFIG_CONSTANTS&gt;
+
+// These are used to bypass some issues where templating causes faults when *_ALLOCATOR_COUNT would be 0, the corresponding id_range would be [0, 0]
+// When multi-templating would be implemented these would have to change too.
+// &lt;MULTI-TEMPLATE_CONSTANTS&gt;
+const uint_t MAX_FFAO_ALLOCATOR_COUNT = 1;
+const uint_t MAX_NFAO_ALLOCATOR_COUNT = 1;
+const uint_t MAX_BFAO_ALLOCATOR_COUNT = 1;
+// &lt;END_MULTI-TEMPLATE_CONSTANTS&gt;
+
+// Counts should only be 1 when the template is active, as otherwise allocator count is incorrect
+// &lt;FFAO_ALLOCATOR_CONSTANTS&gt;
+const uint_t FFAO_ALLOCATOR_COUNT = 0;
+// &lt;END_FFAO_ALLOCATOR_CONSTANTS&gt;
+
+// &lt;NFAO_ALLOCATOR_CONSTANTS&gt;
+
+const int32_t NFAO_ALLOCATOR_COUNT = 1;
+// &lt;END_NFAO_ALLOCATOR_CONSTANTS&gt;
+
+// &lt;BFAO_ALLOCATOR_CONSTANTS&gt;
+const uint_t BFAO_ALLOCATOR_COUNT = 0;
+// &lt;END_BFAO_ALLOCATOR_CONSTANTS&gt;
+
+// BFAO variable which has been excluded in variables to reduce complexity.
+const uint_t BFAO_TOLERANCE= 0;
+
+// This is 0 for any single-allocator simulation. Else, it determines the global ID if multiple templates are live.
+const uint_t FFAO_ALLOCATOR_ID_OFFSET = 0;
+const uint_t NFAO_ALLOCATOR_ID_OFFSET = FFAO_ALLOCATOR_ID_OFFSET + FFAO_ALLOCATOR_COUNT;
+const uint_t BFAO_ALLOCATOR_ID_OFFSET = NFAO_ALLOCATOR_ID_OFFSET + NFAO_ALLOCATOR_COUNT;
+
+typedef int[0, MAX_FFAO_ALLOCATOR_COUNT - 1] ffao_id_range_t;
+typedef int[0, MAX_NFAO_ALLOCATOR_COUNT - 1] nfao_id_range_t;
+typedef int[0, MAX_BFAO_ALLOCATOR_COUNT - 1] bfao_id_range_t;
+
+const uint_t ALLOCATOR_COUNT = FFAO_ALLOCATOR_COUNT + NFAO_ALLOCATOR_COUNT + BFAO_ALLOCATOR_COUNT;
+const uint_t AMT_OF_HEAPS = ALLOCATOR_COUNT; // For clarification.
+const uint_t FREE_LIST_SIZE = PAGE_SIZE / FREE_LIST_REDUCTION_FACTOR / 2 + 1; 
+const uint_t LAST_PAGE_HEAP = AMT_OF_PAGES_HEAP - 1;
+
+// &lt;CONFIG_VARIABLES&gt;
+
+const int32_t ALLOC_ACTION_COUNT = 10;
+// &lt;END_CONFIG_VARIABLES&gt;
+
+const uint_t HEAP_SIZE = AMT_OF_PAGES_HEAP * PAGE_SIZE;
+const uint_t AMT_OF_PAGES_TOTAL = AMT_OF_HEAPS * AMT_OF_PAGES_HEAP; // Multi-allocator variable for arrays.
+
+// --- TEST VARIABLES (used in examples) ---
+const uint_t TEST_ALLOCATOR_ID = 0;
+const uint_t TEST_HEAP_ID = 0;
+const uint_t TEST_PAGE_ID = 0;
+const uint_t LIVE_ALLOCATED_MEMORY_LIMIT = 1000;
+
+// --- (pseudo-)ENUMS ---
+// Allocator action enums
+const int eAllocatorActionAlloc = 0;
+const int eAllocatorActionFree = 1;
+
+// Heap request
+const int eHeapRequestAlloc = 0;
+const int eHeapRequestFree = 1;
+
+// Page state
+const int eFree = 0;
+const int eAllocated = 1;
+const int ePartiallyAllocated = 2;
+
+// Inactive pointer
+const int NULL_POINTER = -1;
+
+// --- TYPEDEFS ---
+typedef int[0, ALLOC_ACTION_COUNT] alloc_action_count_t;
+typedef int [0, ALLOCATOR_COUNT - 1] allocator_id_range_t;
+typedef int[eAllocatorActionAlloc,eAllocatorActionFree] allocator_action_type_t;
+typedef int[0, AMT_OF_HEAPS - 1] heap_id_range_t;
+typedef int[0, AMT_OF_PAGES_HEAP - 1] page_id_range_t;
+typedef int[eHeapRequestAlloc, eHeapRequestFree] heap_request_type_t;
+typedef int[eFree, ePartiallyAllocated] page_state_t;
+typedef int[-1, HEAP_SIZE - 1] heap_pointer_t; // -1 acts like a "null" pointer, or invalid state
+typedef int[-1, AMT_OF_PAGES_HEAP - 1] page_pointer_t; // -1 acts like a "null" pointer, or invalid state
+typedef int[0, AMT_OF_PAGES_HEAP] page_iterator_t;
+typedef int[0, FREE_LIST_SIZE - 1] free_list_indices_t;
+typedef int[-1, FREE_LIST_SIZE - 1] free_list_pointer_t;
+
+typedef struct
+{
+    heap_pointer_t start_address;
+    heap_pointer_t end_address;
+} memory_range_t;
+
+typedef struct
+{
+    uint_t requested_memory;
+    uint_t allocated_memory;
+    uint_t padded_memory;
+} allocation_t;
+
+typedef struct 
+{
+    heap_request_type_t type;
+    allocation_t info;
+    memory_range_t range;
+} heap_request_t;
+
+typedef struct 
+{
+    heap_request_type_t type;
+    allocation_t info;
+    memory_range_t range;
+} page_request_t;
+
+typedef struct
+{
+    heap_pointer_t address_start;
+    heap_pointer_t address_end;
+    page_id_range_t page_start;
+    page_id_range_t page_end;
+    uint_t size;
+} block_pointer_t;
+
+typedef struct
+{
+    page_state_t page_state;
+    bool start_free;
+    bool end_free;
+    block_pointer_t start;
+    block_pointer_t end;
+    block_pointer_t largest;
+    block_pointer_t largest_BV;
+} page_blocks_t;
+
+typedef struct
+{
+    heap_pointer_t address;
+    heap_pointer_t length;
+} free_list_entry_t;
+
+typedef struct
+{
+    uint_t free_list_size;
+    page_state_t page_state;
+    free_list_entry_t free_list[FREE_LIST_SIZE];
+} page_info_t;
+
+typedef struct
+{
+    page_blocks_t blocks[AMT_OF_PAGES_HEAP];
+    uint_t free_memory[AMT_OF_PAGES_HEAP];
+    block_pointer_t largest_free_block_BV;
+    block_pointer_t largest_free_block_PV;
+    block_pointer_t largest_free_block_HV;
+    page_pointer_t last_non_free_page;
+    uint_t amt_non_free_pages;
+} heap_pages_t;
+
+typedef struct 
+{
+    uint_t live_requested_memory;
+    uint_t live_allocated_memory;
+    uint_t live_padded_memory;
+    uint_t live_page_memory;
+    uint_t total_requested_memory;
+    uint_t total_allocated_memory;
+    uint_t total_padded_memory;
+    uint_t total_page_memory;
+} memory_history_t;
+
+typedef struct
+{
+    uint_t min_allocated_size;
+    uint_t max_allocated_size;
+    uint_t min_requested_size;
+    uint_t max_requested_size;
+    uint_t min_padded_size;
+    uint_t max_padded_size; 
+    uint_t max_allocated_memory;
+    uint_t max_requested_memory;
+    uint_t max_padded_memory;
+    uint_t max_page_memory;
+} memory_history_extremes_t;
+
+// WJ due to Wilson &amp; Johnstone metric
+typedef struct
+{
+    uint_t frag_method_avg_any;
+    uint_t frag_method_avg_alloc;
+    uint_t frag_method_required_avg;
+    uint_t frag_method_required_upper;
+    uint_t frag_method_required_lower;
+    uint_t frag_method_reserved_avg;
+    uint_t frag_method_reserved_upper;
+    uint_t frag_method_reserved_lower;
+    uint_t frag_method_max;
+} WJ_fragmentation_t;
+
+typedef struct
+{
+    // We keep track of the actions separately from trace due to skipping times where required memory == 0
+    uint_t method_avg_non_zero_action_count;
+    // Method required: Keep track of best/worst required memory 
+    uint_t method_required_max_req_mem;
+    uint_t method_required_max_res_mem_upper;
+    uint_t method_required_max_res_mem_lower;
+    uint_t method_required_peak_count;
+    uint_t method_required_action_count_upper;
+    uint_t method_required_action_count_lower;
+    // Method reserved: Keep track of best/worst reserved memory 
+    uint_t method_reserved_max_res_mem;
+    uint_t method_reserved_max_req_mem_upper;
+    uint_t method_reserved_max_req_mem_lower;
+    uint_t method_reserved_peak_count;
+    uint_t method_reserved_action_count_upper;
+    uint_t method_reserved_action_count_lower;
+} WJ_fragmentation_util_t;
+
+// Note that size is bounded between 0 and size, as we use as size of '0' for free actions in the trace array.
+typedef struct
+{
+    heap_pointer_t pointer;
+    uint_t size;
+} allocation_req_t;
+
+typedef struct 
+{
+    heap_pointer_t pointer;
+} free_req_t;
+
+typedef struct 
+{
+    uint_t order;
+    bool alloced;
+    bool freed;
+    heap_request_t req;
+} tracker_heap_request_t;
+
+// Pseudo-union to track the type of allocator action that occurred
+typedef struct 
+{
+    uint_t order;
+    allocator_action_type_t type;
+    allocation_req_t allocation;
+    free_req_t free; 
+} allocator_action_t;
+
+// Struct constants for shared EMPTY values
+const block_pointer_t EMPTY_BLOCK_POINTER = {NULL_POINTER, NULL_POINTER, 0, 0, 0};
+const allocation_t EMPTY_ALLOCATION = {0, 0, 0};
+
+// Channels used
+broadcast chan init_trace;
+broadcast chan init_allocators;
+broadcast chan allocators_ready;
+broadcast chan new_alloc_action;
+broadcast chan process_alloc_action[ALLOCATOR_COUNT];
+broadcast chan global_allocator_error;
+broadcast chan allocator_error[ALLOCATOR_COUNT];
+
+broadcast chan init_heap_interfaces;
+broadcast chan init_heap_pages;
+broadcast chan heap_ready_for_alloc;
+broadcast chan global_heap_error;
+broadcast chan heap_error[AMT_OF_HEAPS];
+broadcast chan process_heap_req[AMT_OF_HEAPS];
+broadcast chan heap_request_done[AMT_OF_HEAPS];
+
+broadcast chan process_page_req[AMT_OF_HEAPS][AMT_OF_PAGES_HEAP];
+broadcast chan get_page_info[AMT_OF_HEAPS][AMT_OF_PAGES_HEAP];
+broadcast chan page_request_done[AMT_OF_HEAPS];
+
+// Allocated memory tracking
+memory_history_t heap_memory[AMT_OF_HEAPS];
+memory_history_extremes_t heap_memory_extremes[AMT_OF_HEAPS];
+
+// Free memory tracking
+uint_t heap_free_memory_BV[AMT_OF_HEAPS];
+uint_t heap_free_memory_PV[AMT_OF_HEAPS];
+uint_t heap_free_memory_HV[AMT_OF_HEAPS];
+
+// Tracking of page states (used for determining whether they're free/allocated/partially allocated without any iterations of their specific templates)
+heap_pages_t heap_pages[AMT_OF_HEAPS];
+
+// Internal fragmentation
+uint_t frag_int_relative[AMT_OF_HEAPS];
+uint_t frag_ext_relative_BV[AMT_OF_HEAPS];
+uint_t frag_ext_relative_PV[AMT_OF_HEAPS];
+uint_t frag_ext_relative_HV[AMT_OF_HEAPS];
+
+WJ_fragmentation_t frag_int_WJ[AMT_OF_HEAPS];
+WJ_fragmentation_util_t frag_int_WJ_util[AMT_OF_HEAPS];
+
+// External fragmentation
+uint_t frag_LFB_BV[AMT_OF_HEAPS];
+uint_t frag_LFB_PV[AMT_OF_HEAPS];
+uint_t frag_LFB_HV[AMT_OF_HEAPS];
+
+// Presence fragmentation
+bool frag_presence_int[AMT_OF_HEAPS];
+bool frag_presence_ext_BV[AMT_OF_HEAPS];
+bool frag_presence_ext_PV[AMT_OF_HEAPS];
+bool frag_presence_ext_HV[AMT_OF_HEAPS];
+bool frag_presence_BV[AMT_OF_HEAPS];
+bool frag_presence_PV[AMT_OF_HEAPS];
+bool frag_presence_HV[AMT_OF_HEAPS];
+
+WJ_fragmentation_t frag_ext_WJ_req[AMT_OF_HEAPS];
+WJ_fragmentation_util_t frag_ext_WJ_req_util[AMT_OF_HEAPS];
+
+WJ_fragmentation_t frag_ext_WJ_alloc[AMT_OF_HEAPS];
+WJ_fragmentation_util_t frag_ext_WJ_alloc_util[AMT_OF_HEAPS];
+
+// Linking of allocator id and heap id
+int allocator_heap_link[ALLOCATOR_COUNT];
+
+// Variables for sharing actions processed of trace
+uint_t action_count = 0;
+uint_t alloc_action_count = 0;
+uint_t free_action_count = 0;
+
+// Variables for keeping track of the allocator states in allocator controller
+uint_t errorless_allocator_count = ALLOCATOR_COUNT;
+bool allocators_processing = false;
+
+// Variables for sharing data requests
+allocator_action_t allocator_action_req[ALLOCATOR_COUNT];
+heap_request_t heap_mem_req[AMT_OF_HEAPS];
+page_request_t page_mem_req[AMT_OF_HEAPS];
+page_info_t page_info_req[AMT_OF_HEAPS]; // Sync page info for allocator
+
+// Shared utility functions
+heap_pointer_t page_start_address(page_id_range_t page_id)
+{
+    return page_id * PAGE_SIZE;
+}
+
+heap_pointer_t page_end_address(page_id_range_t page_id)
+{
+    return (page_id + 1) * PAGE_SIZE - 1;
+}
+
+int compare_block_pointer_start(block_pointer_t&amp; pointer_a, block_pointer_t&amp; pointer_b)
+{
+    if(pointer_a.address_start == pointer_b.address_start)
+    {
+        return 0;
+    }
+    else if(pointer_a.address_start &lt; pointer_b.address_start)
+    {
+        return -1;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+int compare_block_pointer_end(block_pointer_t&amp; pointer_a, block_pointer_t&amp; pointer_b)
+{
+    if(pointer_a.address_end == pointer_b.address_end)
+    {
+        return 0;
+    }
+    else if(pointer_a.address_end &lt; pointer_b.address_end)
+    {
+        return -1;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+bool equal_block_pointers(block_pointer_t&amp; pointer_a, block_pointer_t&amp; pointer_b)
+{
+    return pointer_a == pointer_b;
+}
+
+bool is_block_pointer_empty(block_pointer_t&amp; pointer)
+{
+    return pointer == EMPTY_BLOCK_POINTER;
+}
+
+bool is_block_pointer_larger(block_pointer_t&amp; pointer_a, block_pointer_t&amp; pointer_b)
+{
+    return pointer_a.size &gt; pointer_b.size;
+}
+
+// Joins together block pointers if they're neighboring blocks.
+bool extend_block_pointer(block_pointer_t&amp; base_pointer, block_pointer_t&amp; extension_pointer)
+{
+    if(base_pointer.address_end + 1 != extension_pointer.address_start)
+    {
+        return false;
+    }
+    
+    base_pointer.address_end = extension_pointer.address_end;
+    base_pointer.page_end = extension_pointer.page_end;
+    base_pointer.size += extension_pointer.size;
+    return true;
+}
+</declaration>
+	<template>
+		<name>trace</name>
+		<declaration>// Clocks
+clock tick, timer;
+
+// Errors
+bool trace_done = false; // Used to track when the trace errors.
+bool trace_error = false; // Used to track when the trace errors.
+bool fault_invalid_trace = false;
+bool fault_invalid_action_count = false;
+bool fault_allocators_processing = false;
+
+// Trace-side tracking
+uint_t total_mem_requested = 0;
+uint_t min_allocation_request_size = 0;
+uint_t max_allocation_request_size = 0;
+allocator_action_t last_action; // Useful for debugging
+alloc_action_count_t last_action_count = 0;
+alloc_action_count_t last_alloc_action_count = 0;
+alloc_action_count_t last_free_action_count = 0;
+uint_t clock_resets = 0;
+
+// The allocation trace being tested.
+const allocator_action_t actions[ALLOC_ACTION_COUNT] =
+{
+// &lt;TRACE_INSERT&gt;
+    {00000000, eAllocatorActionAlloc, {00000000, 00000001}, {00000000}},
+    {00000001, eAllocatorActionFree , {00000000, 00000000}, {00000000}},
+    {00000002, eAllocatorActionAlloc, {00000001, 00008160}, {00000000}},
+    {00000003, eAllocatorActionAlloc, {00000002, 00016352}, {00000000}},
+    {00000004, eAllocatorActionAlloc, {00000003, 00016352}, {00000000}},
+    {00000005, eAllocatorActionAlloc, {00000004, 00008160}, {00000000}},
+    {00000006, eAllocatorActionFree , {00000000, 00000000}, {00000001}},
+    {00000007, eAllocatorActionFree , {00000000, 00000000}, {00000002}},
+    {00000008, eAllocatorActionFree , {00000000, 00000000}, {00000003}},
+    {00000009, eAllocatorActionFree , {00000000, 00000000}, {00000004}}
+// &lt;END_TRACE_INSERT&gt;
+};
+
+// --- Functions ---
+// Processes whether an action is valid. Its side-effects determine whether processing or errors occur.
+void process_action()
+{
+    int i = 0;
+    
+    last_action_count = action_count;
+    last_alloc_action_count = alloc_action_count;
+    last_free_action_count = free_action_count;
+    last_action = actions[action_count];
+    
+    // Keep track of memory trace-side. Allows for comparisons.
+    if(actions[action_count].type == eAllocatorActionAlloc)
+    {
+        total_mem_requested += actions[action_count].allocation.size;
+    }
+    
+    // Update request to be performed by allocations
+    for(i = 0; i &lt; ALLOCATOR_COUNT; i++)
+    {
+        allocator_action_req[i] = actions[action_count];
+    }
+    
+    if(actions[action_count].type == eAllocatorActionFree)
+    {
+        free_action_count++;
+    }
+    else if(actions[action_count].type == eAllocatorActionAlloc)
+    {    
+        // Keep track of request extremes trace-side. Allows for comparisons.
+        if(alloc_action_count == 0 || actions[action_count].allocation.size &gt; max_allocation_request_size)
+        {
+            max_allocation_request_size = actions[action_count].allocation.size;
+        }
+    
+        if(alloc_action_count == 0 || actions[action_count].allocation.size &lt; min_allocation_request_size)
+        {
+            min_allocation_request_size = actions[action_count].allocation.size;
+        }
+        alloc_action_count++;
+    }
+    else
+    {
+        // Trace injected into model has nonsense action types -&gt; error
+        fault_invalid_trace = true;
+        trace_error = true;
+    }
+    
+    // Trace has misordered trace actions -&gt; error
+    if(action_count != actions[action_count].order)
+    {
+        fault_invalid_trace = true;
+        trace_error = true;
+    }
+    
+    action_count++;
+}
+</declaration>
+		<location id="id0" x="170" y="272">
+			<name x="153" y="289">error</name>
+		</location>
+		<location id="id1" x="170" y="136">
+			<name x="59" y="144">verify_state</name>
+			<committed/>
+		</location>
+		<location id="id2" x="-195" y="136">
+			<name x="-212" y="153">done</name>
+		</location>
+		<location id="id3" x="170" y="0">
+			<name x="34" y="8">wait_for_action</name>
+			<label kind="invariant" x="85" y="-25">tick &lt;= 1</label>
+		</location>
+		<location id="id4" x="170" y="-144">
+			<name x="128" y="-178">trace_init</name>
+			<urgent/>
+		</location>
+		<location id="id5" x="569" y="136">
+			<name x="586" y="127">verify_action</name>
+			<committed/>
+		</location>
+		<init ref="id4"/>
+		<transition id="id6">
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-246" y="-59">tick &gt; 0 &amp;&amp; allocators_processing != 0</label>
+			<label kind="assignment" x="-246" y="-42">fault_allocators_processing = true,
+trace_error = true</label>
+			<nail x="-289" y="0"/>
+			<nail x="-289" y="272"/>
+		</transition>
+		<transition id="id7">
+			<source ref="id5"/>
+			<target ref="id0"/>
+			<label kind="guard" x="280" y="246">fault_invalid_trace</label>
+			<label kind="comments" x="280" y="280">Error set in process_action</label>
+			<nail x="569" y="272"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id5"/>
+			<target ref="id3"/>
+			<label kind="guard" x="272" y="-42">!fault_invalid_trace</label>
+			<label kind="synchronisation" x="272" y="-25">new_alloc_action!</label>
+			<nail x="569" y="0"/>
+		</transition>
+		<transition id="id9">
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-110" y="187">action_count &gt; ALLOC_ACTION_COUNT</label>
+			<label kind="assignment" x="-110" y="204">fault_invalid_action_count = true,
+trace_error = true</label>
+		</transition>
+		<transition id="id10">
+			<source ref="id3"/>
+			<target ref="id1"/>
+			<label kind="guard" x="187" y="34">tick == 1 &amp;&amp; allocators_processing == 0</label>
+			<label kind="assignment" x="187" y="51">clock_resets++,
+tick = 0</label>
+		</transition>
+		<transition id="id11">
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-153" y="68">action_count == ALLOC_ACTION_COUNT
+|| errorless_allocator_count == 0</label>
+			<label kind="assignment" x="-153" y="110">trace_done = true</label>
+		</transition>
+		<transition id="id12">
+			<source ref="id1"/>
+			<target ref="id5"/>
+			<label kind="guard" x="246" y="144">action_count &lt; ALLOC_ACTION_COUNT
+&amp;&amp; errorless_allocator_count &gt; 0</label>
+			<label kind="assignment" x="246" y="178">process_action()</label>
+		</transition>
+		<transition id="id13">
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="187" y="-110">init_trace!</label>
+			<label kind="assignment" x="187" y="-93">tick = 0</label>
+		</transition>
+	</template>
+	<template>
+		<name>global_allocator_state</name>
+		<declaration>// Allocator i is coupled to heap i
+void init_heap_link()
+{
+    uint_t i = 0;
+    for(i = 0; i &lt; ALLOCATOR_COUNT; i++)
+    {
+        allocator_heap_link[i] = i; 
+    }
+}</declaration>
+		<location id="id14" x="365" y="34">
+			<urgent/>
+		</location>
+		<location id="id15" x="-119" y="34">
+			<name x="-161" y="51">init_allocs</name>
+		</location>
+		<location id="id16" x="620" y="34">
+			<name x="603" y="51">ready</name>
+		</location>
+		<location id="id17" x="858" y="34">
+			<name x="841" y="51">error</name>
+		</location>
+		<location id="id18" x="110" y="34">
+			<committed/>
+		</location>
+		<init ref="id15"/>
+		<transition id="id19">
+			<source ref="id15"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="-42" y="-8">init_trace?</label>
+			<label kind="assignment" x="-59" y="8">init_heap_link()</label>
+		</transition>
+		<transition id="id20">
+			<source ref="id16"/>
+			<target ref="id17"/>
+			<label kind="synchronisation" x="646" y="8">global_allocator_error?</label>
+		</transition>
+		<transition id="id21">
+			<source ref="id14"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="416" y="8">allocators_ready!</label>
+		</transition>
+		<transition id="id22">
+			<source ref="id18"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="170" y="8">init_allocators!</label>
+		</transition>
+	</template>
+	<template>
+		<name>allocator_state</name>
+		<parameter>allocator_id_range_t ALLOCATOR_ID</parameter>
+		<location id="id23" x="-212" y="25">
+			<name x="-246" y="42">wait_init</name>
+		</location>
+		<location id="id24" x="42" y="25">
+			<name x="25" y="42">ready</name>
+		</location>
+		<location id="id25" x="603" y="25">
+			<name x="586" y="42">error</name>
+		</location>
+		<location id="id26" x="323" y="25">
+			<name x="272" y="42">error_received</name>
+			<committed/>
+		</location>
+		<init ref="id23"/>
+		<transition id="id27">
+			<source ref="id26"/>
+			<target ref="id25"/>
+			<label kind="synchronisation" x="365" y="0">global_allocator_error!</label>
+		</transition>
+		<transition id="id28">
+			<source ref="id24"/>
+			<target ref="id26"/>
+			<label kind="synchronisation" x="59" y="0">allocator_error[ALLOCATOR_ID]?</label>
+		</transition>
+		<transition id="id29">
+			<source ref="id23"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="-161" y="0">allocators_ready?</label>
+		</transition>
+	</template>
+	<template>
+		<name>allocator_controller</name>
+		<declaration>// Variables for tracking current allocator + heap
+int[0, ALLOCATOR_COUNT] alloc_id = 0; // not allocator_id_range as we want to check if the alloc id is equal to allocator count.
+heap_id_range_t heap_id = 0; 
+
+// Mapping to check which allocators have errored
+bool allocator_errors[ALLOCATOR_COUNT];
+
+</declaration>
+		<location id="id30" x="833" y="331">
+			<name x="739" y="348">no_available_allocators</name>
+		</location>
+		<location id="id31" x="833" y="-76">
+			<name x="850" y="-85">has_error_signal</name>
+			<label kind="comments" x="850" y="-136">We don't merge the error variables to allow 
+immediate processing upon taking the transition</label>
+			<urgent/>
+		</location>
+		<location id="id32" x="493" y="-76">
+			<name x="374" y="-85">wait_for_heap</name>
+			<urgent/>
+		</location>
+		<location id="id33" x="136" y="85">
+			<name x="153" y="93">process_alloc_id</name>
+			<urgent/>
+		</location>
+		<location id="id34" x="-169" y="85">
+			<name x="-153" y="93">wait_for_alloc_action</name>
+		</location>
+		<location id="id35" x="-569" y="85">
+			<name x="-603" y="102">wait_init</name>
+			<urgent/>
+		</location>
+		<location id="id36" x="493" y="246">
+			<name x="450" y="263">next_action</name>
+			<committed/>
+		</location>
+		<location id="id37" x="493" y="85">
+			<name x="433" y="93">action</name>
+			<committed/>
+		</location>
+		<location id="id38" x="833" y="246">
+			<name x="850" y="238">error_detected</name>
+			<urgent/>
+		</location>
+		<location id="id39" x="569" y="85">
+			<name x="586" y="77">request_completed</name>
+			<committed/>
+		</location>
+		<init ref="id35"/>
+		<transition id="id40">
+			<source ref="id39"/>
+			<target ref="id36"/>
+		</transition>
+		<transition id="id41">
+			<source ref="id38"/>
+			<target ref="id36"/>
+			<label kind="guard" x="561" y="221">errorless_allocator_count &gt; 0</label>
+		</transition>
+		<transition id="id42">
+			<source ref="id38"/>
+			<target ref="id30"/>
+			<label kind="guard" x="841" y="272">errorless_allocator_count == 0</label>
+			<label kind="assignment" x="841" y="289">allocators_processing = false</label>
+		</transition>
+		<transition id="id43">
+			<source ref="id32"/>
+			<target ref="id31"/>
+			<label kind="synchronisation" x="578" y="-238">heap_error[heap_id]?</label>
+			<nail x="493" y="-212"/>
+			<nail x="833" y="-212"/>
+		</transition>
+		<transition id="id44">
+			<source ref="id32"/>
+			<target ref="id31"/>
+			<label kind="synchronisation" x="561" y="-102">allocator_error[alloc_id]?</label>
+		</transition>
+		<transition id="id45">
+			<source ref="id31"/>
+			<target ref="id38"/>
+			<label kind="assignment" x="841" y="34">allocator_errors[alloc_id] = true,
+errorless_allocator_count--</label>
+		</transition>
+		<transition id="id46">
+			<source ref="id37"/>
+			<target ref="id36"/>
+			<label kind="guard" x="272" y="153">allocator_errors[alloc_id]</label>
+		</transition>
+		<transition id="id47">
+			<source ref="id33"/>
+			<target ref="id37"/>
+			<label kind="guard" x="204" y="59">alloc_id &lt; ALLOCATOR_COUNT</label>
+		</transition>
+		<transition id="id48">
+			<source ref="id36"/>
+			<target ref="id33"/>
+			<label kind="assignment" x="246" y="255">alloc_id++</label>
+			<nail x="136" y="246"/>
+		</transition>
+		<transition id="id49">
+			<source ref="id32"/>
+			<target ref="id39"/>
+			<label kind="synchronisation" x="544" y="-8">heap_request_done[heap_id]?</label>
+		</transition>
+		<transition id="id50">
+			<source ref="id33"/>
+			<target ref="id34"/>
+			<label kind="guard" x="-136" y="178">alloc_id == ALLOCATOR_COUNT</label>
+			<label kind="assignment" x="-144" y="195">alloc_id = 0,
+heap_id = 0,
+allocators_processing = false</label>
+			<nail x="110" y="170"/>
+			<nail x="-169" y="170"/>
+		</transition>
+		<transition id="id51">
+			<source ref="id37"/>
+			<target ref="id32"/>
+			<label kind="guard" x="246" y="-42">!allocator_errors[alloc_id]</label>
+			<label kind="synchronisation" x="221" y="-25">process_alloc_action[alloc_id]!</label>
+			<label kind="assignment" x="153" y="-8">heap_id = allocator_heap_link[alloc_id]</label>
+		</transition>
+		<transition id="id52">
+			<source ref="id34"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-144" y="42">new_alloc_action?</label>
+			<label kind="assignment" x="-144" y="59">allocators_processing = true</label>
+		</transition>
+		<transition id="id53">
+			<source ref="id35"/>
+			<target ref="id34"/>
+			<label kind="synchronisation" x="-535" y="0">init_allocators?</label>
+			<label kind="assignment" x="-535" y="17">alloc_id = 0,
+heap_id = 0,
+errorless_allocator_count = ALLOCATOR_COUNT</label>
+		</transition>
+	</template>
+	<template>
+		<name>ffao_allocator</name>
+		<parameter>ffao_id_range_t FFAO_ALLOCATOR_ID</parameter>
+		<declaration>// ID associated with allocator based on its offset and allocator ID for its type.
+allocator_id_range_t allocator_id = 0;
+heap_id_range_t heap_id = 0;
+
+// Action-related variables
+tracker_heap_request_t ordered_heap_requests[ALLOC_ACTION_COUNT];
+bool start_alloc, request_page = false;
+page_info_t page_info;
+page_iterator_t page_id;
+uint_t free_mem_counter;
+heap_pointer_t start_free_address = 0;
+uint_t blocks_checked = 0;
+
+// Shared errors
+bool fault_invalid_implementation;
+
+ // Alloc errors
+bool alloc_error, fault_memory_fragmentation, fault_memory_exhaustion, fault_duplicate_pointers, fault_out_of_bounds, fault_invalid_size = false;
+
+ // Free errors
+bool free_error, fault_double_free, fault_unalloc_free = false;
+
+
+// Note that we keep track of any multi-page blocks (so free blocks which span over more than 1 page). So this function is not purely functional.
+void process_alloc()
+{
+    heap_pointer_t pointer = allocator_action_req[allocator_id].allocation.pointer;
+    uint_t request_size = allocator_action_req[allocator_id].allocation.size;
+    uint_t leftover = request_size % SIZE_MULTIPLE;
+    uint_t allocation_size = request_size + (leftover == 0 ? 0 : SIZE_MULTIPLE  - leftover);
+
+    heap_pointer_t current_address = NULL_POINTER, previous_address = NULL_POINTER;
+    uint_t current_length, previous_length;
+    free_list_indices_t i = 0;
+    
+    // Check whether request associated with pointer hasn't already been allocated before.
+    if(ordered_heap_requests[pointer].alloced)
+    {
+        fault_duplicate_pointers = true;
+        alloc_error = true;
+        return;  
+    }
+
+    // Check whether the request or allocation size is invalid (so lower or equal to 0 or larger than the heap). The latter one is simply to inform that the trace might not be a good fit for the settings.
+    if(request_size &lt;= 0 || allocation_size &lt;= 0)
+    {
+        fault_invalid_size = true;
+        alloc_error = true;
+        return;  
+    }
+    else if(allocation_size &gt; HEAP_SIZE || request_size &gt; HEAP_SIZE)
+    {
+        fault_memory_exhaustion = true;
+        fault_out_of_bounds = true;
+        alloc_error = true;
+        return;
+    }
+    
+    if (page_info.page_state == eAllocated)
+    {
+        // An allocated page has no free blocks, so any existing multi-page blocks end here.
+        start_free_address = NULL_POINTER;
+        free_mem_counter = 0;
+    }
+    else if(page_info.page_state == eFree)
+    {
+        // Starting counting here if there's no current block alive, or when a previous multi-page block is not contiguous with the first free block
+        if(start_free_address == NULL_POINTER || start_free_address + free_mem_counter != page_info.free_list[0].address)
+        {
+            start_free_address = page_info.free_list[0].address;
+            free_mem_counter = page_info.free_list[0].length;
+        }
+        else
+        {
+            free_mem_counter += page_info.free_list[0].length;
+        }
+        blocks_checked++;
+    }
+    else if(page_info.page_state == ePartiallyAllocated)
+    { 
+        // If the first block doesn't start at the starting address of the page, it for sure can't align with previous multi-page blocks.
+        if((page_info.free_list[0].address % PAGE_SIZE) != 0 || page_id == 0)
+        {
+            start_free_address = NULL_POINTER;
+            free_mem_counter = 0;
+        }
+        
+        previous_address = start_free_address;
+        previous_length = free_mem_counter;
+        i = 0; // Keep track of free list index
+
+        // Keep looping until enough contiguous memory is found or we run out of page to analyze.
+        while(free_mem_counter &lt; allocation_size &amp;&amp; i &lt; page_info.free_list_size)
+        {
+            current_address = page_info.free_list[i].address;
+            current_length = page_info.free_list[i].length;  
+            if(start_free_address == NULL_POINTER || current_address &gt; previous_address + previous_length)
+            {
+                start_free_address = current_address;
+                free_mem_counter = current_length; 
+            }
+            else if(current_address == previous_address + previous_length)
+            {
+                free_mem_counter += current_length;
+            }
+            else
+            {
+                fault_invalid_implementation = true;
+                alloc_error = true;
+            }
+            
+            previous_address = current_address;
+            previous_length = current_length;  
+            blocks_checked++;
+            i++;
+        }
+    }
+    
+    if(free_mem_counter &gt;= allocation_size)
+    {
+            heap_request_t heap_req;
+            heap_req.type = eHeapRequestAlloc;
+            heap_req.info.requested_memory = request_size;
+            heap_req.info.allocated_memory = allocation_size;
+            heap_req.info.padded_memory = heap_req.info.allocated_memory - heap_req.info.requested_memory;
+            heap_req.range.start_address = start_free_address;
+            heap_req.range.end_address = start_free_address + allocation_size - 1;
+            heap_mem_req[heap_id] = heap_req;
+            ordered_heap_requests[pointer].order = allocator_action_req[allocator_id].order;
+            ordered_heap_requests[pointer].req = heap_req;
+            ordered_heap_requests[pointer].alloced = true;
+            ordered_heap_requests[pointer].freed = false;
+            
+            start_alloc = true;
+            request_page = false;
+            
+    }
+    else if(page_id == LAST_PAGE_HEAP)
+    {
+        request_page = false;
+        // Memory fragmentation occurs when there's enough non-contiguous free bytes for an allocation, but not enough contiguous bytes.
+        if(heap_free_memory_HV[heap_id] &gt;= allocation_size) // OLD
+        {
+            fault_memory_fragmentation = true;
+        }
+
+        fault_memory_exhaustion = true;
+        alloc_error = true;
+    }
+    else
+    {
+        // Only reason to be here is while looking for a free block or in error somehow.
+        fault_invalid_implementation = page_id &gt; LAST_PAGE_HEAP || page_id &lt; 0;
+        alloc_error |= fault_invalid_implementation;
+    }    
+
+}
+
+void process_free()
+{
+    heap_pointer_t pointer = allocator_action_req[allocator_id].free.pointer;
+    heap_request_t heap_req = ordered_heap_requests[pointer].req;
+    heap_req.type = eHeapRequestFree;
+
+    if(ordered_heap_requests[pointer].alloced == false)
+    {
+        fault_unalloc_free = true;
+        free_error = true;
+        return;
+    }
+    
+    if(ordered_heap_requests[pointer].freed == true)
+    {
+        fault_double_free = true;
+        free_error = true;
+        return;
+    }
+    
+    ordered_heap_requests[pointer].freed = true;
+    heap_mem_req[heap_id] = heap_req;
+}
+
+void clear_signals()
+{
+    allocator_id = FFAO_ALLOCATOR_ID + FFAO_ALLOCATOR_ID_OFFSET;
+    page_id = 0;
+    start_free_address = NULL_POINTER;
+    free_mem_counter = 0;
+    request_page = false;
+    start_alloc = false;
+    blocks_checked = 0;
+}
+</declaration>
+		<location id="id54" x="485" y="-272">
+			<name x="502" y="-281">allocate</name>
+			<committed/>
+		</location>
+		<location id="id55" x="485" y="25">
+			<name x="502" y="17">error</name>
+		</location>
+		<location id="id56" x="-424" y="170">
+			<name x="-407" y="178">wait_for_trace</name>
+		</location>
+		<location id="id57" x="-688" y="170">
+			<name x="-722" y="187">wait_init</name>
+		</location>
+		<location id="id58" x="485" y="170">
+			<name x="502" y="161">free</name>
+			<committed/>
+		</location>
+		<location id="id59" x="-127" y="170">
+			<name x="-186" y="187">action_signaled</name>
+			<committed/>
+		</location>
+		<location id="id60" x="485" y="-119">
+			<name x="340" y="-111">processing_alloc</name>
+			<committed/>
+		</location>
+		<location id="id61" x="910" y="-119">
+			<name x="825" y="-153">retrieved_page_info</name>
+			<committed/>
+		</location>
+		<init ref="id57"/>
+		<transition id="id62">
+			<source ref="id58"/>
+			<target ref="id55"/>
+			<label kind="guard" x="315" y="76">free_error</label>
+			<label kind="synchronisation" x="238" y="93">allocator_error[allocator_id]!</label>
+		</transition>
+		<transition id="id63">
+			<source ref="id54"/>
+			<target ref="id56"/>
+			<label kind="synchronisation" x="-59" y="-315">process_heap_req[heap_id]!</label>
+			<label kind="assignment" x="-16" y="-298">clear_signals()</label>
+			<nail x="-424" y="-272"/>
+		</transition>
+		<transition id="id64">
+			<source ref="id60"/>
+			<target ref="id54"/>
+			<label kind="guard" x="493" y="-213">start_alloc &amp;&amp; !alloc_error</label>
+		</transition>
+		<transition id="id65">
+			<source ref="id60"/>
+			<target ref="id55"/>
+			<label kind="guard" x="315" y="-60">alloc_error</label>
+			<label kind="synchronisation" x="238" y="-43">allocator_error[allocator_id]!</label>
+		</transition>
+		<transition id="id66">
+			<source ref="id61"/>
+			<target ref="id60"/>
+			<label kind="assignment" x="612" y="-68">page_info := page_info_req[heap_id],
+process_alloc(),
+page_id++</label>
+			<nail x="909" y="-68"/>
+			<nail x="603" y="-68"/>
+		</transition>
+		<transition id="id67">
+			<source ref="id60"/>
+			<target ref="id61"/>
+			<label kind="guard" x="510" y="-170">!start_alloc &amp;&amp; request_page &amp;&amp; !alloc_error</label>
+			<label kind="synchronisation" x="510" y="-153">get_page_info[heap_id][page_id]!</label>
+		</transition>
+		<transition id="id68">
+			<source ref="id58"/>
+			<target ref="id56"/>
+			<label kind="guard" x="493" y="188">!free_error</label>
+			<label kind="synchronisation" x="-33" y="220">process_heap_req[heap_id]!</label>
+			<label kind="assignment" x="1" y="237">clear_signals()</label>
+			<nail x="485" y="203"/>
+			<nail x="485" y="263"/>
+			<nail x="-424" y="263"/>
+		</transition>
+		<transition id="id69">
+			<source ref="id59"/>
+			<target ref="id60"/>
+			<label kind="guard" x="-109" y="-144">allocator_action_req[allocator_id].type == eAllocatorActionAlloc</label>
+			<label kind="assignment" x="77" y="-110">request_page := true</label>
+			<nail x="-127" y="-119"/>
+			<nail x="358" y="-119"/>
+		</transition>
+		<transition id="id70">
+			<source ref="id59"/>
+			<target ref="id58"/>
+			<label kind="guard" x="-50" y="144">allocator_action_req[allocator_id].type == eAllocatorActionFree</label>
+			<label kind="assignment" x="170" y="178">process_free()</label>
+			<nail x="-110" y="170"/>
+			<nail x="281" y="170"/>
+		</transition>
+		<transition id="id71">
+			<source ref="id56"/>
+			<target ref="id59"/>
+			<label kind="synchronisation" x="-407" y="144">process_alloc_action[allocator_id]?</label>
+		</transition>
+		<transition id="id72">
+			<source ref="id57"/>
+			<target ref="id56"/>
+			<label kind="synchronisation" x="-620" y="128">init_allocators?</label>
+			<label kind="assignment" x="-620" y="145">clear_signals()</label>
+		</transition>
+	</template>
+	<template>
+		<name>nfao_allocator</name>
+		<parameter>nfao_id_range_t NFAO_ALLOCATOR_ID</parameter>
+		<declaration>allocator_id_range_t allocator_id = 0;
+heap_id_range_t heap_id = 0;
+
+page_info_t page_info;
+tracker_heap_request_t ordered_heap_requests[ALLOC_ACTION_COUNT];
+bool start_alloc, request_page, alloc_error, free_error = false;
+bool fault_memory_fragmentation, fault_memory_exhaustion, fault_duplicate_pointers, fault_out_of_bounds, fault_invalid_size, fault_invalid_implementation = false; // Alloc errors
+bool fault_double_free, fault_unalloc_free = false; // Free errors
+uint_t current_request_size, current_allocation_size = 0;
+uint_t page_id, free_mem_counter;
+heap_pointer_t start_free_address = NULL_POINTER, nfao_address_start = NULL_POINTER;
+uint_t blocks_checked = 0;
+
+heap_pointer_t end_first_free_block = NULL_POINTER;
+bool end_first_free_block_found = false;
+
+bool single_phased = false;
+bool phase_1_searched = false, phase_2_searched = false;
+bool phase_1_started = false, phase_2_started = false;
+heap_pointer_t phase_1_start_address, phase_1_end_address;
+heap_pointer_t phase_2_start_address, phase_2_end_address;
+
+
+int32_t last_page = 0;
+
+// If index == 0, we started on a full page, so if we reach the page again we can stop
+uint_t first_checked_index = 0;
+page_id_range_t first_checked_page = 0;
+bool first_check = false;
+
+
+void search_phase(bool&amp; stop, bool&amp; match_found, uint_t request_size, uint_t allocation_size, heap_pointer_t start_address, heap_pointer_t end_address)
+{
+    heap_pointer_t pointer = allocator_action_req[allocator_id].allocation.pointer;
+    uint_t current_length, previous_length;
+    heap_pointer_t current_address = NULL_POINTER, previous_address = NULL_POINTER;
+    uint_t i = 0;
+    bool skip_to_index, offset_address, on_first_page, multi_page_start, stop_search = false, end_first_free_block_found;
+    
+
+    // Edge case
+    // - Multi-page initial block
+    // - single page heap
+    
+    // If the last page is an allocated page it doesn't matter, because there are no additional blocks.
+    // E: Single page - Same implementation
+    
+    if (page_info.page_state == eAllocated)
+    {
+        if(first_check == true)
+        {
+            first_check = false;
+            on_first_page = true;
+            first_checked_page = page_id;
+            first_checked_index = 0;  
+        }
+        else if(end_first_free_block_found == false)
+        {
+            end_first_free_block_found = true;
+        }
+
+        // An allocated page has no free blocks, so any existing multi-page blocks end here.
+        start_free_address = NULL_POINTER;
+        free_mem_counter = 0;
+    }
+    // If the last page is a free page we can check it again in the case we attempted
+    else if(page_info.page_state == eFree)
+    {
+        blocks_checked++;
+        if(first_check == true)
+        {
+            first_check = false;
+            on_first_page = true;
+
+            first_checked_page = page_id;
+            first_checked_index = 0;
+
+            start_free_address = nfao_address_start;
+            free_mem_counter = page_info.free_list[0].length - (nfao_address_start - page_info.free_list[0].address);
+            end_first_free_block = nfao_address_start + free_mem_counter - 1;            
+        }
+        else
+        {
+            bool reset = free_mem_counter == 0 || start_free_address + free_mem_counter != page_info.free_list[0].address;
+            if(reset &amp;&amp; end_first_free_block_found == false)
+            {
+                end_first_free_block_found = true;
+            }
+
+            // Starting counting here if there's no current block alive, or when a previous multi-page block is not contiguous with the first free block
+            if(reset)
+            {
+                start_free_address = page_info.free_list[0].address;
+                free_mem_counter = page_info.free_list[0].length;
+            }
+            else
+            {
+                free_mem_counter += page_info.free_list[0].length;
+            }
+
+        
+            if(end_first_free_block_found == false)
+            {
+                end_first_free_block = start_free_address + free_mem_counter - 1;
+            }   
+        }
+    }  
+    else if(page_info.page_state == ePartiallyAllocated)
+    {
+        // If on the first page we've checked, check whether a block can be which either includes the nfao start address, or whether there's a block after that one.
+        // If there's no free blocks after that address, we just skip to the next page.
+        if(first_check == true)
+        {
+            for(i = 0; i &lt; page_info.free_list_size; i++)
+            {
+                // Block containing nfao start address found
+                if(first_check &amp;&amp; page_info.free_list[i].address &lt;= nfao_address_start &amp;&amp; page_info.free_list[i].address + page_info.free_list[i].length &gt; nfao_address_start)
+                {
+                    first_checked_page = page_id;
+                    first_checked_index = i; 
+                    first_check = false;
+                    start_free_address = nfao_address_start;
+                    free_mem_counter = 0;
+                    offset_address = true;
+                }
+                // Index found whose address is above the searched-for address, pick this one
+                else if(first_check &amp;&amp; page_info.free_list[i].address &gt; nfao_address_start)
+                {
+                    first_checked_page = page_id;
+                    first_checked_index = i; 
+                    first_check = false;
+                    start_free_address = NULL_POINTER;
+                    free_mem_counter = 0;
+                }
+                // No indices found whose address is above block, we go to the next page and pick the first index
+                else if(first_check &amp;&amp; i + 1 &gt;= page_info.free_list_size)
+                {
+                    first_checked_page = page_id;
+                    first_checked_index = page_info.free_list_size; 
+                    first_check = false;
+                    start_free_address = NULL_POINTER;
+                    free_mem_counter = 0;
+                }
+            }
+            
+            // Can't find the address range at all, incorrect implementation.
+            if(first_check == true)
+            {
+                fault_invalid_implementation = true;
+                alloc_error = true;
+                stop = true;
+                return;
+            }
+            
+            // Indicate that we d where nfao is not at the starton't start at index 0 when searching the free list of the page.
+            skip_to_index = true;
+            on_first_page = true;
+
+            if(start_free_address != NULL_POINTER &amp;&amp; end_first_free_block_found == false)
+            {
+                end_first_free_block = start_free_address + free_mem_counter - 1;
+            }  
+        }
+        
+        // Don't reset any addresses which may be set on first_check
+        if(!skip_to_index &amp;&amp; (page_info.free_list[0].address % PAGE_SIZE) != 0 || page_id == 0)
+        {
+            if(start_free_address != NULL_POINTER &amp;&amp; end_first_free_block_found == false)
+            {
+                end_first_free_block = start_free_address + free_mem_counter - 1;
+                end_first_free_block_found = true;
+            }  
+            start_free_address = NULL_POINTER;
+            free_mem_counter = 0;
+        }
+        
+        // If skipping to an index, previous address should be reset to a NULL state.
+        if(skip_to_index)
+        {
+            previous_address = NULL_POINTER;
+            previous_length = 0;            
+        }
+        else
+        {
+            previous_address = start_free_address;
+            previous_length = free_mem_counter;
+        }
+
+        // In the case we've determined that processing a page doesn't start at the first index, skip to the proper one before iterating.
+        if(skip_to_index)
+        {
+            i = first_checked_index;
+        }
+        
+        // Keep looping until enough cofree_mem_counter &gt;= allocation_size)ntiguous memory is found or we run out of page to analyze.
+        while(free_mem_counter &lt; allocation_size &amp;&amp; i &lt; page_info.free_list_size)
+        {
+            blocks_checked++;
+            current_address = page_info.free_list[i].address;
+            current_length = page_info.free_list[i].length; 
+            
+            // If the nfao address was halfway a current free block, try a smaller block consisting of the bytes from the starting point to the end of that free block first.
+            if(offset_address)
+            {
+                    current_length -= (nfao_address_start - current_address);  
+                    current_address = nfao_address_start;
+                    
+                    offset_address = false;
+            }
+            
+            if(start_free_address == NULL_POINTER || current_address &gt; previous_address + previous_length)
+            {
+                 start_free_address = current_address;
+                 free_mem_counter = current_length;
+
+                 if(end_first_free_block_found == false)
+                 {
+                    end_first_free_block_found = true;
+                 }    
+            }
+            else if(current_address == previous_address + previous_length) //prev + 1
+            {
+                free_mem_counter += current_length;
+            }
+            else
+            {
+                fault_invalid_implementation = true;
+                alloc_error = true;
+            }
+            
+            previous_address = current_address;
+            previous_length = current_length;  
+            
+            if(end_first_free_block_found == false)
+            {
+                end_first_free_block = start_free_address + free_mem_counter - 1;
+            }   
+            
+            i++;
+        }
+    }
+    
+    stop = end_address &gt;= PAGE_SIZE * page_id &amp;&amp; end_address &lt;= ((page_id + 1) * PAGE_SIZE - 1);
+    match_found = free_mem_counter &gt;= allocation_size;
+}
+
+void process_alloc()
+{
+    heap_pointer_t pointer = allocator_action_req[allocator_id].allocation.pointer;
+    uint_t request_size = allocator_action_req[allocator_id].allocation.size;
+    uint_t leftover = request_size % SIZE_MULTIPLE;
+    uint_t allocation_size = request_size + (leftover == 0 ? 0 : SIZE_MULTIPLE  - leftover);
+    
+
+    bool stop_search = false, match_found = false, stop_processing;
+
+    current_request_size = request_size;
+    current_allocation_size = allocation_size;
+    
+    // Check whether request associated with pointer hasn't already been allocated before.
+    if(ordered_heap_requests[pointer].alloced)
+    {
+        fault_duplicate_pointers = true;
+        alloc_error = true;
+        return;  
+    }
+   
+    // Check whether the request or allocation size is invalid (so lower or equal to 0 or larger than the heap). The latter one is simply to inform that the trace might not be a good fit for the settings.
+    if(request_size &lt;= 0 || allocation_size &lt;= 0)
+    {
+        fault_invalid_size = true;
+        alloc_error = true;
+        return;  
+    }
+    else if(allocation_size &gt; HEAP_SIZE || request_size &gt; HEAP_SIZE)
+    {
+        fault_memory_exhaustion = true;
+        fault_out_of_bounds = true;
+        alloc_error = true;
+        return;
+    }
+
+    // Memory exhaustion
+    if (page_info.page_state == eAllocated &amp;&amp; AMT_OF_PAGES_HEAP == 1)
+    {
+        start_free_address = NULL_POINTER;
+        free_mem_counter = 0;
+        stop_processing = true;
+    }
+    // Edge case of 1 single free page where nfao is not at the start: If we only have a single page and the free_mem wasn't enough, attempt the entire block immediately.
+    else if(page_info.page_state == eFree &amp;&amp; AMT_OF_PAGES_HEAP == 1)
+    {
+        start_free_address = nfao_address_start;
+        free_mem_counter = page_info.free_list[0].length - (nfao_address_start - page_info.free_list[0].address);
+        if(free_mem_counter &lt; allocation_size)
+        {
+            start_free_address = free_mem_counter &lt; allocation_size ? page_info.free_list[0].address : start_free_address;
+            free_mem_counter = free_mem_counter &lt; allocation_size ? page_info.free_list[0].length : start_free_address;
+        }
+        blocks_checked++;
+        stop_processing = true;
+    }
+    else if(!phase_1_searched)
+    {
+        if(!phase_1_started)
+        {
+            first_check = true;
+            single_phased = nfao_address_start == 0;
+            phase_1_started = true;
+            phase_1_start_address = nfao_address_start;
+            phase_1_end_address = HEAP_SIZE - 1;
+        }
+        search_phase(stop_search, match_found, request_size, allocation_size, phase_1_start_address, phase_1_end_address);
+        if(stop_search)
+        {
+            phase_1_searched = true;
+            stop_processing = single_phased;
+        }
+    }
+    else if(!phase_2_searched)
+    {
+        if(!phase_2_started)
+        {
+            // first_check = true;
+            phase_2_started = true;
+            phase_2_start_address = 0;
+            phase_2_end_address = end_first_free_block ? end_first_free_block : nfao_address_start;
+        }
+        search_phase(stop_search, match_found, request_size, allocation_size, phase_2_start_address, phase_2_end_address);
+        if(stop_search)
+        {
+            phase_2_searched = true;
+            stop_processing = true;
+        }
+    }
+
+    if(free_mem_counter &gt;= allocation_size)
+    {
+            heap_request_t heap_req;
+            heap_req.type = eHeapRequestAlloc;
+            heap_req.info.requested_memory = request_size;
+            heap_req.info.allocated_memory = allocation_size;
+            heap_req.info.padded_memory = heap_req.info.allocated_memory - heap_req.info.requested_memory;
+            heap_req.range.start_address = start_free_address;
+            heap_req.range.end_address = start_free_address + allocation_size - 1;
+            heap_mem_req[heap_id] = heap_req;
+            
+            // Check overflow of next address
+            if(heap_req.range.end_address + 1 &gt;= HEAP_SIZE)
+            {
+                nfao_address_start = 0;
+            }
+            else
+            {
+                nfao_address_start = heap_req.range.end_address + 1;
+            }
+
+            // The next starting address may actually be on the page after the page we've found.
+            // Use integer division to get floor.
+            last_page = nfao_address_start / PAGE_SIZE;
+
+            ordered_heap_requests[pointer].order = allocator_action_req[allocator_id].order;
+            ordered_heap_requests[pointer].req = heap_req;
+            ordered_heap_requests[pointer].alloced = true;
+            ordered_heap_requests[pointer].freed = false;
+            
+            start_alloc = true;
+            request_page = false;
+    }
+    else if(stop_processing)
+    {
+        request_page = false;
+        if(heap_free_memory_HV[heap_id] &gt;= allocation_size)
+        {
+            fault_memory_fragmentation = true;
+        }
+        fault_memory_exhaustion = true;
+        alloc_error = true;
+    }
+}
+
+
+void handle_page_id()
+{
+    // Rollover memory if we're on the last page
+    if(page_id == LAST_PAGE_HEAP)
+    {
+        page_id = 0;
+        start_free_address = NULL_POINTER;
+        free_mem_counter = 0;
+    }
+    else
+    {
+        page_id++;
+    }
+}
+
+void process_free()
+{
+    heap_pointer_t pointer = allocator_action_req[allocator_id].free.pointer;
+    heap_request_t heap_req = ordered_heap_requests[pointer].req;
+    heap_req.type = eHeapRequestFree;
+
+    if(ordered_heap_requests[pointer].alloced == false)
+    {
+        fault_unalloc_free = true;
+        free_error = true;
+        return;
+    }
+    
+    if(ordered_heap_requests[pointer].freed == true)
+    {
+        fault_double_free = true;
+        free_error = true;
+        return;
+    }
+    
+    ordered_heap_requests[pointer].freed = true;
+    heap_mem_req[heap_id] = heap_req;
+}
+
+void setup_state()
+{
+    request_page = true;
+    page_id = last_page;
+    first_check = true;
+    end_first_free_block_found = false;
+}
+
+void clear_signals()
+{
+    allocator_id = NFAO_ALLOCATOR_ID + NFAO_ALLOCATOR_ID_OFFSET;
+    heap_id = allocator_heap_link[allocator_id];
+    page_id = 0;
+    start_free_address = NULL_POINTER;
+    free_mem_counter = 0;
+    single_phased = false;    
+    request_page = false;
+    start_alloc = false;
+    first_check = false;
+    phase_1_searched = false;
+    phase_1_searched = false;
+    phase_1_started = false;
+    phase_2_started = false;
+    end_first_free_block = NULL_POINTER;
+    end_first_free_block_found = false;
+    blocks_checked = 0;
+}
+</declaration>
+		<location id="id73" x="357" y="-323">
+			<name x="374" y="-331">allocate</name>
+			<committed/>
+		</location>
+		<location id="id74" x="357" y="-26">
+			<name x="374" y="-34">error</name>
+		</location>
+		<location id="id75" x="-552" y="119">
+			<name x="-535" y="127">wait_for_trace</name>
+		</location>
+		<location id="id76" x="-816" y="119">
+			<name x="-850" y="136">wait_init</name>
+		</location>
+		<location id="id77" x="357" y="119">
+			<name x="374" y="110">free</name>
+			<committed/>
+		</location>
+		<location id="id78" x="-255" y="119">
+			<name x="-314" y="136">action_signaled</name>
+			<committed/>
+		</location>
+		<location id="id79" x="357" y="-170">
+			<name x="212" y="-161">processing_alloc</name>
+			<committed/>
+		</location>
+		<location id="id80" x="782" y="-170">
+			<name x="697" y="-204">retrieved_page_info</name>
+			<committed/>
+		</location>
+		<init ref="id76"/>
+		<transition id="id81">
+			<source ref="id77"/>
+			<target ref="id74"/>
+			<label kind="guard" x="187" y="25">free_error</label>
+			<label kind="synchronisation" x="110" y="42">allocator_error[allocator_id]!</label>
+		</transition>
+		<transition id="id82">
+			<source ref="id73"/>
+			<target ref="id75"/>
+			<label kind="synchronisation" x="-178" y="-365">process_heap_req[heap_id]!</label>
+			<label kind="assignment" x="-136" y="-348">clear_signals()</label>
+			<nail x="-552" y="-323"/>
+		</transition>
+		<transition id="id83">
+			<source ref="id79"/>
+			<target ref="id73"/>
+			<label kind="guard" x="127" y="-263">start_alloc &amp;&amp; !alloc_error</label>
+		</transition>
+		<transition id="id84">
+			<source ref="id79"/>
+			<target ref="id74"/>
+			<label kind="guard" x="187" y="-111">alloc_error</label>
+			<label kind="synchronisation" x="110" y="-94">allocator_error[allocator_id]!</label>
+		</transition>
+		<transition id="id85">
+			<source ref="id80"/>
+			<target ref="id79"/>
+			<label kind="assignment" x="484" y="-119">page_info := page_info_req[heap_id],
+process_alloc(),
+handle_page_id()</label>
+			<nail x="781" y="-119"/>
+			<nail x="475" y="-119"/>
+		</transition>
+		<transition id="id86">
+			<source ref="id79"/>
+			<target ref="id80"/>
+			<label kind="guard" x="382" y="-221">!start_alloc &amp;&amp; request_page &amp;&amp; !alloc_error</label>
+			<label kind="synchronisation" x="382" y="-204">get_page_info[heap_id][page_id]!</label>
+		</transition>
+		<transition id="id87">
+			<source ref="id77"/>
+			<target ref="id75"/>
+			<label kind="guard" x="374" y="144">!free_error</label>
+			<label kind="synchronisation" x="-178" y="170">process_heap_req[heap_id]!</label>
+			<label kind="assignment" x="-136" y="187">clear_signals()</label>
+			<nail x="357" y="152"/>
+			<nail x="357" y="212"/>
+			<nail x="-552" y="212"/>
+		</transition>
+		<transition id="id88">
+			<source ref="id78"/>
+			<target ref="id79"/>
+			<label kind="guard" x="-238" y="-195">allocator_action_req[allocator_id].type == eAllocatorActionAlloc</label>
+			<label kind="assignment" x="-237" y="-170">setup_state()</label>
+			<nail x="-255" y="-170"/>
+			<nail x="230" y="-170"/>
+		</transition>
+		<transition id="id89">
+			<source ref="id78"/>
+			<target ref="id77"/>
+			<label kind="guard" x="-178" y="93">allocator_action_req[allocator_id].type == eAllocatorActionFree</label>
+			<label kind="assignment" x="42" y="127">process_free()</label>
+			<nail x="-238" y="119"/>
+			<nail x="153" y="119"/>
+		</transition>
+		<transition id="id90">
+			<source ref="id75"/>
+			<target ref="id78"/>
+			<label kind="synchronisation" x="-535" y="94">process_alloc_action[allocator_id]?</label>
+		</transition>
+		<transition id="id91">
+			<source ref="id76"/>
+			<target ref="id75"/>
+			<label kind="synchronisation" x="-782" y="59">init_allocators?</label>
+			<label kind="assignment" x="-782" y="76">clear_signals(),
+nfao_address_start := 0</label>
+		</transition>
+	</template>
+	<template>
+		<name>bfao_allocator</name>
+		<parameter>bfao_id_range_t BFAO_ALLOCATOR_ID</parameter>
+		<declaration>allocator_id_range_t allocator_id = 0;
+heap_id_range_t heap_id = 0;
+
+page_info_t page_info;
+tracker_heap_request_t ordered_heap_requests[ALLOC_ACTION_COUNT];
+bool fault_invalid_implementation = false;
+bool start_alloc, request_page, alloc_error, free_error = false;
+bool fault_memory_fragmentation, fault_memory_exhaustion, fault_duplicate_pointers, fault_out_of_bounds, fault_invalid_size = false; // Alloc errors
+bool fault_double_free, fault_unalloc_free = false; // Free errors
+page_iterator_t page_id = 0;
+heap_pointer_t best_fitting_start_address, start_free_address;
+uint_t free_mem_counter, best_fitting_length = 0;
+uint_t blocks_checked = 0;
+
+bool allocate_best_fit, failed_allocate_best_fit = false;
+
+void process_alloc()
+{
+    heap_pointer_t pointer = allocator_action_req[allocator_id].allocation.pointer;
+    uint_t request_size = allocator_action_req[allocator_id].allocation.size;
+    uint_t leftover = request_size % SIZE_MULTIPLE;
+    uint_t allocation_size = request_size + (leftover == 0 ? 0 : SIZE_MULTIPLE  - leftover);
+
+    heap_pointer_t current_address = NULL_POINTER, previous_address = NULL_POINTER;
+    uint_t current_length, previous_length;
+    uint_t i = 0;
+    uint_t best_fit_tolerance = 0;
+
+    bool tolerance_match = false;
+    
+    // Check whether request associated with pointer hasn't already been allocated before.
+    if(ordered_heap_requests[pointer].alloced)
+    {
+        fault_duplicate_pointers = true;
+        alloc_error = true;
+        return;  
+    }
+
+    // Check whether the request or allocation size is invalid (so lower or equal to 0 or larger than the heap). The latter one is simply to inform that the trace might not be a good fit for the settings.
+    if(request_size &lt;= 0 || allocation_size &lt;= 0)
+    {
+        fault_invalid_size = true;
+        alloc_error = true;
+        return;  
+    }
+    else if(allocation_size &gt; HEAP_SIZE || request_size &gt; HEAP_SIZE)
+    {
+        fault_memory_exhaustion = true;
+        fault_out_of_bounds = true;
+        alloc_error = true;
+        return;
+    }
+    
+    if (page_info.page_state == eAllocated)
+    {        
+        // If either the best_fitting_length hasn't been filled in yet, or we have a fit that's even smaller than the current best fit, we log it.
+        if(!tolerance_match &amp;&amp; free_mem_counter &gt;= allocation_size &amp;&amp; (best_fitting_start_address == NULL_POINTER || free_mem_counter &lt; best_fitting_length))
+        {
+            best_fitting_length = free_mem_counter;
+            best_fitting_start_address = start_free_address;
+            tolerance_match = (best_fitting_length - allocation_size) &lt;= BFAO_TOLERANCE;
+        }
+        
+        start_free_address = NULL_POINTER;
+        free_mem_counter = 0;        
+    }
+    else if(page_info.page_state == eFree)
+    {
+        // If either the best_fitting_length hasn't been filled in yet, or we have a fit that's even smaller than the current best fit, we log it.
+        if(!tolerance_match &amp;&amp; free_mem_counter &gt;= allocation_size &amp;&amp; (best_fitting_start_address == NULL_POINTER || free_mem_counter &lt; best_fitting_length))
+        {
+            best_fitting_length = free_mem_counter;
+            best_fitting_start_address = start_free_address;
+            tolerance_match = (best_fitting_length - allocation_size) &lt;= BFAO_TOLERANCE;
+        }
+
+        // If there's no multi-page block (e.g. after allocated page), or the last block does not align with this page, we reset the living block
+        if(start_free_address == NULL_POINTER || (start_free_address + free_mem_counter) != page_info.free_list[0].address) // GOOD
+        {
+            start_free_address = page_info.free_list[0].address;
+        }
+        free_mem_counter += page_info.free_list[0].length;
+        blocks_checked++;
+    }
+    else if(page_info.page_state == ePartiallyAllocated)
+    {
+        // If the first block doesn't start at the starting address of the page, it for sure can't align with previous multi-page blocks.
+        if((page_info.free_list[0].address % PAGE_SIZE) != 0 || page_id == 0)
+        {
+            // If there's no multi-page block (e.g. after allocated page), or the last block does not align with this page, we reset the living block
+            if(!tolerance_match &amp;&amp; free_mem_counter &gt;= allocation_size &amp;&amp; (best_fitting_length == 0 || free_mem_counter &lt; best_fitting_length))
+            {
+                best_fitting_length = free_mem_counter;
+                best_fitting_start_address = start_free_address;
+                tolerance_match = (best_fitting_length - allocation_size) &lt;= BFAO_TOLERANCE;
+            }
+        
+            start_free_address = NULL_POINTER;
+            free_mem_counter = 0;
+        }
+        
+        previous_address = start_free_address;
+        previous_length = free_mem_counter;
+        while(free_mem_counter &lt; allocation_size &amp;&amp; i &lt; page_info.free_list_size)
+        {
+            current_address = page_info.free_list[i].address;
+            current_length = page_info.free_list[i].length;  
+            
+            if(start_free_address == NULL_POINTER || current_address &gt; previous_address + previous_length)
+            {
+                // If there's no multi-page block (e.g. after allocated page), or the last block does not align with this page, we reset the living block
+                if(!tolerance_match &amp;&amp; free_mem_counter &gt;= allocation_size &amp;&amp; (best_fitting_length == 0 || free_mem_counter &lt; best_fitting_length))
+                {
+                    best_fitting_length = free_mem_counter;
+                    best_fitting_start_address = start_free_address;
+                    tolerance_match = (best_fitting_length - allocation_size) &lt;= BFAO_TOLERANCE;
+                }
+                
+                start_free_address = current_address;
+                free_mem_counter = current_length;
+            }
+            else if(current_address == previous_address + previous_length) //prev + 1
+            {
+                free_mem_counter += current_length;
+            }
+            else
+            {
+                fault_invalid_implementation = true;
+                alloc_error = true;
+            }
+            
+            previous_address = current_address;
+            previous_length = current_length;  
+            blocks_checked++;
+            i++;
+        }
+    }
+    
+    // Check in case of the last block of the last page
+    if(!tolerance_match &amp;&amp; page_id == AMT_OF_PAGES_HEAP - 1 &amp;&amp; free_mem_counter &gt;= allocation_size &amp;&amp; (best_fitting_length == 0 || free_mem_counter &lt; best_fitting_length))
+    {
+        best_fitting_length = free_mem_counter;
+        best_fitting_start_address = start_free_address;
+        tolerance_match |= (best_fitting_length - allocation_size) &lt;= BFAO_TOLERANCE;
+    }
+    
+    if(tolerance_match || (page_id == LAST_PAGE_HEAP &amp;&amp; best_fitting_length &gt;= allocation_size))
+    {
+            heap_request_t heap_req;
+            heap_req.type = eHeapRequestAlloc;
+            heap_req.info.requested_memory = request_size;
+            heap_req.info.allocated_memory = allocation_size;
+            heap_req.info.padded_memory = heap_req.info.allocated_memory - heap_req.info.requested_memory;
+            heap_req.range.start_address = best_fitting_start_address;
+            heap_req.range.end_address = best_fitting_start_address + allocation_size - 1;
+            heap_mem_req[heap_id] = heap_req;
+            
+            ordered_heap_requests[pointer].order = allocator_action_req[allocator_id].order;
+            ordered_heap_requests[pointer].req = heap_req;
+            ordered_heap_requests[pointer].alloced = true;
+            ordered_heap_requests[pointer].freed = false;
+            
+            start_alloc = true;
+            request_page = false;
+    }
+    else if(page_id == LAST_PAGE_HEAP)
+    {
+        request_page = false;
+        if(heap_free_memory_HV[heap_id] &gt;= allocation_size)
+        {
+            fault_memory_fragmentation = true;
+        }
+        fault_memory_exhaustion = true;
+        alloc_error = true;
+    }
+}
+
+void process_free()
+{
+    heap_pointer_t pointer = allocator_action_req[allocator_id].free.pointer;
+    heap_request_t heap_req = ordered_heap_requests[pointer].req;
+    heap_req.type = eHeapRequestFree;
+
+    if(ordered_heap_requests[pointer].alloced == false)
+    {
+        fault_unalloc_free = true;
+        free_error = true;
+        return;
+    }
+    
+    if(ordered_heap_requests[pointer].freed == true)
+    {
+        fault_double_free = true;
+        free_error = true;
+        return;
+    }
+    
+    ordered_heap_requests[pointer].freed = true;
+    heap_mem_req[heap_id] = heap_req;
+}
+
+void clear_signals()
+{
+    allocator_id = BFAO_ALLOCATOR_ID + BFAO_ALLOCATOR_ID_OFFSET;
+    heap_id = allocator_heap_link[allocator_id];
+    page_id = 0;
+    start_free_address = NULL_POINTER;
+    free_mem_counter = 0;
+    best_fitting_start_address = NULL_POINTER;
+    best_fitting_length = 0;
+    allocate_best_fit = false;
+    request_page = false;
+    start_alloc = false;
+    blocks_checked = 0;
+}
+
+
+
+</declaration>
+		<location id="id92" x="476" y="-374">
+			<name x="493" y="-383">allocate</name>
+			<committed/>
+		</location>
+		<location id="id93" x="476" y="-77">
+			<name x="493" y="-85">error</name>
+		</location>
+		<location id="id94" x="-433" y="68">
+			<name x="-416" y="76">wait_for_trace</name>
+		</location>
+		<location id="id95" x="-697" y="68">
+			<name x="-731" y="85">wait_init</name>
+		</location>
+		<location id="id96" x="476" y="68">
+			<name x="493" y="59">free</name>
+			<committed/>
+		</location>
+		<location id="id97" x="-136" y="68">
+			<name x="-195" y="85">action_signaled</name>
+			<committed/>
+		</location>
+		<location id="id98" x="476" y="-221">
+			<name x="331" y="-213">processing_alloc</name>
+			<committed/>
+		</location>
+		<location id="id99" x="901" y="-221">
+			<name x="816" y="-255">retrieved_page_info</name>
+			<committed/>
+		</location>
+		<init ref="id95"/>
+		<transition id="id100">
+			<source ref="id96"/>
+			<target ref="id93"/>
+			<label kind="guard" x="306" y="-26">free_error</label>
+			<label kind="synchronisation" x="229" y="-9">allocator_error[allocator_id]!</label>
+		</transition>
+		<transition id="id101">
+			<source ref="id92"/>
+			<target ref="id94"/>
+			<label kind="synchronisation" x="-51" y="-417">process_heap_req[heap_id]!</label>
+			<label kind="assignment" x="-17" y="-400">clear_signals()</label>
+			<nail x="-433" y="-374"/>
+		</transition>
+		<transition id="id102">
+			<source ref="id98"/>
+			<target ref="id92"/>
+			<label kind="guard" x="484" y="-315">start_alloc &amp;&amp; !alloc_error</label>
+		</transition>
+		<transition id="id103">
+			<source ref="id98"/>
+			<target ref="id93"/>
+			<label kind="guard" x="306" y="-162">alloc_error</label>
+			<label kind="synchronisation" x="229" y="-145">allocator_error[allocator_id]!</label>
+		</transition>
+		<transition id="id104">
+			<source ref="id99"/>
+			<target ref="id98"/>
+			<label kind="assignment" x="603" y="-170">page_info := page_info_req[heap_id],
+process_alloc(),
+page_id++</label>
+			<nail x="900" y="-170"/>
+			<nail x="594" y="-170"/>
+		</transition>
+		<transition id="id105">
+			<source ref="id98"/>
+			<target ref="id99"/>
+			<label kind="guard" x="501" y="-272">!start_alloc &amp;&amp; request_page &amp;&amp; !alloc_error</label>
+			<label kind="synchronisation" x="501" y="-255">get_page_info[heap_id][page_id]!</label>
+		</transition>
+		<transition id="id106">
+			<source ref="id96"/>
+			<target ref="id94"/>
+			<label kind="guard" x="493" y="93">!free_error</label>
+			<label kind="synchronisation" x="-51" y="118">process_heap_req[heap_id]!</label>
+			<label kind="assignment" x="-8" y="135">clear_signals()</label>
+			<nail x="476" y="101"/>
+			<nail x="476" y="161"/>
+			<nail x="-433" y="161"/>
+		</transition>
+		<transition id="id107">
+			<source ref="id97"/>
+			<target ref="id98"/>
+			<label kind="guard" x="-118" y="-246">allocator_action_req[allocator_id].type == eAllocatorActionAlloc</label>
+			<label kind="assignment" x="68" y="-212">request_page := true</label>
+			<nail x="-136" y="-221"/>
+			<nail x="349" y="-221"/>
+		</transition>
+		<transition id="id108">
+			<source ref="id97"/>
+			<target ref="id96"/>
+			<label kind="guard" x="-59" y="42">allocator_action_req[allocator_id].type == eAllocatorActionFree</label>
+			<label kind="assignment" x="161" y="76">process_free()</label>
+			<nail x="-119" y="68"/>
+			<nail x="272" y="68"/>
+		</transition>
+		<transition id="id109">
+			<source ref="id94"/>
+			<target ref="id97"/>
+			<label kind="synchronisation" x="-425" y="42">process_alloc_action[allocator_id]?</label>
+		</transition>
+		<transition id="id110">
+			<source ref="id95"/>
+			<target ref="id94"/>
+			<label kind="synchronisation" x="-629" y="26">init_allocators?</label>
+			<label kind="assignment" x="-629" y="43">clear_signals()</label>
+		</transition>
+	</template>
+	<template>
+		<name>global_heap_state</name>
+		<location id="id111" x="-323" y="0">
+			<urgent/>
+		</location>
+		<location id="id112" x="110" y="0">
+			<name x="93" y="17">ready</name>
+		</location>
+		<location id="id113" x="331" y="0">
+			<name x="314" y="17">error</name>
+		</location>
+		<location id="id114" x="-586" y="0">
+			<urgent/>
+		</location>
+		<location id="id115" x="-110" y="0">
+			<urgent/>
+		</location>
+		<location id="id116" x="-833" y="0">
+			<name x="-867" y="17">init_mem</name>
+		</location>
+		<init ref="id116"/>
+		<transition id="id117">
+			<source ref="id116"/>
+			<target ref="id114"/>
+			<label kind="synchronisation" x="-782" y="-25">allocators_ready?</label>
+		</transition>
+		<transition id="id118">
+			<source ref="id115"/>
+			<target ref="id112"/>
+			<label kind="synchronisation" x="-93" y="-25">heap_ready_for_alloc!</label>
+		</transition>
+		<transition id="id119">
+			<source ref="id111"/>
+			<target ref="id115"/>
+			<label kind="synchronisation" x="-289" y="-25">init_heap_pages!</label>
+		</transition>
+		<transition id="id120">
+			<source ref="id112"/>
+			<target ref="id113"/>
+			<label kind="synchronisation" x="144" y="-25">global_heap_error?</label>
+		</transition>
+		<transition id="id121">
+			<source ref="id114"/>
+			<target ref="id111"/>
+			<label kind="synchronisation" x="-544" y="-25">init_heap_interfaces!</label>
+			<nail x="-468" y="0"/>
+		</transition>
+	</template>
+	<template>
+		<name>heap_state</name>
+		<parameter>heap_id_range_t HEAP_ID</parameter>
+		<location id="id122" x="314" y="17">
+			<name x="297" y="34">ready</name>
+		</location>
+		<location id="id123" x="773" y="17">
+			<name x="756" y="34">error</name>
+		</location>
+		<location id="id124" x="51" y="17">
+			<name x="17" y="34">wait_init</name>
+		</location>
+		<location id="id125" x="552" y="17">
+			<name x="493" y="34">error_received</name>
+			<committed/>
+		</location>
+		<init ref="id124"/>
+		<transition id="id126">
+			<source ref="id125"/>
+			<target ref="id123"/>
+			<label kind="synchronisation" x="586" y="-8">global_heap_error!</label>
+		</transition>
+		<transition id="id127">
+			<source ref="id124"/>
+			<target ref="id122"/>
+			<label kind="synchronisation" x="93" y="-8">heap_ready_for_alloc?</label>
+		</transition>
+		<transition id="id128">
+			<source ref="id122"/>
+			<target ref="id125"/>
+			<label kind="synchronisation" x="348" y="-8">heap_error[HEAP_ID]?</label>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">heap_interface</name>
+		<parameter>heap_id_range_t HEAP_ID</parameter>
+		<declaration>// --- TYPEDEFS ---
+typedef struct {
+    uint_t required_memory;
+    uint_t reserved_memory;
+    uint_t max_required_memory;
+    uint_t max_reserved_memory;
+    uint_t action_count;
+    uint_t alloc_action_count;
+    heap_request_type_t request_type;
+} WJ_fragmentation_info_t;
+
+// --- VARIABLES ---
+heap_request_t heap_request;
+page_id_range_t page_start = 0; // First page of the request
+page_id_range_t page_end = 0; // Last page of the request
+page_iterator_t page_span = 0; // The amount of pages that have to be processed
+page_iterator_t page_counter = 0; // The amount of pages we've processed
+page_iterator_t page_num = 0; // The exact page that's being processed
+uint_t requests_served = 0; // Tracker for served requests
+
+// Tracker for the allocated/free memory of the heap request.
+allocation_t memory_tracker = EMPTY_ALLOCATION;
+
+bool fault_memory_mismatch = false;
+
+// --- FUNCTIONS ---
+void init_heap_interface()
+{
+    heap_pages[HEAP_ID].last_non_free_page = 0;
+    heap_free_memory_HV[HEAP_ID] = HEAP_SIZE;
+    heap_free_memory_PV[HEAP_ID] = 0; 
+    heap_free_memory_BV[HEAP_ID] = 0;         // There's no allocated bytes, so there's no free memory between allocation and the start of the heap.
+}
+
+void reset_request()
+{
+    // Reset memory for next action
+    memory_tracker = EMPTY_ALLOCATION;
+}
+
+void process_heap_request()
+{
+    heap_request = heap_mem_req[HEAP_ID];
+    page_start = heap_request.range.start_address / PAGE_SIZE; // Starting address lies in starting page, so starting page is FLOOR(Start Address of request (some page) / PageSize)
+    page_end = heap_request.range.end_address / PAGE_SIZE;     // Ending address lies in ending page, Ending page is FLOOR(End Address of request in some page / PageSize)
+    page_span = page_end - page_start + 1; // Number of pages = END - START + 1
+    page_counter = 0;
+    page_num = page_start;
+}
+
+void setup_page_request()
+{
+    heap_pointer_t page_start_address = (page_num) * PAGE_SIZE;
+    heap_pointer_t end_address_page = page_start_address + PAGE_SIZE - 1;
+    heap_pointer_t start_address = NULL_POINTER;
+    heap_pointer_t end_address = NULL_POINTER;
+    heap_pointer_t end_address_non_padded = NULL_POINTER;
+    uint_t size = 0, padding = 0;
+    
+    // First page being processed might not start at the beginning of page
+    if(page_counter == 0)
+    {
+        start_address = heap_request.range.start_address;
+    }
+    else
+    {
+        start_address = page_start_address;
+    }
+    
+    // If there's another page we can allocate start address to end address of page. Else we're on the last page.
+    if(end_address_page &lt; heap_request.range.end_address)
+    {
+           size = end_address_page - start_address + 1;
+    }
+    else
+    {
+           size = heap_request.range.end_address - start_address + 1;
+    }
+    
+    // We're doing the whole +1/-1 so the size calculations for requested/allocated memory are straight forward.
+    end_address = start_address + size - 1;
+    
+    // We can check if a page contains any padded memory by checking if the end address of the page requests extends beyond the last requested byte.
+    end_address_non_padded = heap_request.range.end_address - heap_request.info.padded_memory;
+    
+    // We have padding if true.
+    if(end_address &gt; end_address_non_padded)
+    {
+        // Either we have a page which is entirely in the "padded" address range, or some part of the end is padding.
+        if(start_address &gt; end_address_non_padded)
+        {
+            padding = end_address - start_address;
+        }
+        else
+        {
+            padding = end_address - end_address_non_padded;
+        }
+    }
+    
+    page_mem_req[HEAP_ID].type = heap_request.type;
+    page_mem_req[HEAP_ID].info.requested_memory = size - padding;
+    page_mem_req[HEAP_ID].info.allocated_memory = size;
+    page_mem_req[HEAP_ID].info.padded_memory = padding;
+    page_mem_req[HEAP_ID].range.start_address = start_address;
+    page_mem_req[HEAP_ID].range.end_address = end_address;
+    
+    // Keep track how much memory this specific page adds to the total request.
+    memory_tracker.requested_memory += page_mem_req[HEAP_ID].info.requested_memory;
+    memory_tracker.allocated_memory += page_mem_req[HEAP_ID].info.allocated_memory;
+    memory_tracker.padded_memory += page_mem_req[HEAP_ID].info.padded_memory;
+}
+
+// Performed after all of the pages have been processed. The pages update the memory history.
+void update_extremes(allocation_t allocation_req,
+                        memory_history_t mem_history, 
+                        memory_history_extremes_t&amp; extremes,
+                        bool&amp; refresh_requested,
+                        bool&amp; refresh_allocated,
+                        bool&amp; refresh_page)
+{
+    uint_t size_requested = allocation_req.requested_memory;
+    uint_t size_allocated = allocation_req.allocated_memory;
+    uint_t size_padded = allocation_req.padded_memory;
+
+    uint_t memory_allocated = mem_history.live_allocated_memory;
+    uint_t memory_requested = mem_history.live_requested_memory;
+    uint_t memory_padded = mem_history.live_padded_memory;
+    uint_t memory_page = mem_history.live_page_memory;
+
+    // Keep track of sizes in heap requests
+    if(size_requested &gt; extremes.max_requested_size)
+    {
+        extremes.max_requested_size = size_requested;
+    }
+    
+    if(size_allocated &gt; extremes.max_allocated_size)
+    {
+        extremes.max_allocated_size = size_allocated;
+    }
+    
+    if(memory_padded &gt; extremes.max_padded_size)
+    {
+        extremes.max_padded_size = memory_padded;
+    }
+    
+    if(size_requested &lt; extremes.min_requested_size || extremes.min_requested_size == 0)
+    {
+        extremes.min_requested_size = size_requested;
+    }
+    
+    if(size_allocated &lt; extremes.min_allocated_size || extremes.min_allocated_size == 0)
+    {
+        extremes.min_allocated_size = size_allocated;
+    }
+    
+    if(size_padded &lt; extremes.min_padded_size || extremes.min_padded_size == 0)
+    {
+        extremes.min_padded_size = size_padded;
+    }
+    
+    // Keep track of peaks in the live memory
+    // We use the refreshes in later on to determine whether a fragmentation value should be recalculated due to new extremes.
+    // Even if a value is the same, because some methods require that. Whether it is handled is determined by the frag method itself.
+    if(memory_requested &gt;= extremes.max_requested_memory)
+    {
+        extremes.max_requested_memory = memory_requested;
+        refresh_requested = true;
+    }
+
+    if(memory_allocated &gt;= extremes.max_allocated_memory)
+    {
+        extremes.max_allocated_memory = memory_allocated;
+        refresh_allocated = true;
+    }
+
+    if(memory_padded &gt;= extremes.max_padded_memory)
+    {
+        extremes.max_padded_memory = memory_padded;
+    }
+
+    if(memory_page &gt;= extremes.max_page_memory)
+    {
+        extremes.max_page_memory = memory_page;
+        refresh_page = true;
+    }
+}
+
+void update_frag_WJ(WJ_fragmentation_info_t frag_info,
+                            WJ_fragmentation_t&amp; frag_data, 
+                            WJ_fragmentation_util_t&amp; frag_util,
+                            bool refresh_required,
+                            bool refresh_reserved)
+{
+    // New required value, recalculate its variants.
+    if(refresh_required)
+    {
+        // If new value, reset counters, else we have another peak for the same max
+        if(frag_info.required_memory &gt; frag_util.method_required_max_req_mem)
+        {
+            frag_util.method_required_max_req_mem = frag_info.required_memory;
+            frag_util.method_required_max_res_mem_upper = frag_info.reserved_memory;
+            frag_util.method_required_max_res_mem_lower = frag_info.reserved_memory;
+            frag_util.method_required_action_count_upper = frag_info.action_count;
+            frag_util.method_required_action_count_lower = frag_info.action_count;
+            frag_util.method_required_peak_count = 1;
+        }
+        else
+        {
+             if(frag_info.reserved_memory &gt; frag_util.method_required_max_res_mem_upper)
+            {
+                frag_util.method_required_max_res_mem_upper = frag_info.reserved_memory;
+                frag_util.method_required_action_count_upper = frag_info.action_count;
+            }
+
+            if(frag_info.reserved_memory &lt; frag_util.method_required_max_res_mem_lower)
+            {
+                frag_util.method_required_max_res_mem_lower = frag_info.reserved_memory;
+                frag_util.method_required_action_count_lower = frag_info.action_count;
+            }
+
+            frag_util.method_required_peak_count++;
+        }
+
+        // The upper, lower, avg variants for required memory peaks.
+        frag_data.frag_method_required_upper = frag_util.method_required_max_res_mem_upper * 100 / frag_util.method_required_max_req_mem;
+        frag_data.frag_method_required_lower = frag_util.method_required_max_res_mem_lower * 100 / frag_util.method_required_max_req_mem;
+        frag_data.frag_method_required_avg = (frag_data.frag_method_required_avg * (frag_util.method_required_peak_count - 1)  + frag_info.reserved_memory * 100 / frag_info.required_memory) / frag_util.method_required_peak_count;
+    }
+    
+    // New reserved value, recalculate its variants.
+    if(refresh_reserved)
+    {
+        // If new value, reset counters, else we have another peak for the same max
+        if(frag_info.reserved_memory &gt; frag_util.method_reserved_max_res_mem)
+        {
+            frag_util.method_reserved_max_res_mem = frag_info.reserved_memory;
+            frag_util.method_reserved_max_req_mem_upper = frag_info.required_memory;
+            frag_util.method_reserved_max_req_mem_lower = frag_info.required_memory;
+            frag_util.method_reserved_action_count_upper = frag_info.action_count;
+            frag_util.method_reserved_action_count_lower = frag_info.action_count;
+            frag_util.method_reserved_peak_count = 1;
+        }
+        else
+        {
+            if(frag_info.required_memory &gt; frag_util.method_reserved_max_req_mem_upper)
+            {
+                frag_util.method_reserved_max_req_mem_upper = frag_info.required_memory;
+                frag_util.method_reserved_action_count_upper = frag_info.action_count;
+            }
+
+            if(frag_info.required_memory &lt; frag_util.method_reserved_max_req_mem_lower)
+            {
+                frag_util.method_reserved_max_req_mem_lower = frag_info.required_memory;
+                frag_util.method_reserved_action_count_lower = frag_info.action_count;
+            }
+            frag_util.method_reserved_peak_count++;
+        }
+        
+        // The upper, lower, avg variants for reserved memory peaks.
+        frag_data.frag_method_reserved_upper = frag_util.method_reserved_max_res_mem * 100 / frag_util.method_reserved_max_req_mem_upper;
+        frag_data.frag_method_reserved_lower = frag_util.method_reserved_max_res_mem * 100 / frag_util.method_reserved_max_req_mem_lower;
+        frag_data.frag_method_reserved_avg = (frag_data.frag_method_reserved_avg * (frag_util.method_reserved_peak_count - 1)  + frag_info.reserved_memory * 100 / frag_info.required_memory) / frag_util.method_reserved_peak_count;
+    }
+    
+    // Recalculate the max variant, we log the max peaks anyway.
+    frag_data.frag_method_max = frag_info.max_reserved_memory * 100 / frag_info.max_required_memory;
+    if(frag_info.request_type == eHeapRequestAlloc)
+    {
+        frag_data.frag_method_avg_alloc = (frag_data.frag_method_avg_alloc * (frag_info.alloc_action_count - 1)  + frag_info.reserved_memory * 100 / frag_info.required_memory) / frag_info.alloc_action_count;
+    }
+
+    // If we don't have any memory, we can't measure fragmentation. Do not log change.
+    if(frag_info.required_memory &gt; 0)
+    {
+        frag_util.method_avg_non_zero_action_count++;
+        frag_data.frag_method_avg_any = (frag_data.frag_method_avg_any * (frag_util.method_avg_non_zero_action_count - 1)  + frag_info.reserved_memory * 100 / frag_info.required_memory) / frag_util.method_avg_non_zero_action_count;
+    }
+}
+
+// Calculate relative internal fragmentation
+void update_frag_int_relative(uint_t&amp; int_relative, uint_t padded_mem, uint_t alloc_mem)
+{
+    int32_t frag = 0;
+    frag = alloc_mem &gt; 0 ? padded_mem * 100 / alloc_mem : 0; // Without any memory, there's no fragmentation.
+    frag = frag &lt;? 100; // round down
+    frag = frag &gt;? 0; // round up
+    int_relative = frag;
+}
+
+// Calculate LFB-type fragmentation
+void update_frag_LFB(uint_t&amp; frag_LFB, block_pointer_t largest_block, uint_t free_memory)
+{
+    int32_t frag = 0;
+    // Can't have fragmentation without free memory.
+    if(free_memory == 0 || largest_block == EMPTY_BLOCK_POINTER)
+    {
+        frag = 0;
+    }
+    else
+    {
+        frag = 100 - largest_block.size * 100 / free_memory;
+        frag = frag &lt;? 100; // round down
+        frag = frag &gt;? 0; // round up
+    }
+    frag_LFB = frag;
+}
+
+// Calculate relative external fragmentation
+void update_frag_ext_relative(uint_t&amp; ext_relative, uint_t required_mem, uint_t reserved_mem)
+{
+    int32_t frag = 0;
+    if(reserved_mem == 0)
+    {
+        frag = 0;
+    }
+    else
+    {
+        frag = 100 - required_mem * 100 / reserved_mem;
+        frag = frag &lt;? 100; // round down
+        frag = frag &gt;? 0; // round up
+    }
+    ext_relative = frag;
+}
+
+// Functional check to assure that there's no mismatch between whatever an allocator requested, and what has been processed.
+// If invalid, there's invalid behavior of the model. Quite useful for debugging allocators at the start.
+void validate_memory()
+{
+    bool requested_match = memory_tracker.requested_memory == heap_request.info.requested_memory;
+    bool allocated_match = memory_tracker.allocated_memory == heap_request.info.allocated_memory;
+    bool padded_match = memory_tracker.padded_memory == heap_request.info.padded_memory;
+    
+    fault_memory_mismatch = !requested_match || !allocated_match || !padded_match;
+}
+
+// NOTE: Run before calculating fragmentation
+// Determine the largest blocks for the different views.
+// This is also explained a bit more in the memory_page template.
+void update_block_stats()
+{    
+    // Note: The last active page should be checked. This is the last page which is partially or completely allocated.
+    // Pages which are present between allocated pages are seen as allocated pages as to maintain a contiguous memory range.
+    // Require feature which allows seeing page total memory as all pages upto last page, or only (partially) allocated pages until the last page.
+    // Maybe an array or setting in page states or w/e to show whether a page is included in the allocated page range. Then you can also turn them always on, allowing to view it compared to all memory available.
+    block_pointer_t largest_block = EMPTY_BLOCK_POINTER, 
+                    multi_block = EMPTY_BLOCK_POINTER, 
+                    prev_largest_block = EMPTY_BLOCK_POINTER, 
+                    post_alloc_block = EMPTY_BLOCK_POINTER, 
+                    largest_block_BV = EMPTY_BLOCK_POINTER, 
+                    largest_block_PV = EMPTY_BLOCK_POINTER, 
+                    largest_block_HV = EMPTY_BLOCK_POINTER;
+    
+    page_iterator_t page_id = 0;
+    uint_t post_alloc_free_mem = 0;
+    heap_pointer_t post_alloc_address_start, post_alloc_address_end;
+    bool is_multi_page = false;
+    page_blocks_t page_block;
+    bool largest_last, largest_first, last_page;
+    bool next_largest_not_first;
+    bool page_free;
+    
+    while(page_id &lt;= heap_pages[HEAP_ID].last_non_free_page)
+    {
+        page_block = heap_pages[HEAP_ID].blocks[page_id];
+        page_free = page_block.page_state == eFree;
+        last_page = page_id == heap_pages[HEAP_ID].last_non_free_page;
+        
+        largest_first = equal_block_pointers(page_block.start, page_block.largest);
+        largest_last = equal_block_pointers(page_block.end, page_block.largest);
+        
+        if(is_multi_page)
+        {
+            if(page_block.page_state == eFree)
+            {
+                extend_block_pointer(multi_block, page_block.start);
+            }
+            else if(page_block.start_free)
+            {
+                extend_block_pointer(multi_block, page_block.start);
+            }
+            
+            if(page_free == false)
+            {
+                is_multi_page = false;
+                if(is_block_pointer_larger(multi_block, largest_block))
+                {
+                    prev_largest_block = largest_block;
+                    largest_block = multi_block;
+                }
+                
+                if(largest_last == false &amp;&amp; is_block_pointer_larger(page_block.largest, largest_block))
+                {
+                    prev_largest_block = largest_block;
+                    largest_block = page_block.largest;
+                }
+                
+                if(page_block.end_free)
+                {
+                    is_multi_page = true;
+                    multi_block = page_block.end;
+                }
+            }
+        }
+        // Found a free page, without previously existing allocations, then see it as an entire block.
+        else if(page_block.page_state == eFree)
+        {
+            is_multi_page = true;
+            multi_block = page_block.start;
+        }
+        else
+        {
+            // No matter the case, the last block is seen as the start of a multi-block. If it's the last page, we handle it later anyway.
+            // In case we still have a larger block on this page that's not the last block , we can still handle it though.
+            if(largest_last == false &amp;&amp; is_block_pointer_larger(page_block.largest, largest_block))
+            {
+                prev_largest_block = largest_block;
+                largest_block = page_block.largest;
+            }
+
+            if(page_block.end_free)
+            {
+                is_multi_page = true;
+                multi_block = page_block.end;
+            }
+        }
+        
+        // Last page handling is more complex, separated
+        if(is_multi_page &amp;&amp; last_page)
+        {
+            // Last handling of blocks, if it's the largest one, set it.
+            if(is_block_pointer_larger(multi_block, largest_block))
+            {
+                prev_largest_block = largest_block;
+                largest_block = multi_block;
+            }
+            
+            // For byte resolution we look at all blocks up to the last allocated block: the last allocated block on the last allocated page.
+            // If on that page, the free memory after that allocation has to be ignored. 
+            // That free memory is either non-existent (full page), or is the last block on the page because it will always be from somewhere in the page until the end of the page 
+            // (otherwise there would still be allocated memory, causing it to not be the last block).
+            if(page_block.end_free &amp;&amp; equal_block_pointers(largest_block, page_block.end))
+            {
+                // If ANY previous free blocks have been found, pick the largest one that we previously retrieved.
+                // Else, get the largest free block on this page that's not the ending one. If that one is also an empty block pointer there were no free blocks in the first place.
+                // This last scenario can only exist if we have a completely contiguous allocation range.
+                if(prev_largest_block != EMPTY_BLOCK_POINTER)
+                {
+                    largest_block_BV = prev_largest_block;
+                }
+                else 
+                {
+                    largest_block_BV = page_block.largest_BV;
+                } 
+                
+            }
+            else
+            {
+                largest_block_BV = largest_block;
+            }
+            
+            // For page resolution it is straight-forward, the largest free blocks on all allocated pages
+            largest_block_PV = largest_block;
+            
+            if(page_id != LAST_PAGE_HEAP)
+            {
+                // Need to get all memory post last allocation to assure that there's no larger block for heap resolution.
+                // LAST_PAGE_HEAP - page_id is the diff in pages that are not included in page view
+                post_alloc_free_mem = (LAST_PAGE_HEAP - page_id) * PAGE_SIZE;
+                post_alloc_address_start = page_start_address(page_id + 1);
+                post_alloc_address_end = page_end_address(LAST_PAGE_HEAP);
+
+                if(multi_block.address_end + 1 == post_alloc_address_start)
+                {
+                    post_alloc_address_start = multi_block.address_start;
+                    post_alloc_free_mem += multi_block.size;
+                }
+
+                // For heap resolution we still only need to look up to the last allocated page. 
+                // The rest of the free memory consist of the last free block on that page, and all free memory of the pages after that last allocated page.
+                if(post_alloc_free_mem &gt; largest_block.size)
+                {
+
+                    post_alloc_block.address_start = post_alloc_address_start;
+                    post_alloc_block.address_end = post_alloc_address_end;
+                    post_alloc_block.page_start = page_id;
+                    post_alloc_block.page_end = LAST_PAGE_HEAP;
+                    post_alloc_block.size = post_alloc_free_mem;
+                    
+                    // For clarity
+                    largest_block = post_alloc_block;
+                }
+            }
+
+            // Just update this everytime we process a page. As long as it's processed entirely on the final page.
+            largest_block_HV = largest_block;         
+        }
+        
+        page_id++;
+    }
+    
+    if(heap_pages[HEAP_ID].last_non_free_page == NULL_POINTER)
+    {
+        largest_block_BV = EMPTY_BLOCK_POINTER;
+        largest_block_PV = EMPTY_BLOCK_POINTER;
+        largest_block_HV = EMPTY_BLOCK_POINTER;        
+    }
+    
+    heap_pages[HEAP_ID].largest_free_block_BV = largest_block_BV;    
+    heap_pages[HEAP_ID].largest_free_block_PV = largest_block_PV;    
+    heap_pages[HEAP_ID].largest_free_block_HV = largest_block_HV;    
+}
+
+// Calculate fragmentation and memory extremes
+void update_heap_stats()
+{
+    bool refresh_requested = false, refresh_allocated = false, refresh_page = false;
+    WJ_fragmentation_info_t frag_info;
+
+    // Update extremes before WJ fragmentation to use most recent extremes.
+    // Note that the extremes only change when we have an allocation.        
+    update_extremes(memory_tracker, heap_memory[HEAP_ID], heap_memory_extremes[HEAP_ID], refresh_requested, refresh_allocated, refresh_page);
+
+    frag_info.action_count = action_count;
+    frag_info.alloc_action_count = alloc_action_count;
+    frag_info.request_type = heap_mem_req[HEAP_ID].type;
+
+    // Method: WJ Variant - requested &amp; allocated
+    frag_info.required_memory = heap_memory[HEAP_ID].live_requested_memory;
+    frag_info.reserved_memory = heap_memory[HEAP_ID].live_allocated_memory;
+    frag_info.max_required_memory = heap_memory_extremes[HEAP_ID].max_requested_memory;
+    frag_info.max_reserved_memory = heap_memory_extremes[HEAP_ID].max_allocated_memory;
+
+    update_frag_WJ(frag_info,
+                    frag_int_WJ[HEAP_ID],
+                    frag_int_WJ_util[HEAP_ID],  
+                    refresh_requested,
+                    refresh_allocated);
+
+    // Method: WJ Variant - requested &amp; page
+    frag_info.required_memory = heap_memory[HEAP_ID].live_requested_memory;
+    frag_info.reserved_memory = heap_memory[HEAP_ID].live_page_memory;
+    frag_info.max_required_memory = heap_memory_extremes[HEAP_ID].max_requested_memory;
+    frag_info.max_reserved_memory = heap_memory_extremes[HEAP_ID].max_page_memory;
+
+    update_frag_WJ(frag_info,
+                    frag_ext_WJ_req[HEAP_ID],
+                    frag_ext_WJ_req_util[HEAP_ID],  
+                    refresh_requested,
+                    refresh_page);
+
+    // Method: WJ Variant - allocated &amp; page
+    frag_info.required_memory = heap_memory[HEAP_ID].live_allocated_memory;
+    frag_info.reserved_memory = heap_memory[HEAP_ID].live_page_memory;
+    frag_info.max_required_memory = heap_memory_extremes[HEAP_ID].max_allocated_memory;
+    frag_info.max_reserved_memory = heap_memory_extremes[HEAP_ID].max_page_memory;
+
+    update_frag_WJ(frag_info,
+                    frag_ext_WJ_alloc[HEAP_ID],
+                    frag_ext_WJ_alloc_util[HEAP_ID],  
+                    refresh_allocated,
+                    refresh_page);
+
+    // Method: Relative Internal fragmentation
+    update_frag_int_relative(frag_int_relative[HEAP_ID], heap_memory[HEAP_ID].live_padded_memory, heap_memory[HEAP_ID].live_allocated_memory);
+    
+    // Method: Relative external fragmentation
+    update_frag_ext_relative(frag_ext_relative_BV[HEAP_ID], heap_memory[HEAP_ID].live_allocated_memory, heap_memory[HEAP_ID].live_allocated_memory + heap_free_memory_BV[HEAP_ID]);
+    update_frag_ext_relative(frag_ext_relative_PV[HEAP_ID], heap_memory[HEAP_ID].live_allocated_memory, heap_memory[HEAP_ID].live_page_memory);
+    update_frag_ext_relative(frag_ext_relative_HV[HEAP_ID], heap_memory[HEAP_ID].live_allocated_memory, HEAP_SIZE);
+
+    // Method: LFB (byte-view, page-view, heap-view)
+    update_frag_LFB(frag_LFB_BV[HEAP_ID], heap_pages[HEAP_ID].largest_free_block_BV, heap_free_memory_BV[HEAP_ID]);
+    update_frag_LFB(frag_LFB_PV[HEAP_ID], heap_pages[HEAP_ID].largest_free_block_PV, heap_free_memory_PV[HEAP_ID]);
+    update_frag_LFB(frag_LFB_HV[HEAP_ID], heap_pages[HEAP_ID].largest_free_block_HV, heap_free_memory_HV[HEAP_ID]);
+
+    // Method: Checking presence of fragmentation
+    // For internal: Padded memory indicates internal fragmentation, this is independent from any views.
+    frag_presence_int[HEAP_ID] = heap_memory[HEAP_ID].live_padded_memory != 0;
+
+    // For external: Check whether largest free block is the same size as the free memory, if not, there's external fragmentation.
+    frag_presence_ext_BV[HEAP_ID] = heap_pages[HEAP_ID].largest_free_block_BV.size != heap_free_memory_BV[HEAP_ID];
+    frag_presence_ext_PV[HEAP_ID] = heap_pages[HEAP_ID].largest_free_block_PV.size != heap_free_memory_PV[HEAP_ID];
+    frag_presence_ext_HV[HEAP_ID] = heap_pages[HEAP_ID].largest_free_block_HV.size != heap_free_memory_HV[HEAP_ID] &amp;&amp; heap_pages[HEAP_ID].largest_free_block_HV != EMPTY_BLOCK_POINTER;
+
+    // For any fragmentation for a specific view: check whether there's any type of fragmentation present for that view.
+    // frag_presence_BV[HEAP_ID] = frag_presence_int[HEAP_ID] || frag_presence_BV[HEAP_ID];
+    // frag_presence_PV[HEAP_ID] = frag_presence_int[HEAP_ID] || frag_presence_PV[HEAP_ID];
+    // frag_presence_HV[HEAP_ID] = frag_presence_int[HEAP_ID] || frag_presence_HV[HEAP_ID];
+
+    // CORRECTION: The above annotation was used during the benchmark. 
+    // However, frag_presence_(B/P/H)V is a tracking variable, and is not used in logic. Furthermore, it is not tracked in the benchmark
+    // The below notation is the corrected version, which does pass validation fully.
+    frag_presence_BV[HEAP_ID] = frag_presence_int[HEAP_ID] || frag_presence_ext_BV[HEAP_ID];
+    frag_presence_PV[HEAP_ID] = frag_presence_int[HEAP_ID] || frag_presence_ext_PV[HEAP_ID];
+    frag_presence_HV[HEAP_ID] = frag_presence_int[HEAP_ID] || frag_presence_ext_HV[HEAP_ID];
+}</declaration>
+		<location id="id129" x="153" y="-331">
+			<name x="136" y="-365">error</name>
+		</location>
+		<location id="id130" x="153" y="-42">
+			<name x="-17" y="-34">processing_heap_req</name>
+			<urgent/>
+		</location>
+		<location id="id131" x="-535" y="-42">
+			<name x="-569" y="-25">wait_init</name>
+		</location>
+		<location id="id132" x="-212" y="-42">
+			<name x="-272" y="-25">wait_for_action</name>
+		</location>
+		<location id="id133" x="493" y="-42">
+			<name x="519" y="-51">processing_page_req</name>
+			<urgent/>
+		</location>
+		<location id="id134" x="-212" y="-229">
+			<name x="-246" y="-263">processed</name>
+			<committed/>
+		</location>
+		<location id="id135" x="153" y="-229">
+			<name x="170" y="-238">memory_check</name>
+			<committed/>
+		</location>
+		<init ref="id131"/>
+		<transition id="id136">
+			<source ref="id135"/>
+			<target ref="id134"/>
+			<label kind="guard" x="-102" y="-289">!fault_memory_mismatch</label>
+			<label kind="assignment" x="-101" y="-272">update_block_stats(),
+update_heap_stats()</label>
+		</transition>
+		<transition id="id137">
+			<source ref="id135"/>
+			<target ref="id129"/>
+			<label kind="guard" x="170" y="-289">fault_memory_mismatch</label>
+			<label kind="synchronisation" x="170" y="-272">heap_error[HEAP_ID]!</label>
+		</transition>
+		<transition id="id138">
+			<source ref="id133"/>
+			<target ref="id129"/>
+			<label kind="synchronisation" x="510" y="-178">heap_error[HEAP_ID]?</label>
+			<nail x="493" y="-331"/>
+		</transition>
+		<transition id="id139">
+			<source ref="id130"/>
+			<target ref="id135"/>
+			<label kind="guard" x="161" y="-170">page_counter == page_span</label>
+			<label kind="assignment" x="161" y="-153">validate_memory()</label>
+		</transition>
+		<transition id="id140">
+			<source ref="id133"/>
+			<target ref="id130"/>
+			<label kind="synchronisation" x="204" y="42">page_request_done[HEAP_ID]?</label>
+			<label kind="assignment" x="204" y="59">page_counter++,
+page_num = page_start + page_counter</label>
+			<nail x="493" y="34"/>
+			<nail x="153" y="34"/>
+		</transition>
+		<transition id="id141">
+			<source ref="id130"/>
+			<target ref="id133"/>
+			<label kind="guard" x="187" y="-42">page_counter &lt; page_span</label>
+			<label kind="synchronisation" x="187" y="-25">process_page_req[HEAP_ID][page_num]!</label>
+			<label kind="assignment" x="187" y="-8">setup_page_request()</label>
+		</transition>
+		<transition id="id142">
+			<source ref="id134"/>
+			<target ref="id132"/>
+			<label kind="synchronisation" x="-433" y="-161">heap_request_done[HEAP_ID]!</label>
+			<label kind="assignment" x="-433" y="-144">requests_served++,
+reset_request()</label>
+			<nail x="-212" y="-59"/>
+		</transition>
+		<transition id="id143">
+			<source ref="id132"/>
+			<target ref="id130"/>
+			<label kind="synchronisation" x="-127" y="-102">process_heap_req[HEAP_ID]?</label>
+			<label kind="assignment" x="-127" y="-85">process_heap_request(),
+page_num = page_start</label>
+		</transition>
+		<transition id="id144">
+			<source ref="id131"/>
+			<target ref="id132"/>
+			<label kind="synchronisation" x="-476" y="-85">init_heap_interfaces?</label>
+			<label kind="assignment" x="-476" y="-68">init_heap_interface()</label>
+		</transition>
+	</template>
+	<template>
+		<name>memory_page</name>
+		<parameter>heap_id_range_t HEAP_ID, page_id_range_t PAGE_ID</parameter>
+		<declaration>// --- VARIABLES ---
+int heap_id;
+heap_pointer_t start_address = NULL_POINTER;
+heap_pointer_t end_address = NULL_POINTER;
+page_request_t page_request;
+alloc_action_count_t page_action_count = 0;
+memory_history_t page_memory; // Used for retrieving page information during simulation.
+bool process_page_state = false; // Indicates whether the page has been recently allocated/freed, so we can update page memory.
+
+// Errors
+bool page_error, fault_invalid_allocation, fault_invalid_free, fault_invalid_implementation = false;
+
+// free_list_implementation
+page_info_t page_info;
+page_state_t previous_page_state;
+
+// --- FUNCTIONS ---
+void reset_blocks()
+{
+    heap_pages[HEAP_ID].blocks[PAGE_ID].start_free = false;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].end_free = false;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].start = EMPTY_BLOCK_POINTER;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].end = EMPTY_BLOCK_POINTER;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].largest = EMPTY_BLOCK_POINTER;
+}
+
+void init_page()
+{
+    int32_t i = 0;
+
+    start_address = page_start_address(PAGE_ID);
+    end_address = page_end_address(PAGE_ID);
+    
+    // Reset the free list
+    for(i : int[0, FREE_LIST_SIZE - 1])
+    {
+        page_info.free_list[i].address = 0;
+        page_info.free_list[i].length = 0;
+    }
+    page_info.page_state = eFree;
+    
+    page_info.free_list[0].address = PAGE_SIZE * PAGE_ID;
+    page_info.free_list[0].length = PAGE_SIZE;
+    page_info.free_list_size = 1;
+    previous_page_state = eFree;
+    reset_blocks();
+}
+
+// Get a block pointer from a valid range. Expects valid index, else it crashes the template.
+block_pointer_t get_block_pointer(free_list_pointer_t free_list_index)
+{
+    free_list_entry_t entry = page_info.free_list[free_list_index];
+    block_pointer_t block_pointer;
+    block_pointer.address_start = entry.address;
+    block_pointer.address_end = entry.address + entry.length - 1;
+    block_pointer.size = entry.length;
+    block_pointer.page_start = PAGE_ID;
+    block_pointer.page_end = PAGE_ID;
+    return block_pointer;
+}
+
+// We handle all the page block updates here, e.g.., all block pointers. We don't want to request block updates if the page hasn't been updated.
+// This saves alot of time in recalculating all the biggest blocks. We basically only need to know if there's a multi-block possible, or if its existing block is the largest one available.
+void refresh_block()
+{
+    free_list_indices_t i = 0;
+    bool has_start_block = false, has_end_block = false;
+    block_pointer_t block_pointer = EMPTY_BLOCK_POINTER, 
+                    start_block_pointer = EMPTY_BLOCK_POINTER, 
+                    end_block_pointer = EMPTY_BLOCK_POINTER, 
+                    largest_block_pointer = EMPTY_BLOCK_POINTER,
+                    largest_block_pointer_BV = EMPTY_BLOCK_POINTER;
+    
+    if(page_info.page_state == eAllocated)
+    {
+        reset_blocks();
+        return;
+    }
+    
+    // has_*_block is for multi-block calculations later.
+    // Whether there's a block that is possibly a neighbor of the ending block of the previous page.
+    has_start_block = get_block_pointer(0).address_start == start_address;
+
+    // Whether there's a block that is possibly a neighbor of the starting block of the next page.
+    has_end_block = get_block_pointer(page_info.free_list_size - 1).address_end == end_address;
+
+    if(has_start_block)
+    {
+        start_block_pointer = get_block_pointer(0);
+    }
+    
+    if(has_end_block)
+    {
+        end_block_pointer = get_block_pointer(page_info.free_list_size - 1);
+    }
+    
+    block_pointer = get_block_pointer(0);
+    largest_block_pointer = block_pointer;
+    
+    while(i &lt; page_info.free_list_size)
+    {
+        block_pointer = get_block_pointer(i);
+        // Always bigger block pointer, but it for sure can't be the end_block_pointer.
+        // Also make sure there's no comparison with end_block when both are EMPTY_BLOCK_POINTER
+        if(is_block_pointer_larger(block_pointer, largest_block_pointer_BV) 
+            &amp;&amp;(!has_end_block || !equal_block_pointers(block_pointer, end_block_pointer)))
+        {
+            largest_block_pointer_BV = block_pointer;
+        }
+
+        if(is_block_pointer_larger(block_pointer, largest_block_pointer))
+        {
+            largest_block_pointer = block_pointer;
+        }
+        i++;
+    }
+    
+    heap_pages[HEAP_ID].blocks[PAGE_ID].start_free = has_start_block;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].end_free = has_end_block;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].start = start_block_pointer;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].end = end_block_pointer;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].largest = largest_block_pointer;
+    heap_pages[HEAP_ID].blocks[PAGE_ID].largest_BV = largest_block_pointer_BV;
+}
+
+// Used to update the live and total memory. We use process_page_state to track whether the page has been recently freed/allocated, so we can update page memory.
+void update_memory_history(memory_history_t&amp; mem_history, heap_request_type_t type, allocation_t allocation)
+{
+    if(type == eHeapRequestAlloc)
+    {
+        mem_history.live_requested_memory += allocation.requested_memory;
+        mem_history.live_allocated_memory += allocation.allocated_memory;
+        mem_history.live_padded_memory += allocation.padded_memory;
+        mem_history.total_requested_memory += allocation.requested_memory;
+        mem_history.total_allocated_memory += allocation.allocated_memory;
+        mem_history.total_padded_memory += allocation.padded_memory;
+
+        if(process_page_state)
+        {
+            mem_history.live_page_memory = heap_pages[HEAP_ID].last_non_free_page == NULL_POINTER ? 0 : PAGE_SIZE * (heap_pages[HEAP_ID].last_non_free_page + 1);  
+            mem_history.total_page_memory += PAGE_SIZE;            
+        }
+    }
+    else if(type == eHeapRequestFree)
+    {
+        mem_history.live_requested_memory -= allocation.requested_memory;
+        mem_history.live_allocated_memory -= allocation.allocated_memory;
+        mem_history.live_padded_memory -= allocation.padded_memory;   
+
+        if(process_page_state)
+        {
+            mem_history.live_page_memory = heap_pages[HEAP_ID].last_non_free_page == NULL_POINTER ? 0 : PAGE_SIZE * (heap_pages[HEAP_ID].last_non_free_page + 1);
+        }
+    }
+    else
+    {
+        fault_invalid_implementation = true;
+        page_error = true;
+    } 
+}
+
+// Perform this after refreshing blocks and updating memory
+void update_free_memory()
+{
+    memory_history_t  mem_history = heap_memory[HEAP_ID];
+    heap_pages_t heap_page = heap_pages[HEAP_ID];
+    page_blocks_t last_page_block;
+
+    heap_free_memory_HV[HEAP_ID] = HEAP_SIZE - mem_history.live_allocated_memory;
+    heap_free_memory_PV[HEAP_ID] = heap_page.last_non_free_page == NULL_POINTER ? 0 : PAGE_SIZE * (heap_page.last_non_free_page + 1) - mem_history.live_allocated_memory;
+    heap_free_memory_BV[HEAP_ID] = heap_free_memory_PV[HEAP_ID];
+
+    
+    if(heap_free_memory_PV[HEAP_ID] == 0)
+    {
+        heap_free_memory_BV[HEAP_ID] = 0;
+    }
+    else if(heap_page.last_non_free_page != NULL_POINTER)
+    {   
+        last_page_block = heap_page.blocks[heap_page.last_non_free_page];
+        if(last_page_block.end_free)
+        {
+            heap_free_memory_BV[HEAP_ID] -= last_page_block.end.size;
+        }
+    }
+}
+
+// Function to search for the last non free page. We require this so we can determine the active page range and free memory for the page view, and live page memory.
+page_pointer_t search_backwards_non_free_page(heap_id_range_t heap_id, page_pointer_t from_page)
+{
+    bool page_found = false;
+    page_pointer_t page_counter;
+
+    if(from_page &gt; AMT_OF_PAGES_HEAP)
+    {
+        from_page = AMT_OF_PAGES_HEAP - 1;
+    }
+    page_counter = from_page;
+    
+    if(from_page &lt; 0)
+    {
+        return NULL_POINTER;
+    }
+    
+    while(!page_found &amp;&amp; page_counter &gt;= 0)
+    {
+        if(heap_pages[heap_id].blocks[page_counter].page_state != eFree)
+        {
+            page_found = true;
+        }
+        else
+        {
+            page_counter--;
+        }
+    }
+    
+    if(!page_found)
+    {
+        return NULL_POINTER;
+    }
+    
+    return page_counter;
+}
+
+// Update the global state. This is only relevant if a page's state changes.
+void update_heap_pages()
+{
+    // Look 
+    page_pointer_t prev_non_free_page = search_backwards_non_free_page(HEAP_ID, PAGE_ID - 1); // First page is always allocated.
+    
+    if(prev_non_free_page == NULL_POINTER)
+    {
+        prev_non_free_page = 0;        
+    }
+
+    if(previous_page_state == eFree &amp;&amp; page_info.page_state != eFree)
+    {
+        heap_pages[HEAP_ID].amt_non_free_pages++;
+        process_page_state = true;
+    }
+    else if(previous_page_state != eFree &amp;&amp; page_info.page_state == eFree)
+    {
+        heap_pages[HEAP_ID].amt_non_free_pages--;
+        process_page_state = true;
+    }
+    else
+    {
+        process_page_state = false;
+    }
+
+    heap_pages[HEAP_ID].blocks[PAGE_ID].page_state = page_info.page_state;
+    heap_pages[HEAP_ID].last_non_free_page = search_backwards_non_free_page(HEAP_ID, AMT_OF_PAGES_HEAP - 1);
+    previous_page_state = page_info.page_state;
+    refresh_block();
+}
+
+// Retrieve page request
+void process_page_request()
+{
+    page_request = page_mem_req[HEAP_ID];
+    previous_page_state = page_info.page_state;
+}
+
+// Allocate a given entry of the free list. This is expects an existing entry, so it MUST be valid.
+void alloc_entry_fl(free_list_indices_t entry, heap_pointer_t alloc_start_address, uint_t alloc_size)
+{
+    uint_t size_of_entry = page_info.free_list[entry].length;
+    heap_pointer_t address_diff = alloc_start_address - page_info.free_list[entry].address;
+    uint_t i = 0;
+    
+    // Alloc at start of block, but left over free bytes -&gt; Offset entry
+    if(alloc_start_address == page_info.free_list[entry].address &amp;&amp; alloc_size &lt; size_of_entry)
+    {
+        page_info.free_list[entry].address += alloc_size; // offset address by newly allocated memory
+        page_info.free_list[entry].length -= alloc_size;
+    }
+    // Alloc at start of block, but no free bytes to the right -&gt; remove entry
+    else if(alloc_start_address == page_info.free_list[entry].address &amp;&amp; alloc_size == size_of_entry)
+    {
+        for(i = entry; i &lt; page_info.free_list_size - 1; i++)
+        {
+            page_info.free_list[i] = page_info.free_list[i + 1];
+        }
+        page_info.free_list[page_info.free_list_size - 1].address = 0;
+        page_info.free_list[page_info.free_list_size - 1].length = 0;
+        page_info.free_list_size--;
+    }
+    // Alloc in middle of block, but left over free bytes -&gt; add entry
+    else if(alloc_start_address &gt;= page_info.free_list[entry].address &amp;&amp; size_of_entry - address_diff - alloc_size &gt; 0)
+    {
+        // Make room for new entry at entry + 1, and copy old entry into the new entry
+        page_info.free_list_size++;
+        for(i = page_info.free_list_size - 1; i &gt; entry; i--)
+        {
+            page_info.free_list[i] = page_info.free_list[i - 1];
+        }
+        
+        // Change targeted entry
+        page_info.free_list[entry].length = address_diff;
+        
+        // Change new entry
+        page_info.free_list[entry + 1].address = alloc_start_address + alloc_size;
+        page_info.free_list[entry + 1].length -= address_diff + alloc_size; // Previous length of block - offset to allocation - alloc size
+    }
+    // Alloc in middle of block, but no free bytes to the right -&gt; Offset entry
+    else if(alloc_start_address &gt;= page_info.free_list[entry].address &amp;&amp; size_of_entry - address_diff - alloc_size == 0)
+    {
+        page_info.free_list[entry].length -= alloc_size;
+    }
+    // We tried all options. This is invalid behavior of the model.
+    else
+    {
+        fault_invalid_implementation = true;
+        page_error = true;
+    }
+}
+
+// --- LL, LR, LRRL Explanation ---
+// NOTE: Blocks only have a starting address and a size, if address + size + 1 of a free list entry is the starting address of another, there's a neighbor present. 
+// As we require instant coalescing, we need to keep in mind not to waste space in the free list and merge when possible.
+// LR, RL, and LRRL, are notations what type of merges we need to perform. 
+// For LR, and LL, we see the first L as the entry info (address + size), and the second letter as what we're attempting to merge with.
+
+// LL = Joining the (L)eft side of a block with the (L)eft side of another block.
+// In short, we have a new block to place, and it only has a left neighbor.
+// We don't need a new entry in the free list, we just extend the existing left-siding neighbor.
+
+// LR = Joining the (L)eft side of a block with the (R) side of another block. 
+// In short, we have a new block, and it only has a right neighbor.
+// We don't need a new entry, we just make the existing right neighbor bigger, and make its starting address that of the new block.
+
+// LRRL = Performing both actions. We join a new block with its right neighbor, and then join that new block with the left neighbor.
+// In short, we have a block with neighbors on both sides.
+// We can simply join together the new entry and right neighbor, with the one on the left by adding up their sizes to the left block.
+
+// Put free entry at a given spot. Determine the merges/coalescing beforehand.
+void insert_free_entry(heap_pointer_t address, uint_t length, free_list_indices_t entry, bool LL_merge, bool LR_merge, bool LRRL_merge)
+{
+    uint_t i = 0;
+    // In the middle of two neighboring blocks. Add the length of the new entry and the right block, then merge them all together into the left one.
+    if(LRRL_merge)
+    {
+        page_info.free_list[entry].length += (length + page_info.free_list[entry + 1].length);        
+        // Remove right entry, move up the blocks with larger addresses in the free list.
+        for(i = entry + 1; i &lt; page_info.free_list_size - 1; i++)
+        {
+            page_info.free_list[i] = page_info.free_list[i + 1];
+        }
+        page_info.free_list[page_info.free_list_size - 1].address = 0;
+        page_info.free_list[page_info.free_list_size - 1].length = 0;
+        page_info.free_list_size--;
+        
+    }
+    // New block becomes the "main" block. Merge the given entry.
+    else if(LL_merge)
+    {
+        page_info.free_list[entry].address = address;
+        page_info.free_list[entry].length += length;
+    }
+    // New block extends the given entry.
+    else if(LR_merge)
+    {
+        page_info.free_list[entry].length += length;
+    }
+    else
+    {
+        // There's no merging. It's a new free list entry.
+        page_info.free_list_size++;
+        for(i = page_info.free_list_size - 1; i &gt; entry; i--)
+        {
+            page_info.free_list[i] = page_info.free_list[i - 1];
+        }
+        
+        page_info.free_list[entry].address = address;
+        page_info.free_list[entry].length = length;
+    }
+}
+
+// Searches for an entry to place a free linearly, i.e., goes over the free list array index by index. This is a very simple implementation, binary search is definitely possible
+void free_entry_fl_linear_search(heap_pointer_t address, uint_t length)
+{
+    bool match_found, LL_merge, LR_merge, LRRL_merge = false;
+    uint_t i, temp_val, next_temp_val, entry_index = 0;
+    heap_pointer_t temp_addr, next_temp_addr = 0;
+    // No other entries, pick the first one.
+    if(page_info.free_list_size == 0)
+    {
+        match_found = true;
+        entry_index = 0;
+    }
+    // Single entry, see if we have to merge.
+    else if(page_info.free_list_size == 1)
+    {
+        temp_addr = page_info.free_list[0].address;
+        temp_val = page_info.free_list[0].length;
+        
+        if(address &gt; temp_addr + temp_val)
+        {
+            match_found = true;
+            entry_index = 1;
+        }
+        else if(address + length &lt; temp_addr)
+        {
+            match_found = true;
+            entry_index = 0;
+        }
+        else if(address + length == temp_addr)
+        {
+            match_found = true;
+            LL_merge = true;
+            entry_index = 0;
+        }
+        else if(address == temp_addr + temp_val)
+        {
+            match_found = true;
+            LR_merge = true;
+            entry_index = 0;
+        }
+    }
+    // Go over each entry and determine whether we can find an entry without any overlap.
+    // If so, attempt to merge.
+    else
+    {
+
+        while(match_found == false &amp;&amp; i &lt;= page_info.free_list_size - 1)
+        {
+            temp_addr = page_info.free_list[i].address;
+            temp_val = page_info.free_list[i].length;
+            if(address + length &lt; temp_addr)
+            {
+                match_found = true;
+                entry_index = i;
+            }
+            else if(address + length == temp_addr)
+            {
+                match_found = true;
+                LL_merge = true;
+                entry_index = i;
+            }
+            else if(address == temp_addr + temp_val)
+            {
+                match_found = true;
+                if(i &lt; page_info.free_list_size - 1 &amp;&amp; address + length == page_info.free_list[i + 1].address)
+                {
+                    LRRL_merge = true;
+                }
+                else
+                {
+                    LR_merge = true;
+                }
+                
+                entry_index = i;
+            }
+            else if(address &gt; temp_addr + temp_val &amp;&amp;( i == page_info.free_list_size - 1 || address + length &lt; page_info.free_list[i+1].address))
+            {
+                match_found = true;
+                entry_index = i + 1;
+            }
+            else
+            {
+                i++;
+            }
+        }
+    }
+    
+    if(match_found)
+    {
+        insert_free_entry(address, length, entry_index, LL_merge, LR_merge, LRRL_merge);
+        return;
+    }
+    else
+    {
+        fault_invalid_free = true;
+        page_error = true;
+    }
+}
+
+// Processes an allocation page request. ALlocates if valid, else faults.
+void process_alloc_fl()
+{
+    uint_t i = 0;     // Start at the first index in the free list.
+    uint_t size;
+    bool match_found = false;
+    heap_pointer_t entry_end_address = NULL_POINTER;
+    
+    size = page_request.range.end_address - page_request.range.start_address + 1;
+
+    // Stop whenever we either find a match, or there's no free list entries to analyze.
+    while(match_found == false &amp;&amp; i &lt; page_info.free_list_size)
+    {
+        entry_end_address =  page_info.free_list[i].address + page_info.free_list[i].length - 1;
+        if(page_info.free_list[i].address &lt;= page_request.range.start_address    // Check if the request isn't located before this page.
+            &amp;&amp; page_request.range.end_address &lt;= end_address                     // Check if the request isn't located after this range
+            &amp;&amp; page_request.range.start_address + size - 1 &lt;= entry_end_address  // Check if the size fits in the entry using addresses.
+            &amp;&amp; size &lt;= page_info.free_list[i].length                             // Check if the size fits in the entry using length. This is a sanity check, the given addresses might be incorrect.
+            &amp;&amp; size &gt;= 1)                                                        // Check if size is coherent.
+        {
+            // Valid entry, so we can allocate.
+            page_action_count++;
+            match_found = true;
+            alloc_entry_fl(i, page_request.range.start_address, size);
+        }
+        i++;
+    }
+    
+    // Stop after fault.
+    if(match_found == false)
+    {
+        fault_invalid_allocation = true;
+        page_error = true;
+        return;
+    }
+    
+    // Update page state
+    if(page_info.free_list_size == 0)
+    {
+        page_info.page_state = eAllocated;
+    }
+    else
+    {
+       page_info.page_state = ePartiallyAllocated;
+    }
+
+    // Update page-data,and page-local/heap/free memory.
+    update_heap_pages();
+    update_memory_history(page_memory, page_request.type, page_request.info);
+    update_memory_history(heap_memory[HEAP_ID], page_request.type, page_request.info);
+    update_free_memory();
+    
+}
+
+// Processes a free page request. ALlocates if valid, else faults.
+void process_free_fl()
+{
+    uint_t size;
+    page_action_count++;
+    
+    // Look for entry we need to free up.
+    size = page_request.range.end_address - page_request.range.start_address + 1;
+    free_entry_fl_linear_search(page_request.range.start_address, size);
+    
+    // Stop after fault.
+    if(fault_invalid_free)
+    {
+        return;
+    }
+    
+    // Update page state
+    if(page_info.free_list_size == 1 &amp;&amp; page_info.free_list[0].length == PAGE_SIZE)
+    {
+        page_info.page_state = eFree;
+    }
+    else
+    {
+       page_info.page_state = ePartiallyAllocated;
+    }
+    
+    // Update page-data,and page-local/heap/free memory.
+    update_heap_pages();
+    update_memory_history(page_memory, page_request.type, page_request.info);
+    update_memory_history(heap_memory[HEAP_ID], page_request.type, page_request.info);
+    update_free_memory();
+}</declaration>
+		<location id="id145" x="484" y="0">
+			<name x="501" y="-8">select_action</name>
+			<committed/>
+		</location>
+		<location id="id146" x="0" y="0">
+			<name x="8" y="8">wait_for_req</name>
+		</location>
+		<location id="id147" x="-408" y="0">
+			<name x="-441" y="17">wait_init</name>
+		</location>
+		<location id="id148" x="0" y="-306">
+			<name x="-17" y="-340">error</name>
+		</location>
+		<location id="id149" x="0" y="-178">
+			<name x="-85" y="-187">allocate</name>
+			<committed/>
+		</location>
+		<location id="id150" x="0" y="119">
+			<name x="-17" y="136">free</name>
+			<committed/>
+		</location>
+		<init ref="id147"/>
+		<transition id="id151">
+			<source ref="id150"/>
+			<target ref="id146"/>
+			<label kind="guard" x="17" y="51">!page_error</label>
+			<label kind="synchronisation" x="17" y="68">page_request_done[HEAP_ID]!</label>
+		</transition>
+		<transition id="id152">
+			<source ref="id150"/>
+			<target ref="id148"/>
+			<label kind="guard" x="-263" y="76">page_error</label>
+			<label kind="synchronisation" x="-297" y="93">heap_error[HEAP_ID]!</label>
+			<nail x="-527" y="119"/>
+			<nail x="-527" y="-306"/>
+		</transition>
+		<transition id="id153">
+			<source ref="id149"/>
+			<target ref="id146"/>
+			<label kind="guard" x="17" y="-119">!page_error</label>
+			<label kind="synchronisation" x="17" y="-102">page_request_done[HEAP_ID]!</label>
+		</transition>
+		<transition id="id154">
+			<source ref="id149"/>
+			<target ref="id148"/>
+			<label kind="guard" x="-136" y="-263">page_error</label>
+			<label kind="synchronisation" x="-170" y="-246">heap_error[HEAP_ID]!</label>
+		</transition>
+		<transition id="id155">
+			<source ref="id146"/>
+			<target ref="id146"/>
+			<label kind="synchronisation" x="-323" y="-119">get_page_info[HEAP_ID][PAGE_ID]?</label>
+			<label kind="assignment" x="-331" y="-102">page_info_req[HEAP_ID] = page_info</label>
+			<nail x="-42" y="-76"/>
+			<nail x="-187" y="-76"/>
+		</transition>
+		<transition id="id156">
+			<source ref="id145"/>
+			<target ref="id150"/>
+			<label kind="guard" x="170" y="127">page_request.type == eHeapRequestFree</label>
+			<label kind="assignment" x="170" y="144">process_free_fl()</label>
+			<nail x="484" y="119"/>
+		</transition>
+		<transition id="id157">
+			<source ref="id145"/>
+			<target ref="id149"/>
+			<label kind="guard" x="68" y="-221">page_request.type == eHeapRequestAlloc</label>
+			<label kind="assignment" x="153" y="-204">process_alloc_fl()</label>
+			<nail x="484" y="-178"/>
+			<nail x="110" y="-178"/>
+			<nail x="76" y="-178"/>
+		</transition>
+		<transition id="id158">
+			<source ref="id147"/>
+			<target ref="id146"/>
+			<label kind="synchronisation" x="-280" y="-42">init_heap_pages?</label>
+			<label kind="assignment" x="-255" y="-25">init_page()</label>
+		</transition>
+		<transition id="id159">
+			<source ref="id146"/>
+			<target ref="id145"/>
+			<label kind="synchronisation" x="110" y="-42">process_page_req[HEAP_ID][PAGE_ID]?</label>
+			<label kind="assignment" x="144" y="-25">process_page_request()</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+// Process = Template();
+// List one or more processes to be composed into a system.
+system 
+trace, 
+global_allocator_state, global_heap_state,
+allocator_state, allocator_controller, 
+// &lt;ALLOCATOR_TEMPLATES&gt;
+nfao_allocator,
+// &lt;END_ALLOCATOR_TEMPLATES&gt;
+heap_state, heap_interface, memory_page;
+</system>
+	<queries>
+		<option key="--diagnostic" value="0"/>
+		<query>
+			<formula/>
+			<comment/>
+		</query>
+		<query>
+			<formula>A[] PAGE_SIZE == 4096</formula>
+			<comment>Checks whether page size is the expected value.
+</comment>
+		</query>
+	</queries>
+</nta>

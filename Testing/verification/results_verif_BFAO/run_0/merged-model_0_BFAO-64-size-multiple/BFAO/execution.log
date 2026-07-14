@@ -1,0 +1,295 @@
+Jul 14, 2026 2:26:42 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 2:26:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:26:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 1023)
+Jul 14, 2026 2:26:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:26:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 2:26:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_addressMatchTimed ---
+Jul 14, 2026 2:27:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:27:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 1024 && heap_mem_req[allocator_heap_link[0]].range.end_address == 2047)
+Jul 14, 2026 2:27:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:27:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_1_addressMatchTimed
+
+Jul 14, 2026 2:27:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 2:27:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:27:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 2048 && heap_mem_req[allocator_heap_link[0]].range.end_address == 3071)
+Jul 14, 2026 2:27:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:27:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_2_addressMatchTimed
+
+Jul 14, 2026 2:27:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_addressMatchTimed ---
+Jul 14, 2026 2:27:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:27:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 4 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 3072 && heap_mem_req[allocator_heap_link[0]].range.end_address == 4095)
+Jul 14, 2026 2:27:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:27:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_3_addressMatchTimed
+
+Jul 14, 2026 2:27:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_addressMatchTimed ---
+Jul 14, 2026 2:27:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:27:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 385 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 1023)
+Jul 14, 2026 2:28:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:28:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_4_addressMatchTimed
+
+Jul 14, 2026 2:28:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_5_addressMatchTimed ---
+Jul 14, 2026 2:28:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:28:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 386 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 2048 && heap_mem_req[allocator_heap_link[0]].range.end_address == 3071)
+Jul 14, 2026 2:28:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:28:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_5_addressMatchTimed
+
+Jul 14, 2026 2:28:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_6_addressMatchTimed ---
+Jul 14, 2026 2:28:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:28:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 387 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 4096 && heap_mem_req[allocator_heap_link[0]].range.end_address == 5119)
+Jul 14, 2026 2:28:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:28:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_6_addressMatchTimed
+
+Jul 14, 2026 2:28:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_7_addressMatchTimed ---
+Jul 14, 2026 2:28:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:28:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 388 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 6144 && heap_mem_req[allocator_heap_link[0]].range.end_address == 7167)
+Jul 14, 2026 2:28:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:28:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_7_addressMatchTimed
+
+Jul 14, 2026 2:28:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_8_StartSearchFirstBlock ---
+Jul 14, 2026 2:28:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlock/query_8_StartSearchFirstBlock
+
+Jul 14, 2026 2:28:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 2:29:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 8191)
+Jul 14, 2026 2:29:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_0_addressMatchTimed
+
+Jul 14, 2026 2:29:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_addressMatchTimed ---
+Jul 14, 2026 2:29:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 8192 && heap_mem_req[allocator_heap_link[0]].range.end_address == 16383)
+Jul 14, 2026 2:29:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_1_addressMatchTimed
+
+Jul 14, 2026 2:29:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 2:29:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 16384 && heap_mem_req[allocator_heap_link[0]].range.end_address == 24575)
+Jul 14, 2026 2:29:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_2_addressMatchTimed
+
+Jul 14, 2026 2:29:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_addressMatchTimed ---
+Jul 14, 2026 2:29:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 4 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 24576 && heap_mem_req[allocator_heap_link[0]].range.end_address == 32767)
+Jul 14, 2026 2:29:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_3_addressMatchTimed
+
+Jul 14, 2026 2:29:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_addressMatchTimed ---
+Jul 14, 2026 2:29:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 385 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 8191)
+Jul 14, 2026 2:29:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_4_addressMatchTimed
+
+Jul 14, 2026 2:29:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_5_addressMatchTimed ---
+Jul 14, 2026 2:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 386 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 16384 && heap_mem_req[allocator_heap_link[0]].range.end_address == 24575)
+Jul 14, 2026 2:29:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_5_addressMatchTimed
+
+Jul 14, 2026 2:29:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_6_addressMatchTimed ---
+Jul 14, 2026 2:29:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 387 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 32768 && heap_mem_req[allocator_heap_link[0]].range.end_address == 40959)
+Jul 14, 2026 2:29:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_6_addressMatchTimed
+
+Jul 14, 2026 2:29:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_7_addressMatchTimed ---
+Jul 14, 2026 2:29:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 388 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 49152 && heap_mem_req[allocator_heap_link[0]].range.end_address == 57343)
+Jul 14, 2026 2:29:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_7_addressMatchTimed
+
+Jul 14, 2026 2:29:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_8_StartSearchFirstBlockMultiblock ---
+Jul 14, 2026 2:29:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StartSearchFirstBlockMultiblock/query_8_StartSearchFirstBlockMultiblock
+
+Jul 14, 2026 2:29:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 2:29:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 385 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 383)
+Jul 14, 2026 2:29:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSized/query_0_addressMatchTimed
+
+Jul 14, 2026 2:29:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_addressMatchTimed ---
+Jul 14, 2026 2:29:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 386 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 4096 && heap_mem_req[allocator_heap_link[0]].range.end_address == 4479)
+Jul 14, 2026 2:29:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:29:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSized/query_1_addressMatchTimed
+
+Jul 14, 2026 2:29:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 2:29:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:29:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 387 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 8192 && heap_mem_req[allocator_heap_link[0]].range.end_address == 8575)
+Jul 14, 2026 2:30:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSized/query_2_addressMatchTimed
+
+Jul 14, 2026 2:30:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_addressMatchTimed ---
+Jul 14, 2026 2:30:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:30:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 388 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 12288 && heap_mem_req[allocator_heap_link[0]].range.end_address == 12671)
+Jul 14, 2026 2:30:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSized/query_3_addressMatchTimed
+
+Jul 14, 2026 2:30:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_LowerAddressDifferentSized ---
+Jul 14, 2026 2:30:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSized/query_4_LowerAddressDifferentSized
+
+Jul 14, 2026 2:30:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 2:30:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:30:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 49 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 3967)
+Jul 14, 2026 2:30:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSizedMultiblock/query_0_addressMatchTimed
+
+Jul 14, 2026 2:30:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_addressMatchTimed ---
+Jul 14, 2026 2:30:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:30:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 50 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 4096 && heap_mem_req[allocator_heap_link[0]].range.end_address == 8063)
+Jul 14, 2026 2:30:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSizedMultiblock/query_1_addressMatchTimed
+
+Jul 14, 2026 2:30:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 2:30:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:30:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 51 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 8192 && heap_mem_req[allocator_heap_link[0]].range.end_address == 12159)
+Jul 14, 2026 2:30:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSizedMultiblock/query_2_addressMatchTimed
+
+Jul 14, 2026 2:30:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_addressMatchTimed ---
+Jul 14, 2026 2:30:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:30:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 52 && (bfao_allocator(0).allocate || bfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 12288 && heap_mem_req[allocator_heap_link[0]].range.end_address == 16255)
+Jul 14, 2026 2:30:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSizedMultiblock/query_3_addressMatchTimed
+
+Jul 14, 2026 2:30:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_LowerAddressDifferentSizedMultiblock ---
+Jul 14, 2026 2:30:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/LowerAddressDifferentSizedMultiblock/query_4_LowerAddressDifferentSizedMultiblock
+
+Jul 14, 2026 2:30:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_ExactMemoryExhaustion ---
+Jul 14, 2026 2:30:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactMemoryExhaustion
+Jul 14, 2026 2:30:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 385 && bfao_allocator(0).action_signaled --> trace.timer == 385 && bfao_allocator(0).fault_memory_exhaustion && bfao_allocator(0).error
+Jul 14, 2026 2:30:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/BFAO/StopSearchOnExhaustion/query_0_ExactMemoryExhaustion
+

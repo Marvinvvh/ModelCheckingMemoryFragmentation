@@ -16,7 +16,7 @@ To run UPPAAL 5.0 through the API, several resources are required, as per UPPAAL
 ## Overview Architecture
 We provide an overview of the most important architecture aspects.
 
-TraceVerifier has certain "runnables", i.e., ways to start-up a simulation or trace generation. These are positioned under TraceVerifier.Runnables, and split into two groups: PreFab (prefabricated), and TraceGen. Running a Runnable requires PicoCLI, and is explained in more detail later. We'll discuss the trace generation, simulation, and validation aspects of the project.
+TraceVerifier has certain "runnables", i.e., ways to start-up a simulation or trace generation. These are positioned under TraceVerifier.Runnables, and split into two groups: PreFab (prefabricated), and TraceGen. Running a Runnable requires PicoCLI, and is explained in more detail later. We'll discuss the trace generation, simulation, and verification aspects of the project.
 
 ### Trace Generation
 All trace generations falls under the 'TraceGen' runnables. For the thesis, we use TraceGenThesis256KB to generate the benchmark traces, and TraceGenFragVerif to generate the fragmentation verification traces. Trace generation, and general trace-related classes such as trace actions (i.e. alloc/free), traces, and trace groups, are placed under TraceVerifier.Trace. In short, a TraceAction represents the allocation actions, a trace is an ordered collection of these actions, and a trace group is a grouping of traces.
@@ -46,8 +46,8 @@ The following simulation runnables are available:
 * PrefabThesisFragVerif, the fragverif benchmark. Used in validating whether the fragmentation are correct using TraceAnalyzer.
 * PrefabThesisMemCheck, the memcheck benchmark. It produces a mem_track.txt file, alongside the latest tested model. The mem_track file contains a log of the peak memory usage of the VM running the runnable, and the UPPAAL server during simulation. See the mem_track.sh script under resources.
 
-### Validation
-Besides simulation, TraceVerifier supports model validation with the PrefabThesis256KBVerif runnable. Instead of a StandardTracePipeline it uses a VerificationPipeline, which uses the mergers under TraceVerifier.Validation.Mergers to test different properties for whatever model is being included in the validation. The same concepts as the simulation apply for simulating and communicating with UPPAAL. Additional information of the properties, queries and traces, is placed within these classes and the thesis itself.
+### Verification
+Besides simulation, TraceVerifier supports model verification with the PrefabThesis256KBVerif runnable. Instead of a StandardTracePipeline it uses a VerificationPipeline, which uses the mergers under TraceVerifier.Verification.Mergers to test different properties for whatever model is being included in the verification. The same concepts as the simulation apply for simulating and communicating with UPPAAL. Additional information of the properties, queries and traces, is placed within these classes and the thesis itself.
 
 ## Running a Runnable
 To run the project we use PicoCLI to create several runnables. Running the program passes it through TraceVerifier.TraceVerifier.java. Here, the various commands that are supported by TraceVerifier are shown with their parameters. We'll provide some examples for calling TraceVerifier:
@@ -56,5 +56,5 @@ To generate the benchmark traces: trace-gen Thesis "PATH_DATASET_HERE/Benchmark/
 
 To start the simulation benchmark: trace-gen Thesis "PATH_DATASET_HERE/Benchmark/traces/program_traces_256KB" "PATH_DATASET_HERE/Benchmark/traces/allocation_traces_256KB" --gen-config-output-dir "PATH_DATASET_HERE/Configurations/trace_gen" --export-gen-config --clean-alloc-dirs --clean-config-dirs
 
-To launch the validation: pipeline-prefab -c "PATH_DATASET_HERE/Configurations/pipeline_config/pipeline-config-verif.json" ThesisVerif "PATH_DATASET_HERE/Model/base_model.xml" -t "PATH_DATASET_HERE/Benchmark/traces/allocation_traces_256KB"
+To launch the verification: pipeline-prefab -c "PATH_DATASET_HERE/Configurations/pipeline_config/pipeline-config-verif.json" ThesisVerif "PATH_DATASET_HERE/Model/base_model.xml" -t "PATH_DATASET_HERE/Benchmark/traces/allocation_traces_256KB"
 

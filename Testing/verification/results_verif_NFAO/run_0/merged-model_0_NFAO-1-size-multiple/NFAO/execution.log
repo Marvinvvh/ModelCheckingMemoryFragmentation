@@ -1,0 +1,358 @@
+Jul 14, 2026 12:20:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:20:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:20:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 84 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 3)
+Jul 14, 2026 12:20:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:20:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:20:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:20:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:20:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 84 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:20:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:20:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_1_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:20:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 12:20:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:20:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 86 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 6 && heap_mem_req[allocator_heap_link[0]].range.end_address == 9)
+Jul 14, 2026 12:20:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:20:42 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_2_addressMatchTimed
+
+Jul 14, 2026 12:20:42 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_3_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:20:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:20:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 86 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:20:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:20:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_3_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:20:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_4_SearchFirstPhaseSingleBlock ---
+Jul 14, 2026 12:20:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_4_SearchFirstPhaseSingleBlock
+
+Jul 14, 2026 12:20:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:20:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:20:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 83 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 1 && heap_mem_req[allocator_heap_link[0]].range.end_address == 4)
+Jul 14, 2026 12:20:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:20:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:20:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:20:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:20:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 83 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:20:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:20:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_1_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:20:54 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 12:20:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:20:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 85 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 6 && heap_mem_req[allocator_heap_link[0]].range.end_address == 9)
+Jul 14, 2026 12:20:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:20:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_2_addressMatchTimed
+
+Jul 14, 2026 12:20:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_3_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:20:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:20:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 85 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_3_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:21:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_4_SearchFirstPhaseSingleBlock ---
+Jul 14, 2026 12:21:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseSingleBlock/query_4_SearchFirstPhaseSingleBlock
+
+Jul 14, 2026 12:21:02 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:21:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:21:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 74 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 16383)
+Jul 14, 2026 12:21:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:21:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:21:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:21:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 74 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_1_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:21:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 12:21:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:21:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 76 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 24576 && heap_mem_req[allocator_heap_link[0]].range.end_address == 40959)
+Jul 14, 2026 12:21:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_2_addressMatchTimed
+
+Jul 14, 2026 12:21:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_3_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:21:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:21:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 76 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_3_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:21:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_4_SearchFirstPhaseMultiBlock ---
+Jul 14, 2026 12:21:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_4_SearchFirstPhaseMultiBlock
+
+Jul 14, 2026 12:21:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:21:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:21:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 73 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 4096 && heap_mem_req[allocator_heap_link[0]].range.end_address == 20479)
+Jul 14, 2026 12:21:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:21:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:21:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:21:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 73 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_1_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:21:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_addressMatchTimed ---
+Jul 14, 2026 12:21:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:21:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 75 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 24576 && heap_mem_req[allocator_heap_link[0]].range.end_address == 40959)
+Jul 14, 2026 12:21:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_2_addressMatchTimed
+
+Jul 14, 2026 12:21:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_3_CheckStopsInFirstPhase ---
+Jul 14, 2026 12:21:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInFirstPhase
+Jul 14, 2026 12:21:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 75 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_3_CheckStopsInFirstPhase
+
+Jul 14, 2026 12:21:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_4_SearchFirstPhaseMultiBlock ---
+Jul 14, 2026 12:21:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchFirstPhaseMultiBlock/query_4_SearchFirstPhaseMultiBlock
+
+Jul 14, 2026 12:21:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:21:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:21:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 84 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 3)
+Jul 14, 2026 12:21:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseSingleBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:21:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInSecondPhase ---
+Jul 14, 2026 12:21:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInSecondPhase
+Jul 14, 2026 12:21:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 84 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_searched && nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseSingleBlock/query_1_CheckStopsInSecondPhase
+
+Jul 14, 2026 12:21:38 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_SearchSecondPhaseSingleBlock ---
+Jul 14, 2026 12:21:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseSingleBlock/query_2_SearchSecondPhaseSingleBlock
+
+Jul 14, 2026 12:21:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:21:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:21:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 83 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 1 && heap_mem_req[allocator_heap_link[0]].range.end_address == 4)
+Jul 14, 2026 12:21:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseSingleBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:21:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInSecondPhase ---
+Jul 14, 2026 12:21:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInSecondPhase
+Jul 14, 2026 12:21:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 83 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_searched && nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseSingleBlock/query_1_CheckStopsInSecondPhase
+
+Jul 14, 2026 12:21:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_SearchSecondPhaseSingleBlock ---
+Jul 14, 2026 12:21:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseSingleBlock/query_2_SearchSecondPhaseSingleBlock
+
+Jul 14, 2026 12:21:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:21:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:21:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 74 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 0 && heap_mem_req[allocator_heap_link[0]].range.end_address == 16383)
+Jul 14, 2026 12:21:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:53 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseMultiBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:21:53 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInSecondPhase ---
+Jul 14, 2026 12:21:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInSecondPhase
+Jul 14, 2026 12:21:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 74 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_searched && nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:21:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:21:56 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseMultiBlock/query_1_CheckStopsInSecondPhase
+
+Jul 14, 2026 12:21:56 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_SearchSecondPhaseMultiBlock ---
+Jul 14, 2026 12:21:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseMultiBlock/query_2_SearchSecondPhaseMultiBlock
+
+Jul 14, 2026 12:21:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 12:22:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 12:22:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 73 && (nfao_allocator(0).allocate || nfao_allocator(0).free)) imply (heap_mem_req[allocator_heap_link[0]].range.start_address == 4096 && heap_mem_req[allocator_heap_link[0]].range.end_address == 20479)
+Jul 14, 2026 12:22:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:22:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseMultiBlock/query_0_addressMatchTimed
+
+Jul 14, 2026 12:22:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckStopsInSecondPhase ---
+Jul 14, 2026 12:22:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStopsInSecondPhase
+Jul 14, 2026 12:22:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 73 && nfao_allocator(0).allocate) imply (nfao_allocator(0).phase_1_searched && nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:22:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:22:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseMultiBlock/query_1_CheckStopsInSecondPhase
+
+Jul 14, 2026 12:22:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_SearchSecondPhaseMultiBlock ---
+Jul 14, 2026 12:22:07 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SearchSecondPhaseMultiBlock/query_2_SearchSecondPhaseMultiBlock
+
+Jul 14, 2026 12:22:07 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_ExactMemoryExhaustion ---
+Jul 14, 2026 12:22:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactMemoryExhaustion
+Jul 14, 2026 12:22:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 73 && nfao_allocator(0).action_signaled --> trace.timer == 73 && nfao_allocator(0).fault_memory_exhaustion && nfao_allocator(0).error
+Jul 14, 2026 12:22:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:22:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/FirstPhaseErrorExhaustion/query_0_ExactMemoryExhaustion
+
+Jul 14, 2026 12:22:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckErrorFirstPhase ---
+Jul 14, 2026 12:22:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckErrorFirstPhase
+Jul 14, 2026 12:22:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 73 && nfao_allocator(0).error) imply (nfao_allocator(0).fault_memory_exhaustion && nfao_allocator(0).phase_1_started && !nfao_allocator(0).phase_2_started)
+Jul 14, 2026 12:22:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:22:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/FirstPhaseErrorExhaustion/query_1_CheckErrorFirstPhase
+
+Jul 14, 2026 12:22:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_FirstPhaseErrorExhaustion ---
+Jul 14, 2026 12:22:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/FirstPhaseErrorExhaustion/query_2_FirstPhaseErrorExhaustion
+
+Jul 14, 2026 12:22:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_0_ExactMemoryExhaustion ---
+Jul 14, 2026 12:22:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: ExactMemoryExhaustion
+Jul 14, 2026 12:22:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 73 && nfao_allocator(0).action_signaled --> trace.timer == 73 && nfao_allocator(0).fault_memory_exhaustion && nfao_allocator(0).error
+Jul 14, 2026 12:22:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:22:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SecondPhaseErrorExhaustion/query_0_ExactMemoryExhaustion
+
+Jul 14, 2026 12:22:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_1_CheckErrorSecondPhase ---
+Jul 14, 2026 12:22:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckErrorSecondPhase
+Jul 14, 2026 12:22:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 73 && nfao_allocator(0).error) imply (nfao_allocator(0).fault_memory_exhaustion && nfao_allocator(0).phase_1_searched && nfao_allocator(0).phase_2_searched)
+Jul 14, 2026 12:22:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 12:22:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SecondPhaseErrorExhaustion/query_1_CheckErrorSecondPhase
+
+Jul 14, 2026 12:22:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_NFAO-1-size-multiple | query_collection_2_SecondPhaseErrorExhaustion ---
+Jul 14, 2026 12:22:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_NFAO-1-size-multiple/NFAO/SecondPhaseErrorExhaustion/query_2_SecondPhaseErrorExhaustion
+

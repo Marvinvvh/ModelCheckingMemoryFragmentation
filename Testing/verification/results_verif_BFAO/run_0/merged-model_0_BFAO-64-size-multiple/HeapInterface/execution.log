@@ -1,0 +1,1048 @@
+Jul 14, 2026 2:30:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_addressMatchTimed ---
+Jul 14, 2026 2:30:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:30:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].range.start_address == 0 && page_mem_req[allocator_heap_link[0]].range.end_address == 4095)
+Jul 14, 2026 2:30:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_0_addressMatchTimed
+
+Jul 14, 2026 2:30:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_typeMatchTimed ---
+Jul 14, 2026 2:30:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: typeMatchTimed
+Jul 14, 2026 2:30:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply page_mem_req[allocator_heap_link[0]].type == eHeapRequestAlloc
+Jul 14, 2026 2:30:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_1_typeMatchTimed
+
+Jul 14, 2026 2:30:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:30:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:30:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].type == eHeapRequestAlloc && page_mem_req[allocator_heap_link[0]].info.requested_memory == 4096 && page_mem_req[allocator_heap_link[0]].info.padded_memory == 0 && page_mem_req[allocator_heap_link[0]].info.allocated_memory == 4096)
+Jul 14, 2026 2:30:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:30:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_2_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:30:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && heap_interface(allocator_heap_link[0]).processed) imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 4096 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 4096)
+Jul 14, 2026 2:31:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_3_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 1 && heap_interface(allocator_heap_link[0]).processing_page_req) imply (heap_interface(allocator_heap_link[0]).page_num >= 0 && heap_interface(allocator_heap_link[0]).page_num <1)
+Jul 14, 2026 2:31:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_4_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_5_addressMatchTimed ---
+Jul 14, 2026 2:31:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:31:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].range.start_address == 0 && page_mem_req[allocator_heap_link[0]].range.end_address == 4095)
+Jul 14, 2026 2:31:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_5_addressMatchTimed
+
+Jul 14, 2026 2:31:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_6_typeMatchTimed ---
+Jul 14, 2026 2:31:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: typeMatchTimed
+Jul 14, 2026 2:31:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply page_mem_req[allocator_heap_link[0]].type == eHeapRequestFree
+Jul 14, 2026 2:31:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_6_typeMatchTimed
+
+Jul 14, 2026 2:31:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_7_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].type == eHeapRequestFree && page_mem_req[allocator_heap_link[0]].info.requested_memory == 4096 && page_mem_req[allocator_heap_link[0]].info.padded_memory == 0 && page_mem_req[allocator_heap_link[0]].info.allocated_memory == 4096)
+Jul 14, 2026 2:31:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_7_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_8_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && heap_interface(allocator_heap_link[0]).processed) imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 0 && heap_memory[allocator_heap_link[0]].live_padded_memory == 0 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 0)
+Jul 14, 2026 2:31:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_8_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_9_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 2 && heap_interface(allocator_heap_link[0]).processing_page_req) imply (heap_interface(allocator_heap_link[0]).page_num >= 0 && heap_interface(allocator_heap_link[0]).page_num <1)
+Jul 14, 2026 2:31:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_9_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_10_addressMatchTimed ---
+Jul 14, 2026 2:31:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:31:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].range.start_address == 0 && page_mem_req[allocator_heap_link[0]].range.end_address == 4095)
+Jul 14, 2026 2:31:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_10_addressMatchTimed
+
+Jul 14, 2026 2:31:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_11_typeMatchTimed ---
+Jul 14, 2026 2:31:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: typeMatchTimed
+Jul 14, 2026 2:31:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply page_mem_req[allocator_heap_link[0]].type == eHeapRequestAlloc
+Jul 14, 2026 2:31:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_11_typeMatchTimed
+
+Jul 14, 2026 2:31:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_12_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].type == eHeapRequestAlloc && page_mem_req[allocator_heap_link[0]].info.requested_memory == 4096 && page_mem_req[allocator_heap_link[0]].info.padded_memory == 0 && page_mem_req[allocator_heap_link[0]].info.allocated_memory == 4096)
+Jul 14, 2026 2:31:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_12_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_13_addressMatchTimed ---
+Jul 14, 2026 2:31:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:31:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1) imply (page_mem_req[allocator_heap_link[0]].range.start_address == 4096 && page_mem_req[allocator_heap_link[0]].range.end_address == 8191)
+Jul 14, 2026 2:31:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_13_addressMatchTimed
+
+Jul 14, 2026 2:31:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_14_typeMatchTimed ---
+Jul 14, 2026 2:31:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: typeMatchTimed
+Jul 14, 2026 2:31:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1) imply page_mem_req[allocator_heap_link[0]].type == eHeapRequestAlloc
+Jul 14, 2026 2:31:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_14_typeMatchTimed
+
+Jul 14, 2026 2:31:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_15_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1) imply (page_mem_req[allocator_heap_link[0]].type == eHeapRequestAlloc && page_mem_req[allocator_heap_link[0]].info.requested_memory == 4064 && page_mem_req[allocator_heap_link[0]].info.padded_memory == 32 && page_mem_req[allocator_heap_link[0]].info.allocated_memory == 4096)
+Jul 14, 2026 2:31:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_15_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_16_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processed) imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 8160 && heap_memory[allocator_heap_link[0]].live_padded_memory == 32 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 8192)
+Jul 14, 2026 2:31:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_16_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_17_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 3 && heap_interface(allocator_heap_link[0]).processing_page_req) imply (heap_interface(allocator_heap_link[0]).page_num >= 0 && heap_interface(allocator_heap_link[0]).page_num <2)
+Jul 14, 2026 2:31:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_17_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_18_addressMatchTimed ---
+Jul 14, 2026 2:31:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:31:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].range.start_address == 0 && page_mem_req[allocator_heap_link[0]].range.end_address == 4095)
+Jul 14, 2026 2:31:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_18_addressMatchTimed
+
+Jul 14, 2026 2:31:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_19_typeMatchTimed ---
+Jul 14, 2026 2:31:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: typeMatchTimed
+Jul 14, 2026 2:31:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply page_mem_req[allocator_heap_link[0]].type == eHeapRequestFree
+Jul 14, 2026 2:31:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_19_typeMatchTimed
+
+Jul 14, 2026 2:31:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_20_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 0) imply (page_mem_req[allocator_heap_link[0]].type == eHeapRequestFree && page_mem_req[allocator_heap_link[0]].info.requested_memory == 4096 && page_mem_req[allocator_heap_link[0]].info.padded_memory == 0 && page_mem_req[allocator_heap_link[0]].info.allocated_memory == 4096)
+Jul 14, 2026 2:31:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_20_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_21_addressMatchTimed ---
+Jul 14, 2026 2:31:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: addressMatchTimed
+Jul 14, 2026 2:31:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1) imply (page_mem_req[allocator_heap_link[0]].range.start_address == 4096 && page_mem_req[allocator_heap_link[0]].range.end_address == 8191)
+Jul 14, 2026 2:31:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_21_addressMatchTimed
+
+Jul 14, 2026 2:31:50 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_22_typeMatchTimed ---
+Jul 14, 2026 2:31:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: typeMatchTimed
+Jul 14, 2026 2:31:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1) imply page_mem_req[allocator_heap_link[0]].type == eHeapRequestFree
+Jul 14, 2026 2:31:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_22_typeMatchTimed
+
+Jul 14, 2026 2:31:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_23_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req && heap_interface(allocator_heap_link[0]).page_num == 1) imply (page_mem_req[allocator_heap_link[0]].type == eHeapRequestFree && page_mem_req[allocator_heap_link[0]].info.requested_memory == 4064 && page_mem_req[allocator_heap_link[0]].info.padded_memory == 32 && page_mem_req[allocator_heap_link[0]].info.allocated_memory == 4096)
+Jul 14, 2026 2:31:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_23_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_24_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:31:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:31:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processed) imply (heap_memory[allocator_heap_link[0]].live_requested_memory == 40864 && heap_memory[allocator_heap_link[0]].live_padded_memory == 96 && heap_memory[allocator_heap_link[0]].live_allocated_memory == 40960)
+Jul 14, 2026 2:31:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:31:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_24_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:31:58 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_25_CorrectMemoryAtTimeFree ---
+Jul 14, 2026 2:32:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CorrectMemoryAtTimeFree
+Jul 14, 2026 2:32:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 7 && heap_interface(allocator_heap_link[0]).processing_page_req) imply (heap_interface(allocator_heap_link[0]).page_num >= 0 && heap_interface(allocator_heap_link[0]).page_num <2)
+Jul 14, 2026 2:32:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_25_CorrectMemoryAtTimeFree
+
+Jul 14, 2026 2:32:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_26_AllocationFreeingChecks ---
+Jul 14, 2026 2:32:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/AllocationFreeingChecks/query_26_AllocationFreeingChecks
+
+Jul 14, 2026 2:32:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CheckSingleActionProcessedPerTick ---
+Jul 14, 2026 2:32:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckSingleActionProcessedPerTick
+Jul 14, 2026 2:32:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] heap_interface(allocator_heap_link[0]).processed imply heap_interface(allocator_heap_link[0]).requests_served == (action_count - 1)
+Jul 14, 2026 2:32:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckSingleActionProcessedPerTick/query_0_CheckSingleActionProcessedPerTick
+
+Jul 14, 2026 2:32:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_CheckSingleActionProcessedPerTick ---
+Jul 14, 2026 2:32:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckSingleActionProcessedPerTick/query_1_CheckSingleActionProcessedPerTick
+
+Jul 14, 2026 2:32:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CheckStayInProcessedOrWaitForAction ---
+Jul 14, 2026 2:32:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStayInProcessedOrWaitForAction
+Jul 14, 2026 2:32:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 1 && heap_interface(allocator_heap_link[0]).processed --> trace.timer==1 && !heap_interface(allocator_heap_link[0]).wait_for_action && !heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 14, 2026 2:32:12 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckStayInProcessedOrWaitForAction/query_0_CheckStayInProcessedOrWaitForAction
+
+Jul 14, 2026 2:32:12 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_CheckStayInProcessedOrWaitForAction ---
+Jul 14, 2026 2:32:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStayInProcessedOrWaitForAction
+Jul 14, 2026 2:32:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 2 && heap_interface(allocator_heap_link[0]).processed --> trace.timer==2 && !heap_interface(allocator_heap_link[0]).wait_for_action && !heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 14, 2026 2:32:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckStayInProcessedOrWaitForAction/query_1_CheckStayInProcessedOrWaitForAction
+
+Jul 14, 2026 2:32:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_CheckStayInProcessedOrWaitForAction ---
+Jul 14, 2026 2:32:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStayInProcessedOrWaitForAction
+Jul 14, 2026 2:32:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 3 && heap_interface(allocator_heap_link[0]).processed --> trace.timer==3 && !heap_interface(allocator_heap_link[0]).wait_for_action && !heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 14, 2026 2:32:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckStayInProcessedOrWaitForAction/query_2_CheckStayInProcessedOrWaitForAction
+
+Jul 14, 2026 2:32:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_CheckStayInProcessedOrWaitForAction ---
+Jul 14, 2026 2:32:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckStayInProcessedOrWaitForAction
+Jul 14, 2026 2:32:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 7 && heap_interface(allocator_heap_link[0]).processed --> trace.timer==7 && !heap_interface(allocator_heap_link[0]).wait_for_action && !heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+SEVERE: Passed query
+Jul 14, 2026 2:32:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckStayInProcessedOrWaitForAction/query_3_CheckStayInProcessedOrWaitForAction
+
+Jul 14, 2026 2:32:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_CheckStayInProcessedOrWaitForAction ---
+Jul 14, 2026 2:32:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckStayInProcessedOrWaitForAction/query_4_CheckStayInProcessedOrWaitForAction
+
+Jul 14, 2026 2:32:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CheckActionLeadsToProcessed ---
+Jul 14, 2026 2:32:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckActionLeadsToProcessed
+Jul 14, 2026 2:32:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 1 && trace.verify_action && !trace.fault_invalid_trace && heap_interface(allocator_heap_link[0]).wait_for_action && !global_allocator_state.error && !global_heap_state.error --> trace.timer == 1 && trace.wait_for_action && heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckActionLeadsToProcessed/query_0_CheckActionLeadsToProcessed
+
+Jul 14, 2026 2:32:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_CheckActionLeadsToProcessed ---
+Jul 14, 2026 2:32:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckActionLeadsToProcessed
+Jul 14, 2026 2:32:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 2 && trace.verify_action && !trace.fault_invalid_trace && heap_interface(allocator_heap_link[0]).wait_for_action && !global_allocator_state.error && !global_heap_state.error --> trace.timer == 2 && trace.wait_for_action && heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckActionLeadsToProcessed/query_1_CheckActionLeadsToProcessed
+
+Jul 14, 2026 2:32:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_CheckActionLeadsToProcessed ---
+Jul 14, 2026 2:32:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckActionLeadsToProcessed
+Jul 14, 2026 2:32:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 3 && trace.verify_action && !trace.fault_invalid_trace && heap_interface(allocator_heap_link[0]).wait_for_action && !global_allocator_state.error && !global_heap_state.error --> trace.timer == 3 && trace.wait_for_action && heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckActionLeadsToProcessed/query_2_CheckActionLeadsToProcessed
+
+Jul 14, 2026 2:32:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_CheckActionLeadsToProcessed ---
+Jul 14, 2026 2:32:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckActionLeadsToProcessed
+Jul 14, 2026 2:32:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: trace.timer == 7 && trace.verify_action && !trace.fault_invalid_trace && heap_interface(allocator_heap_link[0]).wait_for_action && !global_allocator_state.error && !global_heap_state.error --> trace.timer == 7 && trace.wait_for_action && heap_interface(allocator_heap_link[0]).processed
+Jul 14, 2026 2:32:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:34 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckActionLeadsToProcessed/query_3_CheckActionLeadsToProcessed
+
+Jul 14, 2026 2:32:34 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_CheckActionLeadsToProcessed ---
+Jul 14, 2026 2:32:37 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckActionLeadsToProcessed/query_4_CheckActionLeadsToProcessed
+
+Jul 14, 2026 2:32:37 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_0_CheckWJFragmentation ---
+Jul 14, 2026 2:32:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:32:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_avg_any == 200
+Jul 14, 2026 2:32:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_0_CheckWJFragmentation
+
+Jul 14, 2026 2:32:41 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_1_CheckWJFragmentation ---
+Jul 14, 2026 2:32:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:32:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_avg_alloc == 200
+Jul 14, 2026 2:32:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_1_CheckWJFragmentation
+
+Jul 14, 2026 2:32:45 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_2_CheckWJFragmentation ---
+Jul 14, 2026 2:32:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:32:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_required_avg == 200
+Jul 14, 2026 2:32:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_2_CheckWJFragmentation
+
+Jul 14, 2026 2:32:49 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_3_CheckWJFragmentation ---
+Jul 14, 2026 2:32:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:32:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_required_upper == 200
+Jul 14, 2026 2:32:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:53 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_3_CheckWJFragmentation
+
+Jul 14, 2026 2:32:53 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_4_CheckWJFragmentation ---
+Jul 14, 2026 2:32:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:32:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_required_lower == 200
+Jul 14, 2026 2:32:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:32:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_4_CheckWJFragmentation
+
+Jul 14, 2026 2:32:57 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_5_CheckWJFragmentation ---
+Jul 14, 2026 2:33:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_reserved_avg == 200
+Jul 14, 2026 2:33:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_5_CheckWJFragmentation
+
+Jul 14, 2026 2:33:01 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_6_CheckWJFragmentation ---
+Jul 14, 2026 2:33:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_reserved_upper == 200
+Jul 14, 2026 2:33:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_6_CheckWJFragmentation
+
+Jul 14, 2026 2:33:05 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_7_CheckWJFragmentation ---
+Jul 14, 2026 2:33:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_reserved_lower == 200
+Jul 14, 2026 2:33:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_7_CheckWJFragmentation
+
+Jul 14, 2026 2:33:09 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_8_CheckWJFragmentation ---
+Jul 14, 2026 2:33:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_WJ[allocator_heap_link[0]].frag_method_max == 200
+Jul 14, 2026 2:33:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_8_CheckWJFragmentation
+
+Jul 14, 2026 2:33:13 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_9_CheckWJFragmentation ---
+Jul 14, 2026 2:33:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_avg_any == 2750
+Jul 14, 2026 2:33:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_9_CheckWJFragmentation
+
+Jul 14, 2026 2:33:17 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_10_CheckWJFragmentation ---
+Jul 14, 2026 2:33:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_avg_alloc == 2697
+Jul 14, 2026 2:33:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_10_CheckWJFragmentation
+
+Jul 14, 2026 2:33:21 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_11_CheckWJFragmentation ---
+Jul 14, 2026 2:33:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_required_avg == 800
+Jul 14, 2026 2:33:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_11_CheckWJFragmentation
+
+Jul 14, 2026 2:33:25 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_12_CheckWJFragmentation ---
+Jul 14, 2026 2:33:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_required_upper == 800
+Jul 14, 2026 2:33:29 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_12_CheckWJFragmentation
+
+Jul 14, 2026 2:33:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_13_CheckWJFragmentation ---
+Jul 14, 2026 2:33:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_required_lower == 800
+Jul 14, 2026 2:33:33 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_13_CheckWJFragmentation
+
+Jul 14, 2026 2:33:33 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_14_CheckWJFragmentation ---
+Jul 14, 2026 2:33:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_reserved_avg == 2750
+Jul 14, 2026 2:33:37 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:37 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_14_CheckWJFragmentation
+
+Jul 14, 2026 2:33:37 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_15_CheckWJFragmentation ---
+Jul 14, 2026 2:33:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_reserved_upper == 800
+Jul 14, 2026 2:33:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:40 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_15_CheckWJFragmentation
+
+Jul 14, 2026 2:33:40 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_16_CheckWJFragmentation ---
+Jul 14, 2026 2:33:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_reserved_lower == 12800
+Jul 14, 2026 2:33:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_16_CheckWJFragmentation
+
+Jul 14, 2026 2:33:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_17_CheckWJFragmentation ---
+Jul 14, 2026 2:33:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_req[allocator_heap_link[0]].frag_method_max == 800
+Jul 14, 2026 2:33:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_17_CheckWJFragmentation
+
+Jul 14, 2026 2:33:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_18_CheckWJFragmentation ---
+Jul 14, 2026 2:33:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_avg_any == 1367
+Jul 14, 2026 2:33:52 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_18_CheckWJFragmentation
+
+Jul 14, 2026 2:33:52 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_19_CheckWJFragmentation ---
+Jul 14, 2026 2:33:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_avg_alloc == 1346
+Jul 14, 2026 2:33:56 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:33:56 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_19_CheckWJFragmentation
+
+Jul 14, 2026 2:33:56 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_20_CheckWJFragmentation ---
+Jul 14, 2026 2:33:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:33:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_required_avg == 400
+Jul 14, 2026 2:34:00 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_20_CheckWJFragmentation
+
+Jul 14, 2026 2:34:00 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_21_CheckWJFragmentation ---
+Jul 14, 2026 2:34:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:34:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_required_upper == 400
+Jul 14, 2026 2:34:04 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_21_CheckWJFragmentation
+
+Jul 14, 2026 2:34:04 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_22_CheckWJFragmentation ---
+Jul 14, 2026 2:34:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:34:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_required_lower == 400
+Jul 14, 2026 2:34:08 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_22_CheckWJFragmentation
+
+Jul 14, 2026 2:34:08 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_23_CheckWJFragmentation ---
+Jul 14, 2026 2:34:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:34:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_reserved_avg == 1367
+Jul 14, 2026 2:34:12 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:12 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_23_CheckWJFragmentation
+
+Jul 14, 2026 2:34:12 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_24_CheckWJFragmentation ---
+Jul 14, 2026 2:34:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:34:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_reserved_upper == 400
+Jul 14, 2026 2:34:16 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_24_CheckWJFragmentation
+
+Jul 14, 2026 2:34:16 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_25_CheckWJFragmentation ---
+Jul 14, 2026 2:34:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:34:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_reserved_lower == 6400
+Jul 14, 2026 2:34:20 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_25_CheckWJFragmentation
+
+Jul 14, 2026 2:34:20 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_26_CheckWJFragmentation ---
+Jul 14, 2026 2:34:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckWJFragmentation
+Jul 14, 2026 2:34:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_WJ_alloc[allocator_heap_link[0]].frag_method_max == 400
+Jul 14, 2026 2:34:24 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_26_CheckWJFragmentation
+
+Jul 14, 2026 2:34:24 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_27_CheckRelativeInternalFragmentation ---
+Jul 14, 2026 2:34:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeInternalFragmentation
+Jul 14, 2026 2:34:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_relative[allocator_heap_link[0]] == 50
+Jul 14, 2026 2:34:28 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_27_CheckRelativeInternalFragmentation
+
+Jul 14, 2026 2:34:28 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_28_CheckRelativeInternalFragmentation ---
+Jul 14, 2026 2:34:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeInternalFragmentation
+Jul 14, 2026 2:34:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 96 && heap_interface(allocator_heap_link[0]).processed) imply frag_int_relative[allocator_heap_link[0]] == 50
+Jul 14, 2026 2:34:32 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_28_CheckRelativeInternalFragmentation
+
+Jul 14, 2026 2:34:32 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_29_CheckRelativeExternalFragmentation ---
+Jul 14, 2026 2:34:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 14, 2026 2:34:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_relative_BV[allocator_heap_link[0]] == 0
+Jul 14, 2026 2:34:36 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_29_CheckRelativeExternalFragmentation
+
+Jul 14, 2026 2:34:36 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_30_CheckRelativeExternalFragmentation ---
+Jul 14, 2026 2:34:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 14, 2026 2:34:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_relative_PV[allocator_heap_link[0]] == 75
+Jul 14, 2026 2:34:40 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:40 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_30_CheckRelativeExternalFragmentation
+
+Jul 14, 2026 2:34:40 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_31_CheckRelativeExternalFragmentation ---
+Jul 14, 2026 2:34:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 14, 2026 2:34:42 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_relative_HV[allocator_heap_link[0]] == 100
+Jul 14, 2026 2:34:44 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_31_CheckRelativeExternalFragmentation
+
+Jul 14, 2026 2:34:44 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_32_CheckRelativeExternalFragmentation ---
+Jul 14, 2026 2:34:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 14, 2026 2:34:46 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_relative_BV[allocator_heap_link[0]] == 50
+Jul 14, 2026 2:34:48 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_32_CheckRelativeExternalFragmentation
+
+Jul 14, 2026 2:34:48 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_33_CheckRelativeExternalFragmentation ---
+Jul 14, 2026 2:34:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 14, 2026 2:34:50 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_relative_PV[allocator_heap_link[0]] == 88
+Jul 14, 2026 2:34:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_33_CheckRelativeExternalFragmentation
+
+Jul 14, 2026 2:34:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_34_CheckRelativeExternalFragmentation ---
+Jul 14, 2026 2:34:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckRelativeExternalFragmentation
+Jul 14, 2026 2:34:54 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed) imply frag_ext_relative_HV[allocator_heap_link[0]] == 100
+Jul 14, 2026 2:34:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_34_CheckRelativeExternalFragmentation
+
+Jul 14, 2026 2:34:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_35_CheckLFBFragmentation ---
+Jul 14, 2026 2:34:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:34:58 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_BV[allocator_heap_link[0]] == 0
+Jul 14, 2026 2:34:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:34:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_35_CheckLFBFragmentation
+
+Jul 14, 2026 2:34:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_36_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:02 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_PV[allocator_heap_link[0]] == 0
+Jul 14, 2026 2:35:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_36_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_37_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_HV[allocator_heap_link[0]] == 0
+Jul 14, 2026 2:35:07 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:07 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_37_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:07 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_38_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_BV[allocator_heap_link[0]] == 0
+Jul 14, 2026 2:35:11 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_38_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:11 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_39_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_PV[allocator_heap_link[0]] == 0
+Jul 14, 2026 2:35:15 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_39_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:15 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_40_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 16 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_HV[allocator_heap_link[0]] == 0
+Jul 14, 2026 2:35:19 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_40_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:19 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_41_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_BV[allocator_heap_link[0]] == 88
+Jul 14, 2026 2:35:23 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_41_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:23 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_42_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_PV[allocator_heap_link[0]] == 15
+Jul 14, 2026 2:35:27 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_42_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:27 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_43_CheckLFBFragmentation ---
+Jul 14, 2026 2:35:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckLFBFragmentation
+Jul 14, 2026 2:35:30 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 24 && heap_interface(allocator_heap_link[0]).processed) imply frag_LFB_HV[allocator_heap_link[0]] == 1
+Jul 14, 2026 2:35:31 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_43_CheckLFBFragmentation
+
+Jul 14, 2026 2:35:31 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_44_CheckIntFragPresence ---
+Jul 14, 2026 2:35:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckIntFragPresence
+Jul 14, 2026 2:35:34 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_int[allocator_heap_link[0]] == true
+Jul 14, 2026 2:35:35 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_44_CheckIntFragPresence
+
+Jul 14, 2026 2:35:35 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_45_CheckIntFragPresence ---
+Jul 14, 2026 2:35:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckIntFragPresence
+Jul 14, 2026 2:35:38 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_int[allocator_heap_link[0]] == false
+Jul 14, 2026 2:35:39 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_45_CheckIntFragPresence
+
+Jul 14, 2026 2:35:39 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_46_CheckExtFragPresence ---
+Jul 14, 2026 2:35:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 14, 2026 2:35:41 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_ext_BV[allocator_heap_link[0]] == true
+Jul 14, 2026 2:35:43 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_46_CheckExtFragPresence
+
+Jul 14, 2026 2:35:43 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_47_CheckExtFragPresence ---
+Jul 14, 2026 2:35:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 14, 2026 2:35:45 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_ext_PV[allocator_heap_link[0]] == true
+Jul 14, 2026 2:35:47 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_47_CheckExtFragPresence
+
+Jul 14, 2026 2:35:47 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_48_CheckExtFragPresence ---
+Jul 14, 2026 2:35:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 14, 2026 2:35:49 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_ext_HV[allocator_heap_link[0]] == true
+Jul 14, 2026 2:35:51 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_48_CheckExtFragPresence
+
+Jul 14, 2026 2:35:51 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_49_CheckExtFragPresence ---
+Jul 14, 2026 2:35:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 14, 2026 2:35:53 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_ext_BV[allocator_heap_link[0]] == false
+Jul 14, 2026 2:35:55 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_49_CheckExtFragPresence
+
+Jul 14, 2026 2:35:55 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_50_CheckExtFragPresence ---
+Jul 14, 2026 2:35:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 14, 2026 2:35:57 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_ext_PV[allocator_heap_link[0]] == false
+Jul 14, 2026 2:35:59 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:35:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_50_CheckExtFragPresence
+
+Jul 14, 2026 2:35:59 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_51_CheckExtFragPresence ---
+Jul 14, 2026 2:36:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckExtFragPresence
+Jul 14, 2026 2:36:01 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_ext_HV[allocator_heap_link[0]] == false
+Jul 14, 2026 2:36:03 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:36:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_51_CheckExtFragPresence
+
+Jul 14, 2026 2:36:03 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_52_CheckFragPresence ---
+Jul 14, 2026 2:36:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 14, 2026 2:36:05 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_BV[allocator_heap_link[0]] == true
+Jul 14, 2026 2:36:06 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:36:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_52_CheckFragPresence
+
+Jul 14, 2026 2:36:06 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_53_CheckFragPresence ---
+Jul 14, 2026 2:36:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 14, 2026 2:36:09 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_PV[allocator_heap_link[0]] == true
+Jul 14, 2026 2:36:10 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:36:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_53_CheckFragPresence
+
+Jul 14, 2026 2:36:10 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_54_CheckFragPresence ---
+Jul 14, 2026 2:36:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 14, 2026 2:36:13 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 18 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_HV[allocator_heap_link[0]] == true
+Jul 14, 2026 2:36:14 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:36:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_54_CheckFragPresence
+
+Jul 14, 2026 2:36:14 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_55_CheckFragPresence ---
+Jul 14, 2026 2:36:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 14, 2026 2:36:17 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_BV[allocator_heap_link[0]] == false
+Jul 14, 2026 2:36:18 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:36:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_55_CheckFragPresence
+
+Jul 14, 2026 2:36:18 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_56_CheckFragPresence ---
+Jul 14, 2026 2:36:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 14, 2026 2:36:21 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_PV[allocator_heap_link[0]] == false
+Jul 14, 2026 2:36:22 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:36:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_56_CheckFragPresence
+
+Jul 14, 2026 2:36:22 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_57_CheckFragPresence ---
+Jul 14, 2026 2:36:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Query: CheckFragPresence
+Jul 14, 2026 2:36:25 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Property: A[] (trace.timer == 64 && heap_interface(allocator_heap_link[0]).processed) imply frag_presence_HV[allocator_heap_link[0]] == false
+Jul 14, 2026 2:36:26 AM org.TraceVerifier.Simulator.TraceSimulator simulate
+INFO: Passed query
+Jul 14, 2026 2:36:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_57_CheckFragPresence
+
+Jul 14, 2026 2:36:26 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: --- Verifying model_0_BFAO-64-size-multiple | query_collection_58_CheckMemoryFragmentation ---
+Jul 14, 2026 2:36:29 AM org.TraceVerifier.Pipeline.VerificationTracePipeline validate
+INFO: Result path: file:///home/mvh/projects/master/AF/code/thesis_data/results_verif/run_0/merged-model_0_BFAO-64-size-multiple/HeapInterface/CheckMemoryFragmentation/query_58_CheckMemoryFragmentation
+
